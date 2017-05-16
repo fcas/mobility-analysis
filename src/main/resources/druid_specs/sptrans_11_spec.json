@@ -1,0 +1,98 @@
+{
+  "type" : "index_hadoop",
+  "spec" : {
+    "ioConfig" : {
+      "type" : "hadoop",
+      "inputSpec" : {
+        "type" : "static",
+        "paths" : "/dev/shm/sptrans11.json"
+      }
+    },
+    "dataSchema" : {
+      "dataSource" : "sptrans",
+      "granularitySpec" : {
+        "type" : "uniform",
+        "segmentGranularity" : "day",
+        "queryGranularity" : "day",
+        "intervals" : ["2016-11-01/2016-12-31"]
+      },
+      "parser" : {
+        "type" : "hadoopyString",
+        "parseSpec" : {
+          "format" : "json",
+          "dimensionsSpec" : {
+            "dimensions" : [
+              "status",
+              "active",
+              "access",
+              "agency_id",
+              "trip_id",
+              "hr",
+              "lat",
+              "lng",
+              "ts_receiver",
+              "mark_ts",
+              "bustrip_ts",
+              "bus_id",
+              "stop_id"
+            ]
+          },
+          "timestampSpec" : {
+            "format" : "auto",
+            "column" : "ts"
+          }
+        }
+      },
+      "metricsSpec" : [
+        {
+          "name": "avg_speed",
+          "type": "longSum",
+          "fieldName": "avg_speed"
+        },
+        {
+          "name": "stop_seq",
+          "type": "longSum",
+          "fieldName": "stop_seq"
+        },
+        {
+          "name": "shape_seq",
+          "type": "longSum",
+          "fieldName": "shape_seq"
+        },
+        {
+          "name": "dist_to_shape",
+          "type": "longSum",
+          "fieldName": "dist_to_shape"
+        },
+        {
+          "name": "mark_shape_seq",
+          "type": "longSum",
+          "fieldName": "mark_shape_seq"
+        },
+        {
+          "name": "mark_stop_seq",
+          "type": "longSum",
+          "fieldName": "mark_stop_seq"
+        },
+        {
+          "name": "mark_dist",
+          "type": "longSum",
+          "fieldName": "mark_dist"
+        },
+        {
+          "name": "mark_elapsed_time",
+          "type": "longSum",
+          "fieldName": "mark_elapsed_time"
+        }
+      ]
+    },
+    "tuningConfig" : {
+      "type" : "hadoop",
+      "partitionsSpec" : {
+        "type" : "hashed",
+        "targetPartitionSize" : 5000000
+      },
+      "jobProperties" : {}
+    }
+  }
+}
