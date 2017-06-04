@@ -1,11 +1,11 @@
 #!/bin/bash
 
+cd /Users/felipecordeiroalvesidas
 # Druid setup
-cd /home/ec2-user
 wget http://static.druid.io/artifacts/releases/druid-0.9.2-bin.tar.gz
 tar -xzf druid-0.9.2-bin.tar.gz
 rm druid-0.9.2-bin.tar.gz
-.\druid-0.9.2/bin/init
+/Users/felipecordeiroalvesidas/druid-0.9.2/bin/init
 
 # Zookeeper setup
 wget http://ftp.unicamp.br/pub/apache/zookeeper/zookeeper-3.4.9/zookeeper-3.4.9.tar.gz
