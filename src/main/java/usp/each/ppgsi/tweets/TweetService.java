@@ -21,8 +21,7 @@ import java.util.*;
  */
 public class TweetService {
     private static final String dbBaseName = "tweets_";
-//    private static ITweetsDAO tweetsDaoAccounts;
-    private static ITweetsDAO tweetsDaoLocations;
+    private static ITweetsDAO tweetsDao;
     private static Twitter twitter;
     private static AccessToken token;
     private static List<TweetInfo> tweetInfoList;
@@ -50,22 +49,20 @@ public class TweetService {
     }
 
     public static void processTweets() {
-        tweetsDaoLocations = new TweetsDAO(dbBaseName + "locations");
+        tweetsDao = new TweetsDAO();
         List<String> accounts = new ArrayList<>(AccountsReader.getAccounts().values());
 
         for (int i = 0; i < accounts.size(); i++) {
             String account = accounts.get(i);
             try {
-//                tweetsDaoAccounts = new TweetsDAO(dbBaseName + account);
                 processUserTimelines(account);
-//                tweetsDaoAccounts.closeMongo();
             } catch (TwitterException e) {
                 e.printStackTrace();
             }
         }
 
-        tweetsDaoLocations.saveAddresses(addresses);
-//        tweetsDaoLocations.closeMongo();
+        tweetsDao.saveAddresses(addresses, dbBaseName + "locations");
+        tweetsDao.closeMongo();
     }
 
     private static void processUserTimelines(String username) throws TwitterException {
@@ -94,16 +91,16 @@ public class TweetService {
                 }
             }
             remaining--;
-        } while (pageCounter != 17 && userTimeLine != null && !userTimeLine.isEmpty());
+        } while (remaining > 0 & pageCounter != 17 && userTimeLine != null && !userTimeLine.isEmpty());
 
-//        tweetsDaoAccounts.saveTweetInfos(tweetInfoList);
+        tweetsDao.saveTweetInfos(tweetInfoList, dbBaseName + username);
     }
 
     private static void processUserTweets(ResponseList<Status> tweets, String username) {
         for (Status status : tweets) {
             long statusId = status.getId();
-            TweetInfo tweetInfo;
-//            if (tweetInfo == null) {
+            TweetInfo tweetInfo = tweetsDao.getTweet(statusId, dbBaseName + username);
+            if (tweetInfo == null) {
                 String text = status.getText();
                 if (text.contains("#ZC") || text.contains("#ZN") || text.contains("#ZO") || text.contains("#ZS") || text.contains("#ZL")) {
                     String found_address = TweetProcessor.getAddress(text);
@@ -117,15 +114,15 @@ public class TweetService {
                         tweetInfo.setTweetText(text);
                         tweetInfo = processAddress(tweetInfo, found_address);
 
-//                        tweetInfoList.add(tweetInfo);
+                        tweetInfoList.add(tweetInfo);
                     }
                 }
-//            }
+            }
         }
     }
 
     private static TweetInfo processAddress(TweetInfo tweetInfo, String found_address) {
-        Address address = tweetsDaoLocations.getAddress(found_address);
+        Address address = tweetsDao.getAddress(found_address, dbBaseName + "locations");
         if (address == null) {
             org.json.JSONObject address_info = GoogleMapsService.getLatLong(found_address.replace(" ", "+"));
             if (address_info != null) {

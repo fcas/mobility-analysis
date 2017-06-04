@@ -9,15 +9,13 @@ import java.util.List;
  * Created by felipealvesdias on 02/04/17.
  */
 public interface ITweetsDAO {
-    void saveTweetInfos(List<TweetInfo> tweetInfoList);
-
-    void dropCollection();
+    void saveTweetInfos(List<TweetInfo> tweetInfoList, String collectionName);
 
     void closeMongo();
 
-    void saveAddresses(List<Address> addresses);
+    void saveAddresses(List<Address> addresses, String collectionName);
 
-    Address getAddress(String address);
+    Address getAddress(String address, String collectionName);
 
-    TweetInfo getTweet(long id);
+    TweetInfo getTweet(long id, String collectionName);
 }
