@@ -23,7 +23,7 @@ sudo yum install gcc gcc-c++ libffi-devel python-devel python-pip python-wheel o
 pip install --upgrade setuptools pip
 
 # Install superset
-pip install superset
+pip install superset==0.17.4
 
 # Create an admin user (you will be prompted to set username, first and last name before setting a password)
 fabmanager create-admin --app superset
