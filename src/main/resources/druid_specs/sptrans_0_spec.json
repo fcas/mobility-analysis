@@ -28,13 +28,19 @@
               "agency_id",
               "trip_id",
               "hr",
-              "lat",
-              "lng",
               "ts_receiver",
               "mark_ts",
               "bustrip_ts",
               "bus_id",
-              "stop_id"
+              "stop_id",
+              {
+                "type": "long",
+                "name":"lat"
+              },
+              {
+                "type": "long",
+                "name":"lng"
+              }
             ]
           },
           "timestampSpec" : {
