@@ -1,0 +1,54 @@
+{
+  "type" : "index_hadoop",
+  "spec" : {
+    "ioConfig" : {
+      "type" : "hadoop",
+      "inputSpec" : {
+        "type" : "static",
+        "paths" : "cet.json"
+      }
+    },
+    "dataSchema" : {
+      "dataSource" : "cet3",
+      "granularitySpec" : {
+        "type" : "uniform",
+        "segmentGranularity" : "day",
+        "queryGranularity" : "day",
+        "intervals" : ["2017-02-20/2017-06-11"]
+      },
+      "parser" : {
+        "type" : "hadoopyString",
+        "parseSpec" : {
+          "format" : "json",
+          "dimensionsSpec" : {
+            "dimensions" : [
+              "address",
+              "text",
+              {
+                "type": "float",
+                "name": "lat"
+              },
+              {
+                "type": "float",
+                "name": "lng"
+              }
+            ]
+          },
+          "timestampSpec" : {
+            "format" : "auto",
+            "column" : "dateTime"
+          }
+        }
+      },
+      "metricsSpec" : []
+    },
+    "tuningConfig" : {
+      "type" : "hadoop",
+      "partitionsSpec" : {
+        "type" : "hashed",
+        "targetPartitionSize" : 5000000
+      },
+      "jobProperties" : {}
+    }
+  }
+}

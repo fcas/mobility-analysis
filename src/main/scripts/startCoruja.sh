@@ -1,6 +1,6 @@
 #!/bin/bash
 cd /home/ec2-user/zookeeper-3.4.9/bin
-./zkServer.sh start &
+sudo ./zkServer.sh start &
 cd /home/ec2-user/druid-0.9.2
 java `cat conf-quickstart/druid/historical/jvm.config | xargs` -cp "conf-quickstart/druid/_common:conf-quickstart/druid/historical:lib/*" io.druid.cli.Main server historical &
 java `cat conf-quickstart/druid/broker/jvm.config | xargs` -cp "conf-quickstart/druid/_common:conf-quickstart/druid/broker:lib/*" io.druid.cli.Main server broker &
