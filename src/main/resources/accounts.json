@@ -1,6 +1,18 @@
 {
   "accounts":
   [
-    {"CET":"CETSP_"}
+    {"CET":"CETSP_"},
+    {"BombeirosPMESP":"BombeirosPMESP"},
+    {"CPTM_oficial":"CPTM_oficial"},
+    {"PMESP":"PMESP"},
+    {"Policia_Civil":"Policia_Civil"},
+    {"TurismoSaoPaulo": "TurismoSaoPaulo"},
+    {"governosp":"governosp"},
+    {"metrosp_oficial":"metrosp_oficial"},
+    {"saopaulo_agora":"saopaulo_agora"},
+    {"smtsp_":"smtsp_"},
+    {"sptrans_":"sptrans_"},
+    {"SPCEDEC": "SPCEDEC"},
+    {"temposaopaulo": "temposaopaulo"}
   ]
 }
