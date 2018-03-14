@@ -24,9 +24,9 @@ while [ 1 ] ; do
         CHECK_RET=$?
         if [ $CHECK_RET -eq 0 ]; # none exist
         then
-                cd /home/felipealvesdias/druid-0.10.0
-                ./startCoruja.sh
-                cd /home/felipealvesdias/.superset
+                cd /home/felipecavazotto/druid-0.10.0
+                startCoruja.sh
+                cd /home/felipecavazotto/.superset
                 nohup superset runserver
         fi
         sleep 60
