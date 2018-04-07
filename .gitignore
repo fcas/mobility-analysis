@@ -2,3 +2,4 @@
 *.iml
 *config.properties
 target
+/scripts/config.py

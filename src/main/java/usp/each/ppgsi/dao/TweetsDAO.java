@@ -19,7 +19,7 @@ public class TweetsDAO implements ITweetsDAO {
     public TweetsDAO()
     {
         mongoClient = new MongoClient();
-        database = mongoClient.getDB("tweets_db2");
+        database = mongoClient.getDB("tweets_db5");
         jongo = new Jongo(database);
     }
 
