@@ -10,6 +10,7 @@ import pyproj as proj
 import numpy as np
 from multiprocessing import cpu_count
 import dask.dataframe as dd
+import csv
 
 
 user = config.mongo["username"]
@@ -19,7 +20,7 @@ port = config.mongo["port"]
 connection = MongoClient()
 
 db = connection.gtfs_sptrans
-all_code_lines_affected = set()
+all_code_lines_affected = list()
 events_lng_lat = set()
 
 stats_frames = []
@@ -47,7 +48,16 @@ def is_close_to_event(lng_bus_position, lat_bus_position):
     return False
 
 
-def find_code_line(route_id, direction_id):
+def find_code_line_details(code_line):
+    try:
+        code_line_details = db.lines.find_one({"CodigoLinha": int(code_line)})
+        return "{} / {}".format(code_line_details["DenominacaoTPTS"], code_line_details["DenominacaoTSTP"])
+    except Exception as e:
+        print(e)
+        return ""
+
+
+def find_code_line_by_direction(route_id, direction_id):
     if direction_id == 0:
         direction_id = 1
     else:
@@ -72,7 +82,7 @@ def find_affected_lines(latitude, longitude):
                     {
                         "$geometry": {"type": "Point",  "coordinates": [longitude, latitude]},
                         "$minDistance": 0,
-                        "$maxDistance": 50
+                        "$maxDistance": 100
                     }
             }
     }
@@ -88,10 +98,10 @@ def find_affected_lines(latitude, longitude):
                 direction_id = line_details[2]
             else:
                 direction_id = line_details[1]
-            code_line = find_code_line(route_id, direction_id)
+            code_line = find_code_line_by_direction(route_id, direction_id)
             if code_line is not None:
                 code_lines_affected.add(code_line)
-                all_code_lines_affected.add(code_line)
+                all_code_lines_affected.append(code_line)
     except Exception as e:
         print(e, shapes_near)
 
@@ -105,16 +115,25 @@ def get_close_events(data_frame):
 
 
 if __name__ == '__main__':
-    df_events = dd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "notebooks", "df_raw_tweets.csv"),
+    df_events = dd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "df_raw_tweets.csv"),
                             encoding='utf-8', sep=',')
-    df_events.columns = ["text", "label", "class_label", "address", "lat", "lng", "dateTime", "tokens"]
+    df_events.columns = ["_id", "address", "dateTime", "lat", "lng", "text", "label", "class_label", "raw_tweet",
+                         "location_type"]
     # df_events = df_events.loc[(df_events['label'] != "Irrelevante") & (df_events['address'].notnull()) &
     #                           (df_events["dateTime"].str.contains("20/02/2017"))]
 
-    df_events = df_events.loc[(df_events['label'] != "Irrelevante") & (df_events['address'].notnull()) &
-                              (df_events['lat'].notnull()) & (df_events['lng'].notnull())]
+    df_exception_events_with_address = \
+        df_events.loc[(df_events['label'] != "Irrelevant") & (df_events['address'].notnull()) &
+                      (df_events['lat'].notnull()) & (df_events['lng'].notnull())]
 
-    df_events["affected_code_lines"] = df_events.apply(lambda x: find_affected_lines(x['lat'], x['lng']), axis=1)
+    df_exception_events = df_events.loc[(df_events['label'] != "Irrelevant")]
+
+    print("Exception events: {}".format(len(df_exception_events)))
+    print("Found address: {}".format(len(df_exception_events_with_address)))
+    print("Found address percentage: {}".format(len(df_exception_events_with_address) / len(df_exception_events)))
+
+    df_exception_events_with_address["affected_code_lines"] = \
+        df_exception_events_with_address.apply(lambda x: find_affected_lines(x['lat'], x['lng']), axis=1)
 
     # df_events.to_csv(
     #     path.join(path.dirname(path.realpath(__file__)), "affected_code_lines_100.csv"), sep=",",
@@ -131,32 +150,50 @@ if __name__ == '__main__':
 #          "Movto_201702201700_201702201800", "Movto_201702201800_201702201900", "Movto_201702201900_201702202000",
 #          "Movto_201702202000_201702202100", "Movto_201702202100_201702202200", "Movto_201702202200_201702202300"]
 
-    paths = ["Movto_201702201300_201702201400"]
-    df_events = df_events.compute()
+# paths = ["Movto_201702201300_201702201400"]
+    df_exception_events_with_address = df_exception_events_with_address.compute()
 
-    for p in paths:
-        df = dd.read_csv("/Volumes/felipetoshiba/SPTrans/Fevereiro/" + p + ".txt",
-                         encoding='latin-1', sep=';')
-        df.columns = [
-            "cd_evento_avl_movto", "cd_linha", "dt_movto", "nr_identificador", "nr_evento_linha", "nr_ponto",
-            "nr_velocidade", "nr_voltagem", "nr_temperatura_interna", "nr_evento_terminal_dado", "nr_evento_es_1",
-            "nr_latitude_grau", "nr_longitude_grau", "nr_indiceregistro", "dt_avl", "nr_distancia",
-            "cd_tipo_veiculo_geo", "cd_avl_conexao", "cd_prefixo"
-        ]
+    df_code_lines = pd.DataFrame({"code_line": all_code_lines_affected})
+    df_code_lines = df_code_lines.groupby('code_line')['code_line'].count()
 
-        df_affected_lines = df.loc[(df['cd_linha'].isin(all_code_lines_affected))]
-        df_affected_lines["affected"] = df.apply(lambda x: is_close_to_event(x["nr_longitude_grau"],
-                                                                             x["nr_latitude_grau"]), axis=1)
+    df_code_lines = df_code_lines.to_frame()
+    df_code_lines['identification'] = df_code_lines.apply(lambda x: find_code_line_details(x.name), axis=1)
 
-        df_affected_lines = df_affected_lines.loc[df_affected_lines["affected"]]
-        df_affected_lines = df_affected_lines.compute()
+    df_events.columns = ["code_line", "qtd_exception_events", "identification"]
+    df_code_lines.to_csv(path.join(path.dirname(path.realpath(__file__)), "affected_code_lines_2.csv"), sep=",",
+                         index=True, quoting=csv.QUOTE_NONNUMERIC, header=True)
 
-        df_stats = df_affected_lines.groupby('cd_linha')['nr_velocidade'].agg(['min', 'max', 'mean', 'var', 'std',
-                                                                               'count', pd.np.count_nonzero])
-        df_stats["nonzero_percentage"] = (1 - df_stats['count_nonzero'] / df_stats['count']) * 100
-        stats_frames.append(df_stats)
+    # for p in paths:
+    #     df = dd.read_csv("/Volumes/felipetoshiba/SPTrans/Fevereiro/" + p + ".txt",
+    #                      encoding='latin-1', sep=';')
+    #     df.columns = [
+    #         "cd_evento_avl_movto", "cd_linha", "dt_movto", "nr_identificador", "nr_evento_linha", "nr_ponto",
+    #         "nr_velocidade", "nr_voltagem", "nr_temperatura_interna", "nr_evento_terminal_dado", "nr_evento_es_1",
+    #         "nr_latitude_grau", "nr_longitude_grau", "nr_indiceregistro", "dt_avl", "nr_distancia",
+    #         "cd_tipo_veiculo_geo", "cd_avl_conexao", "cd_prefixo"
+    #     ]
+    #
+    #     df_affected_lines = df.loc[(df['cd_linha'].isin(set(all_code_lines_affected)))]
+    #     df_affected_lines["affected"] = df.apply(lambda x: is_close_to_event(x["nr_longitude_grau"],
+    #                                                                          x["nr_latitude_grau"]), axis=1)
+    #
+    #     df_affected_lines = df_affected_lines.loc[df_affected_lines["affected"]]
+    #     df_affected_lines = df_affected_lines.compute()
+    #
+    #     df_stats = df_affected_lines.groupby('cd_linha')['nr_velocidade'].agg(['min', 'max', 'mean', 'var', 'std',
+    #                                                                            'count', pd.np.count_nonzero])
+    #     df_stats["nonzero_percentage"] = (1 - df_stats['count_nonzero'] / df_stats['count']) * 100
+    #     stats_frames.append(df_stats)
 
     # # stats("/Volumes/felipetoshiba/SPTrans/Fevereiro/Movto_201702192300_201702200000.txt")
-    all_df = pd.concat(stats_frames)
-    all_df.hist(column='mean')
+    # all_df = pd.concat(stats_frames)
+    # all_df.hist(column='mean')
+    # plt.show()
+
+    plt.figure(figsize=(24, 16))
+    plt.scatter(x=df_events['code_line'], y=df_events['qtd_exception_events'], alpha=0.6)
+    plt.xlabel('Quantity of exception events', fontsize=22)
+    plt.ylabel('Bus line codes', fontsize=22)
+    plt.grid(True)
     plt.show()
+
