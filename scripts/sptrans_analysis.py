@@ -7,11 +7,15 @@ from os import path
 from pymongo import MongoClient
 from shapely import geometry
 import pyproj as proj
+import redis
 import numpy as np
 from multiprocessing import cpu_count
 import dask.dataframe as dd
 import csv
+import json
 
+
+r = redis.StrictRedis(host='localhost', port=6379, db=0)
 
 user = config.mongo["username"]
 password = config.mongo["password"]
@@ -32,6 +36,8 @@ crs_wgs = proj.Proj(init='epsg:4326')
 crs_bng = proj.Proj(init='epsg:29101')
 
 bus_position_to_event_distance = 1000
+max_distance_from_shape = 100
+min_distance_from_shape = 0
 
 
 # Casting geographic coordinate pair to the projected system
@@ -75,36 +81,39 @@ def find_trip_id_by_shape_id(shape_id):
 def find_affected_lines(latitude, longitude):
     events_lng_lat.add((longitude, latitude))
     code_lines_affected = set()
-    shapes_near = {
-        "location":
-            {
-                "$near":
-                    {
-                        "$geometry": {"type": "Point",  "coordinates": [longitude, latitude]},
-                        "$minDistance": 0,
-                        "$maxDistance": 100
-                    }
-            }
-    }
+    cache = False
 
     try:
-        results = db.shapes.find(shapes_near)
-        for result in results:
-            shape_id = result["shape_id"]
-            line_info = find_trip_id_by_shape_id(shape_id)["trip_id"]
-            line_details = line_info.split("-")
-            route_id = line_details[0]
-            if len(line_details) == 3:
-                direction_id = line_details[2]
-            else:
-                direction_id = line_details[1]
-            code_line = find_code_line_by_direction(route_id, direction_id)
-            if code_line is not None:
-                code_lines_affected.add(code_line)
-                all_code_lines_affected.append(code_line)
+        results = r.get((longitude, latitude, max_distance_from_shape))
+        global cache
+        cache = results is not None
+        if cache:
+            results = json.loads(results.decode('utf-8'))
+            code_lines_affected.update(results)
+            all_code_lines_affected.extend(results)
+            return results
+        else:
+            results = db.shapes.find({"location": {"$near": {"$geometry": {"type": "Point",
+                                      "coordinates": [longitude, latitude]}, "$minDistance": min_distance_from_shape,
+                                                             "$maxDistance": max_distance_from_shape}}})
+            for result in results:
+                shape_id = result["shape_id"]
+                line_info = find_trip_id_by_shape_id(shape_id)["trip_id"]
+                line_details = line_info.split("-")
+                route_id = line_details[0]
+                if len(line_details) == 3:
+                    direction_id = line_details[2]
+                else:
+                    direction_id = line_details[1]
+                code_line = find_code_line_by_direction(route_id, direction_id)
+                if code_line is not None:
+                    code_lines_affected.add(code_line)
+                    all_code_lines_affected.append(code_line)
     except Exception as e:
-        print(e, shapes_near)
+        print(e)
 
+    if not cache:
+        r.set((longitude, latitude, max_distance_from_shape), list(code_lines_affected))
     return list(code_lines_affected)
 
 
@@ -115,10 +124,8 @@ def get_close_events(data_frame):
 
 
 if __name__ == '__main__':
-    df_events = dd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "df_raw_tweets.csv"),
-                            encoding='utf-8', sep=',')
-    df_events.columns = ["_id", "address", "dateTime", "lat", "lng", "text", "label", "class_label", "raw_tweet",
-                         "location_type"]
+    df_events = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
+                                      "processed_tweets_CETSP_.csv"), encoding='utf-8', sep=';')
     # df_events = df_events.loc[(df_events['label'] != "Irrelevante") & (df_events['address'].notnull()) &
     #                           (df_events["dateTime"].str.contains("20/02/2017"))]
 
@@ -135,9 +142,10 @@ if __name__ == '__main__':
     df_exception_events_with_address["affected_code_lines"] = \
         df_exception_events_with_address.apply(lambda x: find_affected_lines(x['lat'], x['lng']), axis=1)
 
-    # df_events.to_csv(
-    #     path.join(path.dirname(path.realpath(__file__)), "affected_code_lines_100.csv"), sep=",",
-    #     index=False, quoting=csv.QUOTE_NONNUMERIC, header=False)
+    df_exception_events_with_address.to_csv(
+        path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
+                  "processed_tweets_CETSP_affected_code_lines_{}.csv".format(max_distance_from_shape)), sep=";",
+        index=False, quoting=csv.QUOTE_NONNUMERIC, header=True)
 
 #
 #
@@ -151,7 +159,6 @@ if __name__ == '__main__':
 #          "Movto_201702202000_201702202100", "Movto_201702202100_201702202200", "Movto_201702202200_201702202300"]
 
 # paths = ["Movto_201702201300_201702201400"]
-    df_exception_events_with_address = df_exception_events_with_address.compute()
 
     df_code_lines = pd.DataFrame({"code_line": all_code_lines_affected})
     df_code_lines = df_code_lines.groupby('code_line')['code_line'].count()
@@ -159,9 +166,9 @@ if __name__ == '__main__':
     df_code_lines = df_code_lines.to_frame()
     df_code_lines['identification'] = df_code_lines.apply(lambda x: find_code_line_details(x.name), axis=1)
 
-    df_events.columns = ["code_line", "qtd_exception_events", "identification"]
-    df_code_lines.to_csv(path.join(path.dirname(path.realpath(__file__)), "affected_code_lines_2.csv"), sep=",",
-                         index=True, quoting=csv.QUOTE_NONNUMERIC, header=True)
+    df_code_lines.columns = ["qtd_exception_events", "identification"]
+    df_code_lines.to_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "affected_lines.csv"),
+                         sep=";", index=True, quoting=csv.QUOTE_NONNUMERIC, header=True)
 
     # for p in paths:
     #     df = dd.read_csv("/Volumes/felipetoshiba/SPTrans/Fevereiro/" + p + ".txt",
@@ -189,11 +196,3 @@ if __name__ == '__main__':
     # all_df = pd.concat(stats_frames)
     # all_df.hist(column='mean')
     # plt.show()
-
-    plt.figure(figsize=(24, 16))
-    plt.scatter(x=df_events['code_line'], y=df_events['qtd_exception_events'], alpha=0.6)
-    plt.xlabel('Quantity of exception events', fontsize=22)
-    plt.ylabel('Bus line codes', fontsize=22)
-    plt.grid(True)
-    plt.show()
-
