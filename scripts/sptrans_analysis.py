@@ -1,16 +1,8 @@
-from multiprocessing.pool import Pool
-
 import pandas as pd
 import config
-import matplotlib.pyplot as plt
 from os import path
 from pymongo import MongoClient
-from shapely import geometry
-import pyproj as proj
 import redis
-import numpy as np
-from multiprocessing import cpu_count
-import dask.dataframe as dd
 import csv
 import json
 
@@ -27,31 +19,8 @@ db = connection.gtfs_sptrans
 all_code_lines_affected = list()
 events_lng_lat = set()
 
-stats_frames = []
-
-# Set up projections
-# WGS 84 (World Geodetic System) (aka WGS 1984, EPSG:4326)
-crs_wgs = proj.Proj(init='epsg:4326')
-# Use a locally appropriate projected CRS (Coordinate Reference System)
-crs_bng = proj.Proj(init='epsg:29101')
-
-bus_position_to_event_distance = 1000
 max_distance_from_shape = 100
 min_distance_from_shape = 0
-
-
-# Casting geographic coordinate pair to the projected system
-def project_lng_lat(input_lng, input_lat):
-    return proj.transform(crs_wgs, crs_bng, input_lng, input_lat)
-
-
-def is_close_to_event(lng_bus_position, lat_bus_position):
-    point_2 = geometry.Point(project_lng_lat(lng_bus_position, lat_bus_position))
-    for coordinate in events_lng_lat:
-        point_1 = geometry.Point(project_lng_lat(coordinate[0], coordinate[1]))
-        if point_1.distance(point_2) < bus_position_to_event_distance:
-            return True
-    return False
 
 
 def find_code_line_details(code_line):
@@ -79,7 +48,6 @@ def find_trip_id_by_shape_id(shape_id):
 
 
 def find_affected_lines(latitude, longitude):
-    events_lng_lat.add((longitude, latitude))
     code_lines_affected = set()
     cache = False
 
@@ -147,19 +115,6 @@ if __name__ == '__main__':
                   "processed_tweets_CETSP_affected_code_lines_{}.csv".format(max_distance_from_shape)), sep=";",
         index=False, quoting=csv.QUOTE_NONNUMERIC, header=True)
 
-#
-#
-# paths = ["Movto_201702192300_201702200000", "Movto_201702200000_201702200100", "Movto_201702200100_201702200200",
-#          "Movto_201702200200_201702200300", "Movto_201702200300_201702200400", "Movto_201702200400_201702200500",
-#          "Movto_201702200500_201702200600", "Movto_201702200600_201702200700", "Movto_201702200700_201702200800",
-#          "Movto_201702200800_201702200900", "Movto_201702200900_201702201000", "Movto_201702201000_201702201100",
-#          "Movto_201702201100_201702201200", "Movto_201702201200_201702201300", "Movto_201702201300_201702201400",
-#          "Movto_201702201400_201702201500", "Movto_201702201500_201702201600", "Movto_201702201600_201702201700",
-#          "Movto_201702201700_201702201800", "Movto_201702201800_201702201900", "Movto_201702201900_201702202000",
-#          "Movto_201702202000_201702202100", "Movto_201702202100_201702202200", "Movto_201702202200_201702202300"]
-
-# paths = ["Movto_201702201300_201702201400"]
-
     df_code_lines = pd.DataFrame({"code_line": all_code_lines_affected})
     df_code_lines = df_code_lines.groupby('code_line')['code_line'].count()
 
@@ -170,29 +125,4 @@ if __name__ == '__main__':
     df_code_lines.to_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "affected_lines.csv"),
                          sep=";", index=True, quoting=csv.QUOTE_NONNUMERIC, header=True)
 
-    # for p in paths:
-    #     df = dd.read_csv("/Volumes/felipetoshiba/SPTrans/Fevereiro/" + p + ".txt",
-    #                      encoding='latin-1', sep=';')
-    #     df.columns = [
-    #         "cd_evento_avl_movto", "cd_linha", "dt_movto", "nr_identificador", "nr_evento_linha", "nr_ponto",
-    #         "nr_velocidade", "nr_voltagem", "nr_temperatura_interna", "nr_evento_terminal_dado", "nr_evento_es_1",
-    #         "nr_latitude_grau", "nr_longitude_grau", "nr_indiceregistro", "dt_avl", "nr_distancia",
-    #         "cd_tipo_veiculo_geo", "cd_avl_conexao", "cd_prefixo"
-    #     ]
-    #
-    #     df_affected_lines = df.loc[(df['cd_linha'].isin(set(all_code_lines_affected)))]
-    #     df_affected_lines["affected"] = df.apply(lambda x: is_close_to_event(x["nr_longitude_grau"],
-    #                                                                          x["nr_latitude_grau"]), axis=1)
-    #
-    #     df_affected_lines = df_affected_lines.loc[df_affected_lines["affected"]]
-    #     df_affected_lines = df_affected_lines.compute()
-    #
-    #     df_stats = df_affected_lines.groupby('cd_linha')['nr_velocidade'].agg(['min', 'max', 'mean', 'var', 'std',
-    #                                                                            'count', pd.np.count_nonzero])
-    #     df_stats["nonzero_percentage"] = (1 - df_stats['count_nonzero'] / df_stats['count']) * 100
-    #     stats_frames.append(df_stats)
 
-    # # stats("/Volumes/felipetoshiba/SPTrans/Fevereiro/Movto_201702192300_201702200000.txt")
-    # all_df = pd.concat(stats_frames)
-    # all_df.hist(column='mean')
-    # plt.show()
