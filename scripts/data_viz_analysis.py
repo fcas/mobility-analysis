@@ -47,8 +47,8 @@ def plot_affected_addresses():
     plt.show()
 
 
-df_stats = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "stats.csv"),
-                       encoding='utf-8', sep=';')
+df_stats = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
+                                 "stats_894696768767762432.csv"), encoding='utf-8', sep=';')
 df_stats['day'] = df_stats.apply(lambda x: int(x['filename'].split("_")[0][6:8]), axis=1)
 event_datetime = datetime.datetime.strptime(df_stats['dateTime'].values[0], '%Y-%m-%d %H:%M:%S')
 code_lines = list(set(df_stats['cd_linha'].tolist()))
@@ -64,13 +64,41 @@ for code_line in code_lines:
 
     index = list(range(0, len(df)))
     plt.figure(figsize=(24, 16))
-    plt.bar(index, df['mean'], align='center', color=list(np.where(df["day"] == event_datetime.day, '#FF6851', '#647AFF')))
+    plt.bar(index, df['mean'], align='center', color=list(
+        np.where(df["day"] == event_datetime.day, '#FF6851', '#647AFF')))
     plt.title("Velocity means to code line {}".format(code_line), fontsize=30)
     plt.ylabel('Velocity mean', fontsize=22)
-    plt.xlabel('{} days between {} and {} hours, {}'.format(month_name, from_hour, to_hour, year), fontsize=22)
+    plt.xlabel('{} days between {} and {} hours, {}. Event time {}'
+               .format(month_name, from_hour, to_hour, year, event_datetime), fontsize=22)
     plt.xticks(index, df['day'].values, fontsize=20)
     plt.yticks(fontsize=20)
     plt.grid(True)
-    plt.show()
 
+    # fig = plt.figure(figsize=(24, 16))
+    # ax = fig.add_subplot(111)
+    # ax2 = ax.twinx()
+    #
+    # width = 0.4
+    #
+    # df.loc[:, ['mean', 'median' 'max', 'std']].plot.bar(ax=ax, width=width, position=1)
+    # df.loc[:, ['nonzero_percentage']].plot.bar(ax=ax2, width=width, position=0, color="gray")
+    #
+    # ax.set_xlabel('{} days between {} and {} hours, {}. Event time {}'
+    #               .format(month_name, from_hour, to_hour, year, event_datetime), fontsize=22)
+    # plt.xticks(index, df['day'].values, fontsize=20)
+    # plt.yticks(fontsize=20)
+    # plt.grid(True)
+    # ax.set_ylabel('Velocity', fontsize=20)
+    # ax2.set_ylabel('Zero percentage', fontsize=20)
+    #
+    # for tick in ax.xaxis.get_ticklabels():
+    #     tick.set_fontsize(20)
+    #     tick.set_rotation('horizontal')
+    #
+    # for tick in ax.yaxis.get_ticklabels():
+    #     tick.set_fontsize(20)
+    #
+    # plt.legend(loc="upper left")
+
+    plt.show()
 

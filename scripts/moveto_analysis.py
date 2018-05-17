@@ -19,18 +19,17 @@ crs_wgs = proj.Proj(init='epsg:4326')
 crs_bng = proj.Proj(init='epsg:29101')
 bus_position_to_event_distance = 1000
 events_lng_lat = set()
-# affected_code_lines = set()
 
 cores = cpu_count()
 partitions = cores
 processed = []
-# for file in glob.glob(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "stats*")):
-#     processed.append(file.split("_")[1].split(".csv")[0])
+for file in glob.glob(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "stats*")):
+    processed.append(file.split("_")[1].split(".csv")[0])
 
 processed = list(set(processed))
 
 
-def process_movto_files(paths, event_id, event_date_time, event_affected_code_lines):
+def process_movto_files(paths, event_id, event_date_time, event_affected_code_lines, event_lng, event_lat):
     stats_frames = []
     print("Processing event id: {} ".format(event_id))
     print("Paths: {} ".format(paths))
@@ -53,49 +52,60 @@ def process_movto_files(paths, event_id, event_date_time, event_affected_code_li
                 "cd_tipo_veiculo_geo", "cd_avl_conexao", "cd_prefixo"
             ]
 
-            # df_affected_lines = df.loc[(df['cd_linha'].isin(list(affected_code_lines)))]
-            df_affected_lines = df.loc[(df['cd_linha'].isin(ast.literal_eval(event_affected_code_lines)))]
-            df_affected_lines = parallelize(df_affected_lines, process_data)
-            df_affected_lines = df_affected_lines.loc[df_affected_lines["affected"]]
+            global events_lng_lat
+            events_lng_lat.clear()
+            events_lng_lat.add((event_lng, event_lat))
 
-            df_stats = df_affected_lines.groupby('cd_linha')['nr_velocidade'].agg(['min', 'max', 'mean', 'var', 'std',
-                                                                                   'count', pd.np.count_nonzero])
-            df_stats["nonzero_percentage"] = (1 - df_stats['count_nonzero'] / df_stats['count']) * 100
-            df_stats["filename"] = p.split("Movto_")[1]
-            df_stats['dateTime'] = event_date_time
-            stats_frames.append(df_stats)
+            df_affected_lines = df.loc[(df['cd_linha'].isin(event_affected_code_lines))]
+            if not df_affected_lines.empty:
+                df_affected_lines = parallelize(df_affected_lines, process_data)
+                df_affected_lines = df_affected_lines.loc[df_affected_lines["affected"]]
+
+                df_stats = df_affected_lines.groupby('cd_linha')['nr_velocidade'].agg(['min', 'max', 'mean', 'median', 'var', 'std',
+                                                                                       'count', pd.np.count_nonzero])
+                df_stats["nonzero_percentage"] = (1 - df_stats['count_nonzero'] / df_stats['count']) * 100
+                df_stats["filename"] = p.split("Movto_")[1]
+                df_stats['dateTime'] = event_date_time
+                stats_frames.append(df_stats)
+            else:
+                print("No records related to affected lines in {} file".format(p))
 
     if len(stats_frames) > 0:
         all_df = pd.concat(stats_frames)
-        all_df.to_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "stats_{}.csv".format(event_id)),
-                      sep=";", index=True, quoting=csv.QUOTE_NONNUMERIC, header=True)
+        all_df.to_csv(path.join(path.dirname(path.realpath(__file__)),
+                                "..", "datasets", "stats_{}.csv".format(event_id)), sep=";", index=True,
+                      quoting=csv.QUOTE_NONNUMERIC, header=True)
 
 
 def process_events(event):
-    if str(event["_id"]) not in processed:
+    event_affected_code_lines = ast.literal_eval(event['affected_code_lines'])
+    if str(event["_id"]) not in processed and event_affected_code_lines:
         event_year = event['dateTime'].year
         event_month = event['dateTime'].month
         event_hour = event['dateTime'].hour
 
         paths = []
         weeks = calendar.monthcalendar(event_year, event_month)
-        for i in range(1, max(weeks[-1]) + 1):
-            if event_hour == 0:
-                event_hour = 24
-                from_hour = "_".join(["Movto", "{}{:02d}{:02d}{:02d}00".format(
-                    event_year, event_month, i, event_hour - 1)])
-                event_hour = 0
+        last_day = max(weeks[-1])
+        for i in range(1, last_day + 1):
+            from_hour = "_".join(["Movto", "{}{:02d}{:02d}{:02d}00".format(
+                event_year, event_month, i, event_hour)])
+            if event_hour == 23:
+                if i != last_day:
+                    to_hour = "{}{:02d}{:02d}{:02d}00".format(event_year, event_month, i + 1, 0)
+                else:
+                    to_hour = "{}{:02d}{:02d}{:02d}00".format(event_year, event_month + 1, 1, 0)
             else:
-                from_hour = "_".join(["Movto", "{}{:02d}{:02d}{:02d}00".format(
-                    event_year, event_month, i, event_hour - 1)])
-            to_hour = "{}{:02d}{:02d}{:02d}00".format(event_year, event_month, i, event_hour)
+                to_hour = "{}{:02d}{:02d}{:02d}00".format(event_year, event_month, i, event_hour + 1)
             paths.append("_".join([from_hour, to_hour]))
         print("Affected code lines: {}".format(event['affected_code_lines']))
-        process_movto_files(paths, event['_id'], event['dateTime'], event['affected_code_lines'])
+        process_movto_files(paths, event['_id'], event['dateTime'], event_affected_code_lines,
+                            event['lng'], event['lat'])
 
 
 def parallelize(data, ref_function):
     data_split = np.array_split(data, partitions)
+    data_split = [x for x in data_split if not x.empty]
     pool = Pool(cores)
     data = pd.concat(pool.map(ref_function, data_split))
     pool.close()
@@ -114,7 +124,6 @@ def project_lng_lat(input_lng, input_lat):
 
 
 def is_close_to_event(lng_bus_position, lat_bus_position):
-
     point_2 = geometry.Point(project_lng_lat(lng_bus_position, lat_bus_position))
     for coordinate in events_lng_lat:
         point_1 = geometry.Point(project_lng_lat(coordinate[0], coordinate[1]))
@@ -129,18 +138,10 @@ if __name__ == '__main__':
 
     df_events["dateTime"] = pd.to_datetime(df_events.dateTime)
 
-    # df_exception_events_with_address = \
-    #     df_events.loc[(df_events['_id'] == 833724664304250880)]
+    # df_exception_events_with_address = df_events.loc[(df_events['_id'] != 891724397370904576)]
 
     df_exception_events_with_address = df_events.loc[(df_events['label'] != "Irrelevant") &
                                                      (df_events['address'].notnull()) &
                                                      (df_events['lat'].notnull()) & (df_events['lng'].notnull())]
 
-    global events_lng_lat
-    df_exception_events_with_address.apply(lambda x: events_lng_lat.add((x['lng'], x['lat'])), axis=1)
-    # df_exception_events_with_address.apply(lambda x: affected_code_lines.update(
-    #     ast.literal_eval(x['affected_code_lines'])), axis=1)
-
     df_exception_events_with_address.apply(lambda x: process_events(x), axis=1)
-
-
