@@ -5,3 +5,4 @@ target
 /scripts/config.py
 *.log
 *.pyc
+scripts/test.py
