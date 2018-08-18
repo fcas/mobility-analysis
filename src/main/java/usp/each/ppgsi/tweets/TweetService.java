@@ -1,5 +1,6 @@
 package usp.each.ppgsi.tweets;
 
+import org.slf4j.LoggerFactory;
 import twitter4j.*;
 import twitter4j.auth.AccessToken;
 
@@ -26,6 +27,8 @@ public class TweetService {
     private static AccessToken token;
     private static List<TweetInfo> tweetInfoList;
     private static List<Address> addresses;
+
+    private static final org.slf4j.Logger logger = LoggerFactory.getLogger(TweetService.class);
 
 
     public TweetService() {
@@ -59,9 +62,8 @@ public class TweetService {
             } catch (TwitterException e) {
                 e.printStackTrace();
             }
+            tweetsDao.saveAddresses(addresses, dbBaseName + "locations");
         }
-
-        tweetsDao.saveAddresses(addresses, dbBaseName + "locations");
         tweetsDao.closeMongo();
     }
 
@@ -102,36 +104,38 @@ public class TweetService {
             TweetInfo tweetInfo = tweetsDao.getTweet(statusId, dbBaseName + username);
             if (tweetInfo == null) {
                 String text = status.getText();
-                if (text.contains("#ZC") || text.contains("#ZN") || text.contains("#ZO") || text.contains("#ZS") || text.contains("#ZL")) {
+//                if (text.contains("#ZC") || text.contains("#ZN") || text.contains("#ZO") || text.contains("#ZS") || text.contains("#ZL")) {
                     String found_address = TweetProcessor.getAddress(text);
+                    LocalDateTime localDateTime = status.getCreatedAt().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+                    String dateTime = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                    tweetInfo = new TweetInfo();
+                    tweetInfo.setTweetId(statusId);
+                    tweetInfo.setDateTime(dateTime);
+                    tweetInfo.setTweetText(text);
                     if (!found_address.isEmpty()) {
-                        LocalDateTime localDateTime = status.getCreatedAt().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-                        String dateTime = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-
-                        tweetInfo = new TweetInfo();
-                        tweetInfo.setTweetId(statusId);
-                        tweetInfo.setDateTime(dateTime);
-                        tweetInfo.setTweetText(text);
                         tweetInfo = processAddress(tweetInfo, found_address);
-
-                        tweetInfoList.add(tweetInfo);
                     }
-                }
+                    tweetInfoList.add(tweetInfo);
+//                }
             }
         }
     }
 
     private static TweetInfo processAddress(TweetInfo tweetInfo, String found_address) {
-        Address address = tweetsDao.getAddress(found_address, dbBaseName + "locations");
-        if (address == null) {
-            org.json.JSONObject address_info = GoogleMapsService.getLatLong(found_address.replace(" ", "+"));
-            if (address_info != null) {
-                tweetInfo = MapJsonToTweetInfo(tweetInfo, address_info);
+        try {
+            Address address = tweetsDao.getAddress(found_address, dbBaseName + "locations");
+            if (address == null) {
+                org.json.JSONObject address_info = GoogleMapsService.getLatLong(found_address.replace(" ", "+"));
+                if (address_info != null) {
+                    tweetInfo = MapJsonToTweetInfo(tweetInfo, address_info);
+                }
+            } else {
+                tweetInfo.setAddress(address.getAddress());
+                tweetInfo.setLat(address.getLat());
+                tweetInfo.setLng(address.getLng());
             }
-        } else {
-            tweetInfo.setAddress(address.getAddress());
-            tweetInfo.setLat(address.getLat());
-            tweetInfo.setLng(address.getLng());
+        } catch (Exception e) {
+            logger.error("Error getting address from " + found_address, e);
         }
         return tweetInfo;
     }

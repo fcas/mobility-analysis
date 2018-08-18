@@ -1,0 +1,65 @@
+{
+  "type": "index_hadoop",
+  "spec": {
+    "ioConfig": {
+      "type": "hadoop",
+      "inputSpec": {
+        "type": "static",
+        "paths": "971h477p.csv"
+      }
+    },
+    "dataSchema": {
+      "dataSource": "971h477p",
+      "granularitySpec": {
+        "type": "uniform",
+        "segmentGranularity": "day",
+        "queryGranularity": "day",
+        "intervals": [
+          "2016-09-13/2017-09-02"
+        ]
+      },
+      "parser": {
+        "type": "hadoopyString",
+        "parseSpec": {
+          "format": "csv",
+          "timestampSpec": {
+            "format": "auto",
+            "column": "timestamp"
+          },
+          "columns": [
+            "timestamp",
+            "hr",
+            "bus_id",
+            "lat",
+            "lng",
+            "trip_id"
+          ],
+          "dimensionsSpec": {
+            "dimensions": [
+              "hr",
+              "bus_id",
+              "trip_id",
+              {
+                "type": "long",
+                "name": "lat"
+              },
+              {
+                "type": "long",
+                "name": "lng"
+              }
+            ]
+          }
+        }
+      },
+      "metricsSpec": []
+    },
+    "tuningConfig": {
+      "type": "hadoop",
+      "partitionsSpec": {
+        "type": "hashed",
+        "targetPartitionSize": 5000000
+      },
+      "jobProperties": {}
+    }
+  }
+}

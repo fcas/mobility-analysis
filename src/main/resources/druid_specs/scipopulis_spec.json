@@ -1,0 +1,59 @@
+{
+  "type" : "index_hadoop",
+  "spec" : {
+    "ioConfig" : {
+      "type" : "hadoop",
+      "inputSpec" : {
+        "type" : "static",
+        "paths" : "scipopulis.json"
+      }
+    },
+    "dataSchema" : {
+      "dataSource" : "scipopulis2",
+      "granularitySpec" : {
+        "type" : "uniform",
+        "segmentGranularity" : "day",
+        "queryGranularity" : "day",
+        "intervals" : ["2016-11-01/2016-12-31"]
+      },
+      "parser" : {
+        "type" : "hadoopyString",
+        "parseSpec" : {
+          "format" : "json",
+          "dimensionsSpec" : {
+            "dimensions" : [
+              "sender",
+              "event",
+              "event_id",
+              "when",
+              "linenumber",
+              "busid",
+              "stopid",
+              {
+                "type": "float",
+                "name": "LAT"
+              },
+              {
+                "type": "float",
+                "name": "LNG"
+              }
+            ]
+          },
+          "timestampSpec" : {
+            "format" : "auto",
+            "column" : "date"
+          }
+        }
+      },
+      "metricsSpec" : []
+    },
+    "tuningConfig" : {
+      "type" : "hadoop",
+      "partitionsSpec" : {
+        "type" : "hashed",
+        "targetPartitionSize" : 5000000
+      },
+      "jobProperties" : {}
+    }
+  }
+}

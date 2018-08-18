@@ -1,0 +1,56 @@
+{
+  "type" : "index_hadoop",
+  "spec" : {
+    "ioConfig" : {
+      "type" : "hadoop",
+      "inputSpec" : {
+        "type" : "static",
+        "paths" : "/Users/felipealvesdias/IdeaProjects/mobility-analysis/datasets/2_processed_tweets_CETSP_affected_code_lines_100.csv"
+      }
+    },
+    "dataSchema" : {
+      "dataSource" : "tweetsCETSP3",
+      "granularitySpec" : {
+        "type" : "uniform",
+        "segmentGranularity" : "day",
+        "queryGranularity" : "day",
+        "intervals" : ["2017-02-20/2017-12-01"]
+      },
+      "parser" : {
+        "type" : "hadoopyString",
+        "parseSpec" : {
+          "format" : "csv",
+          "columns": ["_id","address","dateTime","lat","lng","text","label","class_label","raw_tweet","location_type","tokens","affected_code_lines"],
+          "dimensionsSpec" : {
+            "dimensions" : [
+              "_id",
+              "address",
+              "text",
+              "label",
+              "class_label",
+              "raw_tweet",
+              "location_type",
+              "tokens",
+              "affected_code_lines",
+              "lat",
+              "lng"
+            ]
+          },
+          "timestampSpec" : {
+            "format" : "auto",
+            "column" : "dateTime"
+          }
+        }
+      },
+      "metricsSpec" : []
+    },
+    "tuningConfig" : {
+      "type" : "hadoop",
+      "partitionsSpec" : {
+        "type" : "hashed",
+        "targetPartitionSize" : 5000000
+      },
+      "jobProperties" : {}
+    }
+  }
+}
