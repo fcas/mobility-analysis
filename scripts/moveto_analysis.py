@@ -9,11 +9,12 @@ from shapely import geometry
 from multiprocessing import Pool, cpu_count
 import numpy as np
 import csv
-import calendar
 import ast
 
 # Set up projections
 # WGS 84 (World Geodetic System) (aka WGS 1984, EPSG:4326)
+from mov_to_generator import get_file_paths
+
 crs_wgs = proj.Proj(init='epsg:4326')
 # Use a locally appropriate projected CRS (Coordinate Reference System)
 crs_bng = proj.Proj(init='epsg:29101')
@@ -61,8 +62,9 @@ def process_movto_files(paths, event_id, event_date_time, event_affected_code_li
                 df_affected_lines = parallelize(df_affected_lines, process_data)
                 df_affected_lines = df_affected_lines.loc[df_affected_lines["affected"]]
 
-                df_stats = df_affected_lines.groupby('cd_linha')['nr_velocidade'].agg(['min', 'max', 'mean', 'median', 'var', 'std',
-                                                                                       'count', pd.np.count_nonzero])
+                df_stats = df_affected_lines.groupby('cd_linha')['nr_velocidade'].agg(['min', 'max', 'mean', 'median',
+                                                                                       'var', 'std', 'count',
+                                                                                       pd.np.count_nonzero])
                 df_stats["nonzero_percentage"] = (1 - df_stats['count_nonzero'] / df_stats['count']) * 100
                 df_stats["filename"] = p.split("Movto_")[1]
                 df_stats['dateTime'] = event_date_time
@@ -84,20 +86,7 @@ def process_events(event):
         event_month = event['dateTime'].month
         event_hour = event['dateTime'].hour
 
-        paths = []
-        weeks = calendar.monthcalendar(event_year, event_month)
-        last_day = max(weeks[-1])
-        for i in range(1, last_day + 1):
-            from_hour = "_".join(["Movto", "{}{:02d}{:02d}{:02d}00".format(
-                event_year, event_month, i, event_hour)])
-            if event_hour == 23:
-                if i != last_day:
-                    to_hour = "{}{:02d}{:02d}{:02d}00".format(event_year, event_month, i + 1, 0)
-                else:
-                    to_hour = "{}{:02d}{:02d}{:02d}00".format(event_year, event_month + 1, 1, 0)
-            else:
-                to_hour = "{}{:02d}{:02d}{:02d}00".format(event_year, event_month, i, event_hour + 1)
-            paths.append("_".join([from_hour, to_hour]))
+        paths = get_file_paths(event_year, [event_month], [event_hour])
         print("Affected code lines: {}".format(event['affected_code_lines']))
         process_movto_files(paths, event['_id'], event['dateTime'], event_affected_code_lines,
                             event['lng'], event['lat'])
