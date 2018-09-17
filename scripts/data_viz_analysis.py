@@ -6,6 +6,14 @@ from os import path
 import csv
 
 
+def remove_last_digits(address):
+    last_string = address.split(" ")[-1]
+    digits = filter(lambda x: x.isdigit(), last_string)
+    for digit in digits:
+        address = address.replace(digit, "")
+    return address
+
+
 def plot_affected_lines():
     df_events = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "affected_lines.csv"),
                             encoding='utf-8', sep=';')
@@ -25,13 +33,37 @@ def plot_affected_lines():
 
 
 def plot_affected_addresses():
-    processed_events = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
-                                             "processed_tweets_CETSP_.csv"), encoding='utf-8', sep=';')
+    processed_events = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "notebooks",
+                                             "processed_tweets.csv"), encoding='utf-8', sep=',')
     processed_events = processed_events.loc[(processed_events['label'] != "Irrelevant") &
                                             (processed_events['address'].notnull()) &
+                                            (processed_events['location_type'] != "APPROXIMATE") &
                                             (processed_events['lat'].notnull()) & (processed_events['lng'].notnull())]
 
-    processed_events["address"] = processed_events.apply(lambda x: x["address"].split(",")[0].split("-")[0], axis=1)
+    processed_events["address"] = processed_events.apply(lambda x: x["address"]
+                                                         .replace(", São Paulo - SP, Brazil", "")
+                                                         .replace(", São Paulo - SP, ", "")
+                                                         .replace(", Brazil", "")
+                                                         .replace("Rua", "R.")
+                                                         .replace("Avenida", "Av.")
+                                                         .replace("Ponte", "Pte.")
+                                                         .replace("Brigadeiro", "Brg. ")
+                                                         .replace("Deputado", "Dep. ")
+                                                         .replace("Engenheiro", "Eng. ")
+                                                         .replace("General", "Gen. ")
+                                                         .replace("Capitão", "Cap. ")
+                                                         .replace("Coronel", "Cel. ")
+                                                         .replace("Professor", "Prof. ")
+                                                         .replace("Professora", "Profa. ")
+                                                         .replace("Visconde", "Visc. ")
+                                                         .replace("Senador", "Sen. ")
+                                                         .replace("Praça", "Pça. ")
+                                                         .replace("Travessa", "Tv.").split(",")[0].split("-")[0]
+                                                         .strip(), axis=1)
+
+    processed_events["address"] = processed_events.apply(lambda x: remove_last_digits(x["address"]),
+                                                         axis=1)
+
     processed_events = processed_events.groupby('address')['address'].count()
 
     processed_events = processed_events.to_frame()
@@ -109,11 +141,13 @@ def plot_stats():
         plt.show()
 
 
-df = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
-                           "processed_tweets_CETSP_affected_code_lines_100.csv"), encoding='utf-8', sep=';')
-df["dateTime"] = pd.to_datetime(df.dateTime)
-df["lat"] = df['lat'].astype(str)
-df["lng"] = df['lng'].astype(str)
-df.to_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
-                    "2_processed_tweets_CETSP_affected_code_lines_100.csv"), sep=",", index=False,
-          quoting=csv.QUOTE_NONNUMERIC, header=True)
+# df = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
+#                            "processed_tweets_CETSP_affected_code_lines_100.csv"), encoding='utf-8', sep=';')
+# df["dateTime"] = pd.to_datetime(df.dateTime)
+# df["lat"] = df['lat'].astype(str)
+# df["lng"] = df['lng'].astype(str)
+# df.to_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
+#                     "2_processed_tweets_CETSP_affected_code_lines_100.csv"), sep=",", index=False,
+#           quoting=csv.QUOTE_NONNUMERIC, header=True)
+
+plot_affected_addresses()

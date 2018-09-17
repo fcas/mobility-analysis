@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
+from sklearn.ensemble import RandomForestClassifier
 
 from notebooks import tweets_processing_config
 from notebooks.geolocation_config import google_geolocation_key
 from notebooks.tweets_processing_config import location_pattern, location_pattern_exception, address_pre_patterns, \
     address_padding, google_geolocation_bounds, google_geolocation_region, google_geolocation_url, \
     input_headers, address_anti_patterns, patterns_to_be_removed_pre_address, \
-    patterns_to_be_removed_pos_address, address_pos_patterns
+    patterns_to_be_removed_pos_address, address_pos_patterns, model_classes, google_geolocation_location_type
 # from google.colab import files
 from oauth2client.service_account import ServiceAccountCredentials
 from numpy import *
@@ -14,11 +15,10 @@ from sklearn.linear_model import LogisticRegression
 
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
 
 from sklearn import tree, svm
-from sklearn.naive_bayes import GaussianNB
-
+from sklearn.naive_bayes import MultinomialNB, GaussianNB
 
 import nltk
 import matplotlib.pyplot as plt
@@ -35,11 +35,12 @@ import os
 import re
 import requests
 import unidecode
-import multiprocessing
+
+import logging
+logging.basicConfig(filename='tweets_analysis.log', level=logging.DEBUG)
 
 
-r = redis.StrictRedis(host='localhost', port=6379, db=1)
-cores = multiprocessing.cpu_count()
+r = redis.StrictRedis(host='localhost', port=6379, db=5)
 
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
     pd.set_option('display.height', 1000)
@@ -58,7 +59,7 @@ def load_tweets():
             worksheet = gc.open(account_id).sheet1
             rows.extend(worksheet.get_all_values())
         except Exception as exception:
-            print("Error processing {}".format(account_id), exception)
+            logging.ERROR("Error processing {}".format(account_id), exception)
     csv_file = open('classified_tweets.csv', 'w')
     wr = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
     wr.writerows(rows)
@@ -73,9 +74,12 @@ def find_lat_long(address):
     global is_over_query_limit
     if not is_over_query_limit:
         cached_address = r.get(address)
+        if cached_address is not None:
+            cached_address = eval(cached_address.decode('utf-8'))
         if cached_address is None:
             url = google_geolocation_url \
-                .format(address, google_geolocation_bounds, google_geolocation_region, google_geolocation_key)
+                .format(address, google_geolocation_bounds, google_geolocation_region,
+                        google_geolocation_location_type, google_geolocation_key)
             data = requests.get(url).json()
             is_over_query_limit = data.get("status") == "OVER_QUERY_LIMIT"
             if data.get("status") == "OK" and data.get("results", []):
@@ -86,7 +90,9 @@ def find_lat_long(address):
                 map_address[address] = (formatted_address, lat, lng, location_type)
                 r.set(address, (formatted_address, lat, lng, location_type))
         else:
-            map_address[address] = eval(r.get(address).decode('utf-8'))
+            map_address[address] = cached_address
+    else:
+        logging.ERROR("OVER_QUERY_LIMIT. Processing address: {}".format(address))
 
 
 def find_address(text):
@@ -119,7 +125,10 @@ def find_address(text):
             for anti_pattern in address_anti_patterns:
                 if anti_pattern in extracted_address:
                     is_fake_pattern = True
-            if not map_address.get(extracted_address) and not is_fake_pattern:
+            if is_fake_pattern or len(extracted_address.split(" ")) <= 1:
+                return ""
+            if not map_address.get(extracted_address):
+                logging.info("extracted address: {}".format(extracted_address))
                 found_addresses.add(extracted_address)
                 find_lat_long(extracted_address)
                 address_tokens.update(extracted_address.split(" "))
@@ -161,7 +170,6 @@ def stem_tokens(tokens):
         if len(token) > 1:
             token = unidecode.unidecode(token)
             new_tokens.add(stemmer.stem(token))
-    print(new_tokens)
     return list(new_tokens)
 
 
@@ -199,23 +207,15 @@ if not os.path.isfile("processed_tweets.csv"):
     df_raw_tweets = standardize_text(df_raw_tweets, patterns_to_be_removed_pre_address, "text")
 
     df_raw_tweets['address'] = df_raw_tweets['text'].apply(find_address)
-    for found_address in found_addresses:
-        print(found_address)
-    print(map_address)
-    print(address_tokens)
     for key in list(map_address.keys()):
         df_raw_tweets.loc[df_raw_tweets['address'] ==
                           key, ['address', 'lat', 'lng', 'location_type']] = map_address.get(key)
 
     df_raw_tweets = standardize_text(df_raw_tweets, patterns_to_be_removed_pos_address, "text")
-    df_raw_tweets.head()
 
     stopwords = nltk.corpus.stopwords.words('portuguese')
     stopwords.extend(list(address_tokens))
     stemmer = nltk.stem.RSLPStemmer()
-
-    print("Stopwords: ", stopwords)
-    print("Tokens: ")
 
     tokenized_tweets = tokenize_tweets(df_raw_tweets)
     tokenized_tweets["text"] = tokenized_tweets["tokens"].apply(tokens_to_text)
@@ -239,8 +239,8 @@ def corpus_metrics(df):
     sentence_lengths = [len(tokens) for tokens in df["tokens"]]
     global vocabulary
     vocabulary = sorted(list(set(all_words)))
-    print("%s words total, with a vocabulary size of %s" % (len(all_words), len(vocabulary)))
-    print("Max sentence length is %s" % max(sentence_lengths))
+    logging.info("%s words total, with a vocabulary size of %s" % (len(all_words), len(vocabulary)))
+    logging.info("Max sentence length is %s" % max(sentence_lengths))
 
     plt.figure(figsize=(15, 15))
     plt.tick_params(labelsize=18)
@@ -266,14 +266,9 @@ list_labels = tokenized_tweets["class_label"].tolist()
 
 X_train, X_test, y_train, y_test = train_test_split(list_corpus, list_labels, test_size=0.4, train_size=0.6)
 
-print(X_train)
-print(len(X_train))
-
 # Applying TFIDF
-X_train_tfidf, tfidf_vec = count_tokens_tfidf(X_train)
-X_test_tfidf = tfidf_vec.transform(X_test)
-
-print(tfidf_vec)
+X_train_tfidf_counts, tfidf_vec = count_tokens_tfidf(X_train)
+X_test_tfidf_counts = tfidf_vec.transform(X_test)
 
 
 def get_metrics(y_test, y_predicted):
@@ -291,50 +286,72 @@ def get_metrics(y_test, y_predicted):
     return accuracy, precision, recall, f1
 
 
-clf_logistic_regression = LogisticRegression(C=30.0, class_weight='balanced', solver='newton-cg',
-                                             multi_class='multinomial', n_jobs=cores, random_state=40)
-clf_logistic_regression.fit(X_train_tfidf, y_train)
+clf_logistic_regression = LogisticRegression()
+clf_logistic_regression.fit(X_train_tfidf_counts, y_train)
 
-y_predicted_logistic_regression_clf = clf_logistic_regression.predict(X_test_tfidf)
-print("Logistic Regression: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
+y_predicted_logistic_regression_clf = clf_logistic_regression.predict(X_test_tfidf_counts)
+logging.info("Logistic Regression: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
     get_metrics(y_test, y_predicted_logistic_regression_clf)))
 
 """# Decision Tree Classifier"""
 
 decision_tree_clf = tree.DecisionTreeClassifier()
-decision_tree_clf.fit(X_train_tfidf, y_train)
+decision_tree_clf.fit(X_train_tfidf_counts, y_train)
 
-y_predicted_decision_tree_clf = decision_tree_clf.predict(X_test_tfidf)
+y_predicted_decision_tree_clf = decision_tree_clf.predict(X_test_tfidf_counts)
 
-print("Decision Tree: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
+logging.info("Decision Tree: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
     get_metrics(y_test, y_predicted_decision_tree_clf)))
 
-"""# Naive Bayes"""
+"""# Naive Bayes
+
+Specifically, we will be using the multinomial Naive Bayes implementation. This particular classifier is suitable for 
+classification with discrete features (such as in our case, word counts for text classification). It takes in integer 
+word counts as its input. On the other hand Gaussian Naive Bayes is better suited for continuous data as it assumes 
+that the input data has a Gaussian(normal) distribution.
+
+"""
+
+mnb_clf = MultinomialNB()
+mnb_clf.fit(X_train_tfidf_counts.toarray(), y_train)
+
+y_predicted_mnb = mnb_clf.predict(X_test_tfidf_counts.toarray())
+
+logging.info("Multinomial Naive Bayes: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
+    get_metrics(y_test, y_predicted_mnb)))
 
 gnb_clf = GaussianNB()
-gnb_clf.fit(X_train_tfidf.toarray(), y_train)
+gnb_clf.fit(X_train_tfidf_counts.toarray(), y_train)
 
+y_predicted_gnb = gnb_clf.predict(X_test_tfidf_counts.toarray())
 
-gnb_y_pred = gnb_clf.predict(X_test_tfidf.toarray())
-
-print("Gaussian Naive Bayes: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
-    get_metrics(y_test, gnb_y_pred)))
+logging.info("Gaussian Naive Bayes: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
+    get_metrics(y_test, y_predicted_gnb)))
 
 """# SVM"""
 
 svm_clf = svm.SVC()
-svm_clf.fit(X_train_tfidf, y_train)
+svm_clf.fit(X_train_tfidf_counts, y_train)
 
-y_predicted_svm_clf = svm_clf.predict(X_test_tfidf)
+y_predicted_svm_clf = svm_clf.predict(X_test_tfidf_counts)
 
-print("SVM: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
+logging.info("SVM: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
     get_metrics(y_test, y_predicted_svm_clf)))
+
+"""# Random Forest"""
+
+random_forest_clf = RandomForestClassifier()
+random_forest_clf.fit(X_train_tfidf_counts, y_train)
+y_predicted_random_forest_clf = random_forest_clf.predict(X_test_tfidf_counts)
+
+logging.info("Random Forest: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
+    get_metrics(y_test, y_predicted_random_forest_clf)))
+
 
 """# Validation"""
 
 
 def plot_confusion_matrix(cm, classes, normalize=False, title='', cmap=plt.cm.winter):
-    print(classes)
     if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
@@ -358,11 +375,29 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='', cmap=plt.cm.wi
     return plt
 
 
-# cm2 = confusion_matrix(y_test, y_predicted_decision_tree_clf)
-# plt.figure(figsize=(13, 13))
-# plot = plot_confusion_matrix(cm2, classes=model_classes, normalize=False)
-# plt.show()
+cm_logistic_regression = confusion_matrix(y_test, y_predicted_logistic_regression_clf)
+plt.figure(figsize=(13, 13))
+plot_confusion_matrix(cm_logistic_regression, classes=model_classes, normalize=False).show()
 
+cm_decision_tree = confusion_matrix(y_test, y_predicted_decision_tree_clf)
+plt.figure(figsize=(13, 13))
+plot_confusion_matrix(cm_decision_tree, classes=model_classes, normalize=False).show()
+
+cm_mnb = confusion_matrix(y_test, y_predicted_mnb)
+plt.figure(figsize=(13, 13))
+plot_confusion_matrix(cm_mnb, classes=model_classes, normalize=False).show()
+
+cm_gnb = confusion_matrix(y_test, y_predicted_gnb)
+plt.figure(figsize=(13, 13))
+plot_confusion_matrix(cm_gnb, classes=model_classes, normalize=False).show()
+
+cm_svm = confusion_matrix(y_test, y_predicted_svm_clf)
+plt.figure(figsize=(13, 13))
+plot_confusion_matrix(cm_svm, classes=model_classes, normalize=False).show()
+
+cm_rf = confusion_matrix(y_test, y_predicted_random_forest_clf)
+plt.figure(figsize=(13, 13))
+plot_confusion_matrix(cm_rf, classes=model_classes, normalize=False).show()
 
 """# Features"""
 
@@ -426,5 +461,3 @@ bottom_scores = [a[0] for a in importance_tfidf[1]['bottom']]
 bottom_words = [a[1] for a in importance_tfidf[1]['bottom']]
 
 plot_important_words(top_scores, top_words, bottom_scores, bottom_words)
-
-print(importance_tfidf)

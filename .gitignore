@@ -7,4 +7,3 @@ target
 *.pyc
 notebooks/project_config.json
 /notebooks/geolocation_config.py
-notebooks/project_config.json

@@ -1,337 +1,3389 @@
 "address";"address"
-"Av. Paulista";182
-"Via Prof. Simão Faiguenboim";174
-"R. da Consolação";58
-"Av. Sapopemba";28
-"Viaduto do Chá ";28
-"Av. das Nações Unidas";25
-"Av. dos Bandeirantes";22
-"Av. Marginal Tietê";20
-"R. Augusta";20
-"Av. 23 de Maio";19
-"R. Boa Vista ";19
-"Av. Rebouças";18
-"Av. Salim Farah Maluf";17
-"Av. do Estado";17
-"Av. Brg. Faria Lima";17
-"Av. Brigadeiro Luís Antônio";17
-"Av. Ipiranga";15
-"Av. Celso Garcia";13
-"Av. Sen. Teotônio Vilela";13
-"Av. Imirim";12
-"R. Cel. Xavier de Toledo";11
-"Túnel Max Feffer";11
-"Av. Interlagos";11
-"R. Líbero Badaró ";10
+"Av. Paulista";228
+"Av. Marginal Tietê";174
+"Via Prof. Simão Faiguenboim";159
+"R. da Consolação";72
+"Av. Sapopemba";71
+"Av. das Nações Unidas";58
+"Av. do Estado";56
+"Av. Raimundo Pereira de Magalhães";44
+"Av. Aricanduva";42
+"Av. Sen. Teotônio Vilela";42
+"Viaduto do Chá";42
+"Av. dos Bandeirantes";39
+"R. Augusta";38
+"Av. Rebouças";36
+"Av. Washington Luís";35
+"Av. Brg.  Luís Antônio";32
+"R. Boa Vista";32
+"Av. Brg. Faria Lima";31
+"Av. 23 de Maio";29
+"Av. Celso Garcia";26
+"Av. Prof. Francisco Morato";26
+"Av. Salim Farah Maluf";26
+"Av. Cupecê";25
+"Av. Prof.  Luiz Ignácio Anhaia Mello";25
+"Av. Jornalista Roberto Marinho";24
+"Av. Inajar de Souza";24
+"Av. Imirim";24
+"9 de Julho";23
+"Av. Ragueb Chohfi";23
+"Tv. Cachoeira do Jacu";23
+"Av. Dona Belmira Marin";22
+"Av. Cel. Sezefredo Fagundes";22
+"Av. São Miguel";21
+"R. Vergueiro";21
+"Av. Santo Amaro";21
+"R. Cel. Xavier de Toledo";21
+"Av. Guarapiranga";21
+"Av. Dep.  Cantidio Sampaio";20
+"Av. Atlântica";19
+"Av. João Dias";18
+"Av. Ipiranga";18
+"Av. Águia de Haia";16
+"Av. Alcântara Machado";16
+"Complexo Viário Ayrton Senna";15
+"Av. Santos Dumont";15
+"Av. Ibirapuera";15
+"Pça.  da Sé";15
+"Av. Prof. Abraão de Morais";15
+"Av. Rangel Pestana";14
+"Av. Elísio Teixeira Leite";14
+"Av. Eliseu de Almeida";14
+"R. São João";14
+"Av. Carlos Caldeira Filho";13
+"Av. Marquês de São Vicente";13
+"Av. Presidente Wilson";13
+"R. Dona Maria Paula";13
+"Av. Cruzeiro do Sul";13
+"Túnel Max Feffer";13
+"R. dos Vianas";13
+"Av. Gen. Ataliba Leonel";12
+"Av. Júlio Buono";12
+"Viaduto Santa Efigênia";12
+"Pça.  Ramos De Azevedo";12
+"Av. Sumaré";12
+"Av. Radial Leste";12
+"Av. Vila Ema";12
+"Av. Dr. Arnaldo";12
+"R. Voluntários da Pátria";11
+"R. Líbero Badaró";11
+"Av. Eng. Caetano Álvares";11
+"Av. Itaquera";11
+"Túnel 9 de Julho";11
+"Pte. do Socorro";11
+"R. Cantareira";11
+"Av. Morumbi";11
+"R. das Juntas Provisórias";11
 "Túnel Pres. Jânio Quadros";10
-"9 de Julho";10
-"Av. Santos Dumont ";9
-"Av. Jornalista Roberto Marinho";9
-"Av. Cupecê";9
-"Túnel 9 de Julho";9
-"Túnel Fernando Vieira de Mello";8
-"R. Martins Fontes ";8
-"Av. Prof. Francisco Morato";8
-"Av. Eliseu de Almeida";8
-"Av. Pedro Álvares Cabral";8
-"Avenida Washington Luís ";8
-"Av. Ibirapuera";8
-"Av. Santo Amaro";8
-"Rua Jacob Maris ";8
-"Av. São João";8
-"Av. Inajar de Souza";8
-"R. Onze de Agosto";7
-"Av. Prof. Abraão de Morais";7
-"Av. Morumbi";7
-"Avenida Engenheiro Billings";6
-"Largo São Francisco ";6
-"Ponte Cidade Universitária ";6
-"Av. Águia de Haia";6
-"Av. Ermano Marchetti";6
-"Av. Guido Caloi";6
-"Túnel Ayrton Senna";6
-"Av. Afrânio Peixoto ";6
-"R. Manuel da Nóbrega";6
-"Av. Tiradentes";6
-"Av. Marquês de São Vicente";6
-"Av. Professor Luiz Ignácio Anhaia Mello";5
-"Ponte Engenheiro Roberto Rossi Zuccolo";5
-"Túnel Papa João Paulo II ";5
-"Av. Miguel Estéfano";5
-"Pte. do Socorro ";5
-"Av. Brasil";5
+"Av. Ver. José Diniz";10
+"Av. Tiradentes";10
+"Av. do Oratório";10
+"R. Martins Fontes";10
+"R. Manuel da Nóbrega";10
+"Av. Gen. Edgar Facó";10
+"Av. Mário Lopes Leão";10
+"Av. Brasil";10
+"Av. Santa Inês";10
+"Av. Pedro Álvares Cabral";9
+"Av. Guapira";9
+"Av. Dr. Ricardo Jafet";9
+"Av. Marechal Tito";9
+"Av. Ermano Marchetti";9
+"Av. Pacaembu";9
+"Av. Padre José Maria";9
+"Av. Pres. Juscelino Kubitschek";9
+"Av. Santa Catarina";9
+"Túnel Papa João Paulo II";9
+"Av. do Rio Bonito";9
+"Túnel Fernando Vieira de Mello";9
+"Av. Adolfo Pinheiro";9
+"R. da Mooca";8
+"R. Santa Cruz";8
+"Av. Nossa Sra. de Sabará";8
+"R. Tuiuti";8
+"Av. Mutinga";8
+"R. Maria Amália Lopes Azevedo";8
+"Av. Mendes da Rocha";8
+"Av. Afonso de Sampaio e Sousa";8
+"Av. Conceição";8
+"Av. Mateo Bei";8
+"Av. do Imperador";8
+"R. Manuel Gaya";8
+"Viaduto Jacareí";8
+"R. Melo Freire";8
+"Av. Conde de Frontin";8
+"Largo São Francisco";8
+"Av. Nova Cantareira";8
+"R. Maj. Diogo";8
+"Av. Giovanni Gronchi";8
+"Av. Rubem Berta";8
+"R. dos Pinheiros";8
+"Av. Paes de Barros";8
+"Av. Eng. Billings";8
+"R. Alba";8
+"Av. Prof. Manuel José Chaves";8
+"Av. Rio Branco";8
+"R. Conselheiro Moreira de Barros";7
+"Pte. da Cidade Universitária";7
+"R. Rêgo Freitas";7
+"R. Dr. Luís Aires";7
+"R. Alvarenga";7
+"R. Dom Hélder Câmara";7
+"Av. Dr. Assis Ribeiro";7
+"Av. Eusébio Matoso";7
+"Av. Guido Caloi";7
+"R. Charqueada";7
+"R. Sena Madureira";7
+"R. Glicério";7
+"R. José Maria Lisboa";7
+"R. Clélia";7
+"R. Barão do Rio Branco";7
+"Av. Otto Baumgart";7
+"R. Joaquim Meira de Siqueira";7
+"Av. Magalhães de Castro";7
+"Av. Parada Pinto";7
+"Av. Ver. Abel Ferreira";7
+"Av. Miguel Estefno";7
+"Av. República do Líbano";7
+"R. Pires do Rio";7
+"R. Orlando";7
+"Av. Pedroso de Morais";7
+"Av. Lins de Vasconcelos";7
+"R. Domingos de Morais";7
+"Av. Paulo Guilguer Reimberg";6
+"Av. Sanatório";6
+"Av. Eng. Heitor Antônio Eiras García";6
+"R. Loefgren";6
+"Av. Eng. Armando de Arruda Pereira";6
+"R. Pamplona";6
+"Av. Eng.  Roberto Zuccolo";6
+"Av. Paula Ferreira";6
+"R. Comendador Elias Zarzur";6
+"R. Igarapé da Bela Aurora";6
+"R. Cap. Ferraiuolo";6
+"R. Zilda";6
+"R. Itajuíbe";6
+"Pça.  da Bandeira";6
+"R. Chico Pte.s";6
+"Av. Lineu de Paula Machado";6
+"Av. Jardim Japão";6
+"Av. Jacu Pêssego";6
+"Av. Jabaquara";6
+"R. Tito";6
+"R. Cardeal Arcoverde";6
+"R. Artur de Azevedo";6
+"Av. Otaviano Alves de Lima";6
+"R. Cidade de Bagdá";6
+"Av. Indianópolis";6
+"R. Inácio Monteiro";6
+"Av. Ver. João de Luca";6
+"R. Canindé";6
+"Av. Ordem e Progresso";6
+"Av. Pires do Rio";6
+"";6
+"R. Sábbado D’Angelo";6
+"Av. Afrânio Peixoto";6
+"R. Dr. César";6
+"Av. Dr. Eduardo Cotching";6
+"Av. Dr. Cardoso de Melo";6
+"R. Miriam";6
+"Av. Cásper Líbero";6
+"Av. Casa Verde";6
+"Av. Cangaíba";6
+"R. Conselheiro Nébias";6
+"Av. Dr. Francisco Mesquita";6
+"Pça.  Dr. João Mendes";5
+"R. Aurélia";5
+"Av. Pedro Bueno";5
+"Av. Olavo Fontoura";5
+"Av. Nossa Senhora do Ó";5
+"Av. Nordestina";5
+"Av. Corifeu de Azevedo Marques";5
+"Av. Morvan Dias de Figueiredo";5
+"R. Leopoldo de Freitas";5
+"R. Durval Soares da Silva";5
+"Av. Direitos Humanos";5
+"R. Gervásio Leite Rebelo";5
+"R. Dr. Renato Paes de Barros";5
+"Av. João XXIII";5
+"Av. Dom Pedro I";5
+"R. Costa Barros";5
+"R. Itapeva";5
+"R. Albion";5
+"R. Galvão Bueno";5
+"R. Sousa Ramos";5
+"R. Cinco Irmãos";5
+"R. Antônio de Macedo Soares";5
+"Av. Penha de França";5
+"Av. Pres. Castelo Branco";5
+"R. Raul Pompéia";5
+"Viaduto do Glicério";5
+"R. Treze de Maio";5
+"R. Noruega";5
+"R. Tucuna";5
 "R. Faustolo";5
-"Avenida Aricanduva";5
-"Viaduto Jacareí ";5
-"Av. Prof. Manuel José Chaves ";5
-"Av. Raimundo Pereira de Magalhães";5
-"Av. Pacaembu";4
-"Av. Rangel Pestana";4
-"Av. São Luís";4
-"Avenida Marechal Tito";4
-"Av. Penha de França";4
-"Av. Padre José Maria ";4
-"R. Soares ";4
-"Av. Magalhães de Castro";4
-"Av. Escola Politécnica";4
-"R. São Bonifácio ";4
-"Av. Alcântara Machado";4
-"R. Maj. Diogo ";4
-"Viaduto do Glicério ";4
-"R. dos Pinheiros ";4
-"R. Galvão Bueno ";4
-"R. Dr. Luís Aires";4
-"R. Dr. José Augusto de Queiroz";4
-"Av. Dona Belmira Marin";4
-"R. Domingos de Morais ";4
-"R. Conselheiro Nébias";4
-"Av. Dr. Eduardo Cotching";4
-"R. Barão do Rio Branco ";4
-"Av. Elísio Teixeira Leite";4
-"Ponte Octávio Frias de Oliveira ";4
-"Rua Xavier de Tolêdo ";4
-"Av. João Dias";4
-"Praça Jorge de Lima ";4
-"Av. Guarapiranga";4
+"Av. Amador Bueno da Veiga";5
+"Av. dos Ourives";5
+"Av. do Cursino";5
+"Av. Yervant Kissajikian";5
+"R. Teixeira Leite";5
+"R. Epaminondas Melo do Amaral";5
+"R. Marcos Lopes";5
+"R. Borges Lagoa";5
+"Av. São Luís";5
+"R. Paulo Arentino";5
+"Av. Braz Leme";5
+"Av. Prof. Fonseca Rodrigues";5
+"Av. Prof.  Vicente Rao";5
+"R. Bresser & Av. Alcântara Machado";5
+"Av. Elísio Cordeiro de Siqueira";5
+"R. Comendador Cantinho";5
+"Av. Escola Politécnica";5
+"Av. Governador Carvalho Pinto";5
+"Av. Eng.  Luís Carlos Berrini";5
+"Av. Mofarrej";4
+"R. Inácio Luís da Costa";4
+"R. Basílio da Cunha";4
+"R. Barão de Itapetininga";4
+"R. Haddock Lobo";4
+"Av. Maria Luiza Americano";4
 "Largo do Arouche";4
-"Marginal Tietê Pista Central";3
-"Avenida Mário Lopes Leão ";3
-"R. Voluntários da Pátria";3
-"Largo Páteo do Colégio ";3
-"Rua Vergueiro";3
-"Rua Canindé ";3
-"Av. do Jangadeiro";3
-"Av. do Rio Bonito";3
-"Rua Sábbado D’Angelo";3
-"Travessa Irena Sendler ";3
-"Pte. Eusébio Matoso ";3
-"R. Comendador Miguel Calfat ";3
-"Av. Vital Brasil";3
-"Complexo Viário Ayrton Senna ";3
-"R. Alvarenga";3
-"Praça Armando de Sales Oliveira ";3
-"Av. dos Semaneiros ";3
-"Av. Santa Inês";3
-"Av. Pres. Juscelino Kubitschek";3
-"Av. Engenheiro Luís Carlos Berrini";3
-"Av. Dr. Francisco Mesquita";3
-"Viaduto Santa Efigênia";3
-"Av. Dr. Cardoso de Melo ";3
-"Av. Gen. Ataliba Leonel";3
-"Av. Cásper Líbero";3
-"Av. Conde de Frontin";3
-"Av. Cel. Sezefredo Fagundes";3
-"Vila Nova Conceição";3
-"Av. Lineu de Paula Machado ";3
-"Av. Otto Baumgart";3
-"Av. Afonso de Sampaio e Sousa";3
-"Av. Eusébio Matoso";3
-"Av. Professor Luiz Ignácio de Anhaia Mello";3
-"Av. Rubem Berta";3
-"Av. República do Líbano";3
+"R. Bartira";4
+"R. Barretos";4
+"Av. Masao Watanabe";4
+"R. Bela Cintra";4
+"Pte. Eusébio Matoso";4
+"Av. Dep. Emílio Carlos";4
+"Av. Maria Campos";4
+"Av. Maria Coelho Aguiar";4
+"R. Min. Roberto Cardoso Alves";4
+"Av. Eng. George Corbisier";4
+"Av. Major Sylvio de Magalhães Padilha";4
+"Viaduto Júlio de Mesquita Filho";4
+"Av. Gen. Penha Brasil";4
+"Pça.  Jorge de Lima";4
+"Av. Luiz Pequini";4
+"Av. Luiz Dumont Villares";4
+"Av. Edu Chaves";4
+"R. Dr. SÍlvio Dante Bertacchi";4
+"R. Tico";4
+"R. Guaipá";4
+"R. Arizona";4
+"Av. dos Metalúrgicos";4
+"Av. Angélica";4
+"R. Pedro de Toledo";4
+"R. Eng.  Oscar Americano";4
+"R. Dr. José Augusto de Queiroz";4
+"Av. Prestes Maia";4
+"R. dos Trilhos";4
+"R. Oriente";4
+"Av. Reg. Feijó";4
+"Av. Robert Kennedy";4
+"R. Otelo Augusto Ribeiro";4
+"Av. Pompéia";4
+"R. João da Cruz e Sousa";4
+"R. Maria Lúcia Duarte";4
+"R. dos Italianos";4
+"Av. Rudge";4
+"Av. Paulo VI";4
+"Av. Barão de Mauá";4
+"Tv. Borges dos Santos";4
+"R. da Gávea";4
+"Av. Sen. Queirós";4
+"Av. Auro Soares de Moura Andrade";4
+"R. Dona Brígida";4
+"Av. Dr. Gastão Vidigal";4
+"Av. Thomas Edison";4
+"Av. Padre Arlindo Vieira";4
+"Av. Comendador Fiorelli Peccicacco";4
+"R. Indiana";4
+"Av. Antônio Munhoz Bonilha";4
+"Av. Antônio Joaquim de Moura Andrade";4
+"Av. Comendador Sant'Anna";4
+"Av. das Belezas";4
+"R. Estados Unidos";4
+"R. Joaquim Távora";4
+"R. Maj. Natanael";4
+"R. Encruzilhada do Sul";4
+"Av. Mariana Caligiori Ronchetti";4
+"R. Lisboa";4
+"Av. Governador Mario Covas";4
+"R. Palestra Itália";4
+"R. Francisco Marengo";4
+"Av. José Pinheiro Borges";4
+"R. do Oratório";4
+"Av. Iraí";4
+"R. Getulina";4
+"R. Coriolano";4
+"Av. Guilherme";4
+"R. Itapaiúna";4
+"R. dos Aliados";4
+"R. Dr. Cesário Mota Júnior";4
+"Av. Jair Ribeiro da Silva";4
+"R. Paratiji";4
+"R. Albuquerque Lins";4
+"Av. Dr. Antônio Maria Laet";4
+"R. José Paulino";4
+"R. Luís Góis";4
+"R. Pasquale Gallupi";4
+"Av. Hélio Pellegrino";4
+"Av. João dos Santos Abreu";4
+"Pça.  da Luz";4
+"R. São Bonifácio";4
+"R. Santo Antônio";4
+"R. Divinópolis";4
+"R. Amaro Alves do Rosário";4
+"Av. Francisco Matarazzo";3
+"Av. Valdemar Ferreira";3
+"R. Botuporã";3
+"Av. da Aclimação";3
+"Av. Caetano e Mezotero";3
+"R. Manuel de Teffé";3
+"Av. Felippo Sturba";3
+"R. Simone Martini";3
+"Av. Arquiteto Vilanova Artigas";3
+"R. Jaguaré";3
+"Av. Tucuruvi";3
+"R. Calaguala";3
+"R. Oagy Kalile";3
+"R. São Luís do Paraitinga";3
+"R. Jurubatuba";3
+"R. Verdun";3
+"R. Aliança Liberal";3
+"R. Joaquim Seabra";3
+"R. Alexandre Dumas";3
+"R. Córrego do Bom Jesus";3
+"R. Fábia";3
+"R. Joaquim Teles de Mattos";3
+"R. Comendador Miguel Calfat";3
+"R. Alziro Pinheiro Magalhães";3
+"R. Braz Cubas";3
+"R. Gaivota";3
+"Av. Rio das Pedras";3
 "Ac. Pte. Nova Morumbi";3
-"Rua Haddock Lobo";2
-"R. Salvador de Medeiros ";2
-"R. Ermelinda Gonçalves Vaders ";2
-"R. Dr. Vicente Giacaglini ";2
-"R. Dr. Penaforte Mendes ";2
-"R. Rêgo Freitas";2
-"Av. Dom Hélder Câmara";2
-"R. Dr. Cesário Mota Júnior";2
-"Av. Dr. Arnaldo";2
-"Viaduto Matheus Torloni ";2
-"R. Divinópolis";2
-"R. Cristalino Rolim de Freitas ";2
-"Rua Gen. Jardim";2
-"R. Conselheiro Moreira de Barros";2
-"R. Sena Madureira";2
-"R. Conselheiro Carrão ";2
-"R. Evandro Carlos de Andrade ";2
-"R. Comendador Cantinho ";2
-"R. Clélia";2
-"R. Barão do Triunfo ";2
-"R. Caçapava ";2
-"Rua Glicério";2
-"R. Caraíbas ";2
-"R. Cap. Pacheco e Chaves";2
-"R. Botuporã";2
-"R. Borges Lagoa";2
-"R. Estela Naves Junqueira ";2
-"R. Oriente ";2
-"R. Vanderlei";2
-"R. Plínio Schmidt ";2
-"R. Min. Roberto Cardoso Alves ";2
-"R. Tuiuti";2
-"R. Vicenzo Catena ";2
-"R. Teodoro Sampaio";2
-"R. Maria Amália Lopes Azevedo";2
-"Av. Antônio Batuíra ";2
-"R. Manuel De Teffe ";2
-"Av. Antônio Joaquim de Moura Andrade";2
-"Av. Arnolfo Azevedo ";2
-"R. São Carlos do Pinhal";2
-"Av. Atlântica";2
-"R. Lupicínio Rodrigues ";2
-"R. Luciano Silva";2
-"R. Leopoldo Couto de Magalhães Júnior ";2
-"Av. Comendador Sant'Anna";2
-"R. Pomba do Ar";2
-"R. José Maria Lisboa";2
-"R. da Figueira";2
-"R. Itapeva ";2
-"R. Ilíria";2
-"Av. Carlos Caldeira Filho";2
-"Remedios Bridge ";2
-"Av. Santa Catarina";2
-"Rua Araújo Gondim";2
+"Av. Roque Petroni Júnior";3
+"Av. Rubéns Montanaro de Borba";3
+"R. Gen. Jardim";3
+"R. Visc. de Parnaíba";3
+"R. Louriçal";3
+"Av. Ellis Maas";3
+"R. Joaquim Manuel de Macedo";3
+"Av. Benedito Andrade";3
+"R. Luciano Silva";3
+"R. Joaquim Marra";3
+"R. São Gonçalo do Rio das Pedras";3
+"R. Gen. Flores";3
+"R. Brg. Tobias";3
+"R. Humberto de Campos";3
+"R. Min. Gastão Mesquita";3
+"R. Brg. Haroldo Veloso";3
+"Tv. Irena Sendler";3
+"R. Nelo Bertolacine";3
+"R. José Francisco Brandão";3
+"R. Alm. Marques de Leão";3
+"R. Brg. Gavião Peixoto";3
+"R. Breves";3
+"R. Miguel Yunes";3
+"R. Anhaia";3
+"R. São Joaquim";3
+"R. Santo Amaro";3
+"R. Vanderlei";3
+"R. Taquaraçu de Minas";3
+"Pte. João Dias";3
+"R. Fernando Falcão";3
+"R. Barra Mansa";3
+"R. Girassol";3
+"R. Barra Funda";3
+"R. Guirá";3
+"R. Rodrigues dos Santos";3
+"R. Fernão Dias";3
+"R. Roque Petrella";3
+"Pça.  Campo de Bagatelle";3
+"R. Manoel Dutra";3
+"R. Norma Pieruccini Giannotti";3
+"R. Maniçoba";3
+"R. Gomes de Carvalho";3
+"R. Antônio Ribeiro Pina";3
+"R. Min. José Geraldo Rodrigues Alckmin";3
+"R. Tomazzo Ferrara";3
+"Pça.  Franklin Roosevelt";3
+"R. Mamud Rahd";3
+"R. Leopoldo Miguez";3
+"R. Leopoldo Couto de Magalhães Júnior";3
+"R. Conselheiro Brotero";3
+"R. Apucarana";3
+"R. Guaraiuva";3
+"R. Tibúrcio de Sousa";3
+"R. Aroldo de Azevedo";3
+"R. Teodoro Sampaio";3
+"Pça.  Panamericana";3
+"R. Califórnia";3
+"R. Antônio Pedro Ceará";3
+"R. Alcântara";3
+"R. Nanuque";3
+"R. Henry Ford";3
+"Av. Antônio Estêvão de Carvalho";3
+"R. Natal";3
+"Av. Dr. Sylvio de Campos";3
+"Av. do Jangadeiro";3
+"R. Major Dantas Cortez";3
+"Av. dos Autonomistas";3
+"R. Valença do Minho";3
+"R. Conceição de Monte Alegre";3
+"Av. dos Semaneiros";3
+"R. Eulálio da Costa Carvalho";3
+"R. dos Melros";3
+"R. Eusébio de Paula Marcondes";3
+"Av. Ângelo Cristianini";3
+"R. Agissê";3
+"R. Basílio da Gama";3
+"R. Ushikichi Kamiya";3
+"R. Manuel Guilherme dos Reis";3
+"R. Nove de Julho";3
+"R. José Barros Magaldi";3
+"R. Lúcio de Arruda Leme";3
+"Largo Páteo do Colégio";3
+"Viaduto Dona Paulina";3
+"Vila Nova Conceição";3
+"R. Gibraltar";3
+"R. Roberto Correia";3
+"R. Serafim Poli";3
+"R. Barra do Jequitaí";3
+"Av. Antártica";3
+"Av. Guilherme Cotching";3
+"Av. Prof.  Mario Mazagão";3
+"R. Caramuru";3
+"Av. Gen. Mac Arthur";3
+"R. Mariz e Barros";3
+"Av. Diogo José Machado";3
+"Av. Marginal Tietê Central";3
+"R. das Dálias";3
+"R. das Aroeiras";3
+"Av. Miruna";3
+"Av. Monteiro Lobato";3
+"R. da Paz";3
+"R. Ponta de Lucena";3
+"R. Jequirituba";3
+"Av. Conselheiro Carrão";3
+"R. Colômbia";3
+"R. Carneiro da Cunha";3
+"R. Praia do Valente";3
+"R. Carambola";3
+"Av. Gabriela Mistral";3
+"Av. Condessa Elizabeth de Robiano";3
+"Av. Nova Conquista";3
+"R. Inhambu";3
+"R. Capote Valente";3
+"R. Paranápolis";3
+"Av. Osvaldo Pucci";3
+"Av. Otávio Braga de Mesquita";3
+"Av. Padre Antônio José dos Santos";3
+"R. Monsenhor Andrade";3
+"R. Piauí";3
+"Av. Líder";3
+"R. Yoshimara Minamoto";3
+"R. Itapirapuã";3
+"Av. Higienópolis";3
+"R. Paula Sousa";3
+"Av. Dr. Francisco Ranieri";3
+"Av. Dr. Guilherme Dumont Vilares";3
+"R. José de Magalhães";3
+"Av. Dr. Enéas de Carvalho Aguiar";3
+"R. dos Brilhantes";3
+"R. Minas Gerais";3
+"Av. Itaberaba";3
+"R. Itaquera";3
+"R. dos Franceses";3
+"Av. Iv Centenário";3
+"R. Jarauára";3
+"Av. Divino Salvador";3
+"R. Jardim Tamôio";3
+"R. Melo Peixoto";3
+"R. Álvaro do Vale";3
+"Av. João Paulo I";3
+"R. Cayowaá";3
+"R. João Cordeiro";3
+"R. Pedro Álvares Cabral";3
+"R. Catulo da Paixão Cearense";3
+"Av. Leonil Crê Bortolosso";3
+"Av. Leôncio de Magalhães";3
+"Av. Diógenes Ribeiro de Lima";3
+"Av. Getúlio Vargas";3
+"R. Jerônimo Dias Ribeiro";3
+"Av. São Gualter";3
+"R. Campêlo";3
+"Av. Pres. Tancredo Neves";3
+"R. Paraná";3
+"R. João Mendes de Almeida Neto";3
+"R. Prof. Carlos de Carvalho";3
+"R. Cármine Monetti";3
+"Tv. Estr. da Vida";3
+"Av. Pres. Kenedy";3
+"R. Ilíria";3
+"R. Miguel Sutil";3
+"R. Comendador Antunes dos Santos";3
+"R. Pedro Vicente";2
+"R. Paim";2
+"R. Saturnino de Meireles";2
+"R. Conselheiro Carrão";2
+"R. Curuçá";2
+"R. Dr. Penaforte Mendes";2
+"R. Martiniano de Carvalho";2
+"R. Apeninos";2
+"R. Francisco Caminhoa";2
+"R. Francisco Araújo Correa";2
+"R. Santos Ferreira de Freitas";2
+"R. Caçapava";2
+"R. Padre José Griecco";2
+"R. Nilton Machado de Barros";2
+"R. Cel.  Artur Godói";2
+"R. Apacê";2
+"R. Francisca Miquelina";2
+"R. Magnólia Delfim da Silva";2
+"R. Antônio de Pádua Dias";2
+"R. Antônio de Abreu";2
+"R. Pedro Pomponazzi";2
+"R. Cel.  Melo de Oliveira";2
+"R. Cel.  Oscar Porto";2
+"R. Antônio da Surreição";2
+"R. Francisco José Sáles";2
+"R. Antônio da França e Horta";2
+"R. Nicolau Mayevsky";2
+"R. Francisco Leite Esquerdo";2
+"R. Antônio Zacharias Neto";2
+"R. Dr. Campos de Tolêdo";2
+"R. Araguari";2
+"R. Francisca Júlia";2
+"R. Oscar Freire";2
+"R. Nilópolis";2
+"R. Diogo de Quadros";2
+"R. Carolina Fonseca";2
+"R. Ataúlfo Alves";2
+"R. Dirce Gonçalves Antônio";2
+"R. Malie Brenner";2
+"R. Dr. Vicente Giacaglini";2
+"R. Atalaia Velha";2
+"R. Salvador de Medeiros";2
+"R. Samuel Laurence";2
+"R. Flôres do Piauí";2
+"R. Folha Dourada";2
+"R. Dr. Veiga Filho";2
+"R. Marselhesa";2
+"R. Oratório";2
+"R. Artur Felice";2
+"R. Divinèsia";2
+"R. Santa Eudóxia";2
+"R. Arruda Alvim";2
+"R. Mal. Hermes da Fonseca";2
+"R. Dona Inácia Uchoa";2
+"R. Forte de Alcântara";2
+"R. Emb. Alexandre Conty";2
+"R. Monte Aprazível";2
+"R. Dr. Rafael de Barros";2
+"R. Osaka";2
+"R. Santa Rita";2
+"R. Areia do Rosário";2
+"R. Araújo Gondim";2
+"R. Francisco Marinho";2
+"R. Araritaguaba";2
+"R. Cel. Esdras de Oliveira";2
+"R. Dr. Mário Santalúcia";2
+"R. Maestro Cardim";2
+"R. Maria Figueiredo";2
+"R. Gago Coutinho";2
+"R. André de Almeida";2
+"R. Prof. Dário Ribeiro";2
+"R. Gabriela Besanzoni";2
+"R. Simão Álvares";2
+"R. Dr. Laérte Setúbal";2
+"R. Chuvas de Verão";2
+"R. Padre Viegas de Menezes";2
+"R. Anhanduizinho";2
+"R. Anhanguera";2
+"R. Gabriel Pereira";2
+"R. Luís D'Agostini";2
+"R. Maria Dálcia Dores";2
+"R. Oscar Gomes Cardim";2
+"R. Prof. Dorival Dias Minhoto";2
+"R. Prof. Alexandre Monat";2
+"R. Cel. Francisco Inácio";2
+"R. Palestra Italia";2
 "R. Gen. Chagas Santos";2
-"R. São Caetano";2
-"R. Florêncio de Abreu";2
-"R. Fernão Dias ";2
-"Rua 25 de Marco ";2
-"R. Aurélia";2
-"Praça Nicolau David ";2
-"Av. Jacu Pêssego";2
-"Av. Vila Ema";2
-"Av. Prof. Fonseca Rodrigues";2
-"Praça Campo de Bagatelle";2
-"Av. Hélio Pellegrino";2
-"Praça Arcipreste Anselmo de Oliveira ";2
-"Av. Itaberaba";2
-"Av. Itaquera";2
-"Av. das Belezas";2
-"Av. Jabaquara";2
-"Palácio Anchieta ";2
-"Morumbi Bridge ";2
-"Viaduto Dr. Plínio de Queirós ";2
-"Av. Presidente Wilson";2
-"Av. Higienópolis";2
-"Largo da Batata ";2
-"Av. João XXIII ";2
-"Av. Juscelino Kubitscheck";2
-"Corredor Norte";2
-"Congonhas";2
-"Av. Mateo Bei";2
-"Av. Morvan Dias de Figueiredo";2
-"Rua do Banco do Brasil ";2
-"Av. Padre Antônio José dos Santos";2
-"Av. Pedro Bueno";2
-"Av. dos Ourives";2
-"Av. Pedroso de Morais";2
-"Rua das Juntas Provisórias ";2
-"Av. Ver. João de Luca";2
-"Praça Dom Francisco de Sousa ";2
-"Av. Gabriela Mistral";2
-"R. Aroldo de Azevedo ";2
-"Av. Feliciano Correia ";2
+"R. Miguel Gustavo";2
+"R. Ana Alvim";2
+"R. Ana Aslan";2
+"R. Embaré";2
+"R. Lucília Marcel";2
+"R. Emília Marengo";2
+"R. Dr. Djalma Pinheiro Franco";2
+"R. Mercedes Tesser Pochini";2
+"R. Prof. Daher Cutait";2
+"R. Andorinha";2
+"R. Soldado Eurípedes Rodrigues de Lima";2
+"R. Paris";2
+"R. Lupicínio Rodrigues";2
+"R. Fábio Ferreira Veloso";2
+"R. Silvestro Silvestre";2
+"R. Dr. Clemente Jobim";2
+"R. Dr. Mario Vicente";2
+"R. Padre João Manuel";2
+"R. Antônio García Rosa";2
+"R. Antônio García da Cunha";2
+"R. Mazzini";2
+"R. Francisco Sobreira da Silva";2
+"R. Francisco Rebelo";2
+"R. Sepetiba";2
+"R. Antonio de França e Silva";2
+"R. Dom Benito Feijó";2
+"R. Francisco Narcizo";2
+"R. Cel. Meireles";2
+"R. Antônio Moura Andrade";2
+"R. Antônio Nápoli";2
+"R. Augustin Luberti";2
+"R. Francisco de Melo Palheta";2
+"R. Correia Dias";2
+"R. Paulo de Morais";2
+"R. Conde de Porto Alegre";2
+"R. Emílio Mallet";2
+"R. Serra de Bragança";2
 "R. Antônio Cardoso Nogueira";2
-"Av. Rubéns Montanaro de Borba";2
-"R. Anhaia ";2
-"Av. Roque Petroni Júnior";2
-"Av. Rio Branco";2
+"R. Celso de Azevedo Marques";2
+"R. Serra dos Dois Irmãos";2
+"R. Cabo Romeu Casagrande";2
+"R. Cabral de Menezes";2
+"R. Célso Barbosa Lima";2
+"R. Cachoeira";2
+"R. Luís Mateus";2
+"R. Luís José Junqueira Freire";2
+"R. Paulo Orozimbo";2
+"R. Cachoeira Poraquê";2
+"R. Manduri";2
+"R. Peça Pastoral";2
+"R. Florêncio de Abreu";2
+"R. Cuba";2
+"R. Bento José Borba";2
+"R. Brás Píres";2
+"R. Estado do Ceará";2
+"R. Bruno Taut";2
+"R. David Zeiger";2
+"R. Mario Amorim";2
+"R. Morro Crispim da Costa";2
+"R. Nélson Gama de Oliveira";2
+"R. Bernardino Antunes Silva";2
+"R. Espumas";2
+"R. Edimundo Audran";2
+"R. Espanha";2
+"R. Oli Debastiani";2
+"R. Maranhão";2
+"R. Prof. Oscár Barreto Filho";2
+"R. Maria do Carmo Gomes";2
+"R. Prof.  Ernest Marcus";2
+"R. Manuel da Costa Valê";2
+"R. Bucuituba";2
+"R. Ouro Fino";2
+"R. Belgrado";2
+"R. Conselheiro Torres Homem";2
+"R. Col. da Glória";2
+"R. Estéfano Filipini";2
+"R. Relíquia";2
+"R. Caramimuã";2
+"R. Benjamin Pereira Alcântara";2
+"R. Mocoim";2
+"R. Diana";2
+"R. Eleonora Cintra";2
+"R. Diamantina";2
+"R. Mario Barbosa Rodrigues";2
+"R. Pais de Araújo";2
+"R. Marcelino Champagnata";2
+"R. Ermelinda Gonçalves Vaders";2
+"R. Eduardo Zani";2
+"R. Edson Danillo Dotto";2
+"R. Pte. Alta";2
+"R. Botucatu";2
+"R. Prudêncio de Jesus";2
+"R. Cunha Porã";2
+"R. Morro das Pedras";2
+"R. Dona Avelina";2
+"R. Capituba";2
+"R. Cap. Alberto Mendes Júnior";2
+"R. Brasília Pera Brizola";2
+"R. Brasílio Luz";2
+"R. Cap. João Noronha";2
+"R. Eng. César Polilo";2
+"R. Primeiro de Agosto";2
+"R. Dr. Adolfo Melo Júnior";2
+"R. Custódia Maria de Jesus";2
+"R. Ptolomeu";2
+"R. Padre Antônio Tomás";2
+"R. Bom Sucesso";2
+"R. Marcilio Dias";2
+"R. Eng.  Tomás Whately";2
+"R. Susana Rodrigues";2
+"R. Dr. Geraldo de Queiroz Ferreira";2
+"R. Boa Visão";2
+"R. Cap. Pacheco e Chaves";2
+"R. Dep. Lacerda Franco";2
+"R. Des. Ferreira França";2
+"R. Primeiro de Maio";2
+"R. Cap. Rangel";2
+"R. Cumaru";2
+"R. Píres da Mota";2
+"R. Eng.  Guaracy Torres";2
+"R. Caraíbas";2
+"R. Elías Nagem Haidamus";2
+"R. Pio XII";2
+"R. Bailique";2
+"R. Min. Godói";2
+"R. Emílio Monassa";2
+"R. Pio XI";2
+"R. Baltazar Nunes";2
+"R. Baltazar Águila";2
+"R. Bandeira de Aracambi";2
+"R. Manoel Jácomo";2
+"R. Cantagalo";2
+"R. Dona Escolástica Melchert da Fonseca";2
+"R. Nossa Sra. da Saúde";2
+"R. Calim Eid";2
+"R. Carlos Gomes";2
+"R. Cristalino Rolim de Freitas";2
+"R. Baiacu";2
+"R. Rosa Maria";2
+"R. Eusímio da Cruz Batista";2
+"R. Sagitário";2
+"R. Cabo Joel Leite";2
+"R. Augusto Tolle";2
+"R. Flandres";2
+"R. Conde de Itu";2
+"R. Auriverde";2
+"R. Sal da Terra";2
+"R. Dr. Zuquim";2
+"R. Rosa dos Ventos";2
+"R. Cabeceiras de Basto";2
+"R. Pierre Bienvenu Noailles";2
+"R. Azevedo Soares";2
+"R. Marizeiro";2
+"R. Manoel Ferreira de Souza Coelho";2
+"R. Otávio Tarquínio de Sousa";2
+"R. Barra da Figueira";2
+"R. Pirapó";2
+"R. Padre Joaquim Correia de Almeida";2
+"R. Richard Maier";2
+"R. Farjalla Koraicho";2
+"R. Barão do Alto Muriaé";2
+"R. Barão do Bananal";2
+"R. Pombal";2
+"R. Barão do Triunfo";2
+"R. Dr. Arnaldo de Morais";2
+"R. Dianópolis";2
+"R. Carlo Rainaldi";2
+"R. Ricardo Vines";2
+"R. Dr. Anastácio Bonsucesso";2
+"R. Minardi";2
+"R. Bélgica";2
+"R. Evandro Carlos de Andrade";2
+"R. Caraúna";2
+"R. Codajás";2
+"R. Conchas";2
+"R. Barão de Iguape";2
+"R. Dr. Artur Zapponi";2
+"R. Rio dos Cedros";2
+"R. Plínio Schmidt";2
+"R. Durval Guerra de Azevedo";2
+"R. Cândido Fontoura";2
+"R. Bartolomeu Sábino de Melo";2
+"R. Feitiço da Vila";2
+"R. Manoel de Soveral";2
+"R. Carijós";2
+"R. Durval Clemente";2
+"R. Cristóvão Pereira";2
+"R. Mario Lago";2
+"R. Manoel de Paiva";2
+"R. Nossa Sra. das Mercês";2
+"R. Duarte da Costa";2
+"R. Abel Tavares";2
+"R. Dom Tito Marchese";2
+"Av. Waldemar Tietz";2
+"Av. Fernando Mendes de Almeida";2
 "Av. Felipe Carrillo Puerto";2
-"R. Alba";2
-"Viaduto Eng. Alberto Badra ";2
+"Av. Feliciano Correia";2
+"R. Herculano José dos Santos";2
+"Av. angelo di vernieri ";2
+"R. dos Maracujás";2
+"R. Venâncio Aires";2
+"R. Justino Nigro";2
+"Av. da Paz";2
+"Av. Eugênio Bartolomai";2
+"Av. Esperantina";2
+"R. dos Mercantéis";2
+"Av. de Pinedo";2
+"R. Henrique Sertório";2
+"R. Henrique Schaumann";2
+"Av. dos Estados";2
+"R. Henrique Sam Mindlin";2
+"Av. Zaki Narchi";2
+"Av. Forte do Leme";2
+"Av. Sen.  Vergueiro";2
+"R. Jaguaribe";2
+"Av. Silvestre Pires de Freitas";2
+"Av. Sousa Bandeira";2
+"Av. Sylvio Torres";2
+"Av. São F Maluf";2
+"R. Hortolândia";2
+"R. Victório Santim";2
+"Av. Teodoro Bernardo do Nascimento";2
+"Av. Guarulhos";2
+"R. Vicenzo Catena";2
+"R. José Teodoro de Lima";2
+"R. Jaci";2
+"Av. Gameleira Branca";2
+"Av. Fábio Eduardo Ramos Esquivel";2
+"Av. Fuad Lutfalla";2
+"Av. Francisco de Paula Quintanilha Ribeiro";2
+"R. dos Jasmins";2
+"Av. Visc. de Nova Granada";2
+"R. José Norberto da Fonseca";2
+"Av. Emérico Richter";2
+"Av. Emb. Macedo Soares";2
+"R. Valdemar Martins";2
+"R. José Manuel de Morais";2
+"R. Turiassú";2
+"R. Tupi";2
+"Morumbi Bridge";2
+"Parque da Água Branca";2
+"Pte. Aricanduva";2
+"Pte. Eng. Ari Torres";2
+"Av. Doná Eugênia Machado da Silva";2
 "Pte. Laguna";2
-"Pte. João Dias ";2
-"Av. Pompéia";2
-"Pte. Eng. Ari Torres ";2
-"Av. Giovanni Gronchi";2
-"Praça Dr. João Mendes";2
-"Tatuapé";2
-"Rua Pedro de Toledo";2
-"Av. Ragueb Chohfi";2
-"Rua Palmeiras ";2
-"Praça Panamericana ";2
-"Praça Ramos De Azevedo ";2
-"Praça Roosevelt ";2
-"Praça da Bandeira";2
-"Praça da República ";2
-"Praça da Sé";2
-"São Paulo";1
-"Túnel José Roberto Fanganiello Melhem";1
-"R. Uberabinha ";1
-"av do estado desvio efetuado av mercúrio av sen queirós r florêncio de abreu av tiradentes";1
-"Rua Heróis Feb";1
-"R. Sinanduva ";1
-"Túnel Paulo Autran ";1
-"Túnel Sebastião Camargo ";1
-"R. dos Gusmões";1
-"Viaduto Dona Paulina";1
-"Rua Henrique Schaumann";1
-"Rua Taquari";1
-"Rua Cardeal Arcoverde ";1
-"Rua Dona Inácia Uchoa ";1
-"Rua Dona Maria Paula";1
-"Rua Dona Maria Paula ";1
-"Rua Elisa Silveira";1
-"Rua Oscar Freire";1
-"Rua Olavo Faggin";1
-"Rua Martinho Prado";1
-"Rua Turiassú";1
-"660";1
-"R. Silvio Soares";1
-"Praça Isai Leiner";1
-"Praça Charles Miler ";1
-"Ponte Cruzeiro do Sul ";1
-"Largo do Cambuci ";1
-"Estr. de Maio ";1
-"Av. do Oratório";1
-"Av. do Café ";1
-"Av. Ver. José Diniz";1
-"Av. Ver. Abel Ferreira";1
-"Av. Valdemar Ferreira ";1
-"Av. São Gabriel";1
-"Av. Professor Vicente Rao";1
-"Av. Professor Alceu Maynard Araújo";1
-"Av. Pres. Tancredo Neves";1
-"Av. Pires do Rio ";1
-"Av. Pires do Rio";1
-"Av. Nove de Julho";1
-"Av. Luís Romero Sanson ";1
-"Av. João Dória ";1
-"Av. João Dias ";1
-"Av. José Carlos Pace ";1
-"Av. Jacinto Júlio ";1
-"Av. Francisco Matarazzo";1
-"Av. Felippo Sturba ";1
-"Av. Engenheiro Luís Gomes Cardim Sangirardi ";1
-"Av. Dr. Enéas de Carvalho Aguiar";1
-"Av. Consolação";1
-"Av. Cangaíba";1
-"Av. Braz Leme";1
-"Ac. Pte. Transamérica";1
-"Praça Da República ";1
-"Praça Jacob Dubena ";1
-"R. Santo Amaro ";1
-"R. Amaro Cavalheiro ";1
-"R. Prof. Vahia de Abreu";1
-"R. Plínio Figueiredo ";1
-"R. Pires do Rio ";1
-"R. Ozieri";1
-"R. Normandia";1
+"Pte. Transamérica";2
+"Av. Dom Pedro II";2
+"R. Áurea da Gama";2
+"Pte. das Bandeiras";2
+"Pte. do Jaguaré";2
+"Pte. do Limão";2
+"Pte. do Piqueri";2
+"R. José Ivo da Costa";2
+"R. Hassib Mofarrej";2
+"Estr. do Jusa";2
+"Av. Dr. Felipe Pinel";2
+"R. Utaro Kanai";2
+"Av. Eduardo Sabino de Oliveira";2
+"Av. Eduardo Roberto Daher";2
+"R. Jair de Mello Viana";2
+"Av. dos Remédios";2
+"Av. Água Fria";2
+"R. Henri Dunant";2
+"Av. Ônix";2
+"R. José Martins dos Santos";2
+"Av. Dr. Guilherme de Abreu Sodré";2
+"Cidade Antonio Estevão de Carvalho";2
+"R. União dos Movimentos";2
+"R. União";2
+"R. José Martins de Aguiar";2
+"R. Umuarama";2
+"R. Umberto Gorgati";2
+"Estr. Líder";2
+"R. Horácio Vergueiro Rudge";2
+"R. Vinte";2
+"R. Kobe";2
+"R. João Florêncio";2
+"R. do Farol";2
+"R. João Gomes Pereira";2
+"R. do Horto";2
+"R. João Lanhoso";2
+"Av. Miguel Estefano";2
+"R. da Praia dos Lavradores";2
+"Av. Moreira Guimarães";2
+"R. da Independência";2
+"R. da Glória";2
+"R. da Figueira";2
+"R. da Estilística";2
+"R. do Inverno";2
+"R. do Lavapés";2
+"Av. Nova Zelãndia";2
+"R. João Maria da Silva";2
+"R. Inglaterra";2
+"Av. Otacílio Tomanik";2
+"Av. Mascote";2
+"R. João Ferreira da Silva";2
+"Av. Sarah Veloso";2
+"R. João Bodin";2
+"R. Isabel de Castela";2
+"Av. Lino Antônio Nogueira";2
+"Av. Luís Stamatis";2
+"Av. Leonardo da Vinci";2
+"Av. Macuco";2
+"Av. Lauro de Gusmão Silveira";2
+"R. das Perobas";2
+"Av. Lauro Gomes";2
+"R. Irmão Ivo Bernardo";2
+"Av. Manoel dos Santos Braga";2
+"R. Irmã Maria Rosa";2
+"Av. Kumaki Aoki";2
+"R. do Banco do Brasil";2
+"R. Iraúna";2
+"R. João Brás";2
+"R. das Laranjeiras";2
+"R. do Bucolismo";2
+"Av. Padre Pereira de Andrade";2
+"R. Zike Tuma";2
+"R. Imbú Natal";2
+"R. Imburana";2
+"Av. Itapark";2
+"Av. Itacira";2
+"R. José dos Réis";2
+"Av. Prof. Papini";2
+"Av. Príncipe de Gales";2
+"R. Vistosa da Me. de Deus";2
+"R. dos Cafezais";2
+"R. Ibiajara";2
+"R. Visc. de Cachoeira";2
+"Av. Imperatriz Leopoldina";2
+"Av. Ibiuna";2
+"R. Hónorato das Neves";2
+"R. José da Costa Valério";2
+"Av. Salgado Filho";2
+"R. Hélio da Costa Manso";2
+"R. Virginia Modesto";2
+"R. dos Cocais";2
+"R. Ibitirama";2
+"R. Icaraí";2
+"R. Amélia da Silva Lago";2
+"Av. Pres. Altíno";2
+"R. Zacarias de Góis";2
+"R. Yemen";2
+"R. João Amaro";2
+"Av. Pedro Celestino Leite Penteado";2
+"R. Xavantes";2
+"R. Il Sogno Di Anarello";2
+"Av. Portugal";2
+"Av. Pres. Costa e Silva";2
+"Av. Prof.  Mello Moraes";2
+"R. Itamonte";2
+"Av. Pres. João Goulart";2
+"Av. Prof.  Alceu Maynard Araújo";2
+"R. do Tucuxi";2
+"Av. Jacinto Menezes Palhares";2
+"Av. Prof.  Hermógenes de Freitas Leitão Filho";2
+"R. Willy Aureli";2
+"R. José Isaías de Paulo";2
+"R. Heitor de Morais";2
+"R. Leopoldo de Passos Lima";2
+"R. Jorge Valim";2
+"R. George Smith";2
+"R. São Miguel";2
+"R. Nelsom Mendes Soares";2
+"R. Gonçalo Pinto";2
+"R. 5 de Março";2
+"R. José Antônio Valadares";2
+"R. Lopes de Medeiros";2
+"R. José Antônio Fontes";2
+"R. Alfredo Maia";2
+"R. Genaro de Carvalho";2
+"Av. Adriano Bertozzi";2
+"Pça.  da República";2
+"R. Alfredo Pujol";2
+"Pça.  Yedo";2
+"R. Joaquim Floriano";2
+"Pça.  Pascoal Martins";2
+"R. Ten. Gelás";2
+"R. Joaquim Faustino de Camargo";2
+"R. Alfredo Vasconcelos";2
+"R. Gregório de Matos";2
+"R. Leonilda Magrini";2
+"Artur Alvim";2
+"Pça.  Santa Helena";2
+"R. Joaquim Antunes";2
+"Pça.  Princesa Isabel";2
+"Av. Cabo Adão Pereira";2
+"Pça.  Pres. Jânio da Silva Quadros";2
+"Av. Caititu";2
+"Pça.  Pereira Coutinho";2
+"Av. Campanella";2
+"R. Abolição";2
+"Av. Açocê";2
+"Av. Ayrton Senna";2
+"R. São Pedro Fourier";2
+"R. Alberto Hodge";2
+"R. José Bento de Souza Neto";2
+"Av. Alexios Jafet";2
+"R. São Teodoro";2
+"R. Sócrates";2
+"R. São Sebastião";2
+"R. Alaor Bronzone";2
+"Av. Antônio Batuíra";2
+"R. Locarno";2
+"Av. Antônio de Souza Noschese";2
+"R. Agreste de Itabaiana";2
+"R. Agostinho Teixeira de Lima";2
+"R. Tabatinguera";2
+"Av. Arnolfo Azevedo";2
+"R. Giovani Paladino";2
+"R. Agenor Klaussner";2
+"R. Agatino de Esparta";2
+"R. Tadao Inoue";2
+"R. Giovanni Bononcini";2
+"R. Giovanni Luteri";2
+"Viaduto Dr. Plínio de Queirós";2
+"Viaduto Eng. Alberto Badra";2
+"R. Leônidas Moreira";2
+"R. Leão XIII";2
+"R. Gláuber Rocha";2
+"Pça.  Arcipreste Anselmo de Oliveira";2
+"Av. Alberto J. Byington";2
+"Viaduto Matheus Torloni";2
+"R. Abílio Soares";2
+"Av. Cardeal Santiago Luís Copello";2
+"R. Jorge Velho";2
+"R. José Fugulin";2
+"Pça.  Gen. San Martin";2
+"R. São Fortunato";2
+"Pça.  José Severino Marquês Filho";2
+"R. Tiquatira";2
+"Alameda Barão de Limeira";2
+"R. José Giordano";2
+"R. Toledo Barbosa";2
+"R. Amaral Gurgel";2
+"R. Luar do Sertão";2
+"R. José Gomes Falcão";2
+"R. Topázio";2
+"R. José Gomes Faria";2
+"Pça.  Da República";2
+"R. Guararapes";2
+"R. Tomé Portes";2
+"R. Amaral Gama";2
+"Pça.  Dom Francisco de Sousa";2
+"R. Gen. Gastão Goularte";2
+"R.Manoel de Campos Bicudo";2
+"Pça.  Figueira Grande";2
+"Remedios Bridge";2
+"Pça.  Dr. Pedro Corazza";2
+"R. Tomás Lupo";2
+"R. São Carlos do Pinhal";2
+"R. Amador Bueno";2
+"Pça.  Leonor Kaupa";2
+"R. Édson Régis";2
+"Tamanduateí ";2
+"terminal Santo Amaro";2
+"R. Lourenço de Almeida";2
+"Av. Cândido Portinari";2
+"Tv. Diogo de Melo";2
+"R. Guilherme Branca";2
+"Pça.  Armando de Sales Oliveira";2
+"Av. Carlos Lacerda";2
+"Av. Carlos Liviero";2
+"Av. Ceci";2
+"Av. Cel. José Píres de Andrade";2
+"Pça.  Nicolau David";2
+"R. Almir Rodrigues";2
+"R. Tomás Izo";2
+"R. São José";2
+"Av. Chica Luiza";2
+"R. Luar do Meu Bem";2
+"cj ";2
+"R. São Caetano";2
+"Pça.  Charles Miler";2
+"Vila Jaguara";2
+"Pça.  Luiz Carlos Mesquita";2
+"R. João Amado Coutinho";1
+"R. Nazir Miguel";1
+"R. Max Mangels Senior";1
+"R. Martim Tenório";1
+"R. João Alves de Morães";1
+"R. Me. Emilie de Villeneuve";1
+"R. Me. Cabrini";1
+"R. Mourisca";1
+"R. João Alves de Almeida";1
+"R. Martinho Prado";1
+"R. Melchior Giola";1
+"R. Neco Nunes";1
+"R. Mutuípe";1
+"R. José Antônio dos Santos";1
+"R. Mateus Barbosa de Rezende";1
+"R. João Batista de Godoy";1
+"R. Massacá";1
+"R. Nair Ramos Schuring";1
+"R. Namé";1
+"R. Melo Coutinho";1
+"R. Mataripe";1
+"R. João Bernardo Viêira";1
+"R. Martins Sarmento";1
+"R. Mateo Forte";1
+"R. Martinico Prado";1
+"R. Música Outonal";1
+"R. Mateus García";1
+"R. Matimpererê";1
+"R. João Brícola";1
+"R. João Amós Comenius";1
+"R. Nascer do Sol";1
+"R. Mata Atlântica";1
+"R. Mateus de Siqueira";1
+"R. José Antônio Coelho";1
+"R. João Carlos Fortim";1
+"R. Matias Aíres";1
+"R. Natal Basile";1
+"R. Munduba";1
+"R. Nazaré Rezek Faráh";1
+"R. Mourato Coelho";1
+"R. José Inácio da Silva";1
+"R. José Bonifácio Filho";1
+"R. João Alves Pimenta";1
+"R. José Mascarenhas";1
+"R. José Monteiro";1
+"R. José Garbuio";1
+"R. José Morales Lopes";1
+"R. José Moreira Fraga";1
+"R. José Neves";1
+"R. Monsenhor Francisco de Paula";1
+"R. Monsenhor Passaláqua";1
+"R. Monsenhor Salim";1
+"R. José Pedro do Amaral";1
+"R. Monte Alegre";1
+"R. Min. Hermenegildo de Barros";1
+"R. Monte Azul";1
+"R. Monte D´Ouro";1
+"R. José Fiúza Guimaraes";1
+"R. Min. Edmundo Lins";1
+"R. Milton Soares";1
+"R. Monsenhor Alberto Pequeno";1
+"R. Moliére";1
+"R. José Maria Peixoto";1
+"R. Miranda Guerra";1
+"R. José Joaquim Esteves";1
+"R. Missions";1
+"R. José Joaquim Gonçalves";1
+"R. Mirante do Paranapanema";1
+"R. Missionários";1
+"R. José Júlio Burgain";1
+"R. José Júlio Mendes";1
+"R. José Manso";1
+"R. João Damasceno";1
+"R. José Manuel da Conceição";1
 "R. Mogeiro";1
-"R. Me. Cabrini ";1
-"R. Maj. Natanael ";1
-"R. Justino Nigro ";1
-"R. Jaguaribe";1
-"R. Iguatemi ";1
-"R. Heitor Penteado";1
-"R. Guaicuí ";1
-"R. Gomes de Carvalho ";1
-"R. Gen. Osório";1
-"R. Fernando Albuquerque ";1
-"R. E ";1
-"R. Dr. Virgílio de Carvalho Pinto ";1
-"R. Dr. Luís Lustosa da Silva ";1
-"R. Dr. João César de Castro";1
-"R. Dr. Francisco Tomás de Carvalho ";1
-"R. Coriolano";1
-"R. Carnot ";1
+"R. José Maria Cerdeira Diz";1
+"R. Mipibu";1
+"R. Minérios Atômicos";1
+"R. Ministro Apolônio Salles";1
+"R. José Inácio";1
+"R. Miller";1
+"R. José Filipe da Silva";1
+"R. José Pereira dos Santos";1
+"R. José Ítalo de Camargo";1
+"R. José Carmo da Silva";1
+"R. Michele Príncipe";1
+"R. Morro da Capoaba";1
+"R. Mesquita";1
+"R. José Carlos de Resende";1
+"R. José Cardoso Coutinho";1
+"R. Morro do Livramento";1
+"R. Morubixaba";1
+"R. Michigan";1
+"R. Menininha Lôbo";1
+"R. Memorial de Aires";1
+"R. José Cardal";1
+"R. Jota Carlos";1
+"R. José Calixto Guimarães";1
+"R. Mossamedes";1
+"R. João Alphonsus";1
+"R. José Coimbra";1
+"R. Miguel Arcanjo Dutra";1
+"R. José Felipe Amaral";1
+"R. José Velucci";1
+"R. José Secundino da Costa";1
+"R. Monte Negro";1
+"R. José Eduardo Pereira II";1
+"R. Monte Pascal";1
+"R. Miguel Roque";1
+"R. Monte Serrat";1
+"R. José Vaz Guerreiro";1
+"R. Moreira e Costa";1
+"R. Miguel Bastos Soares";1
+"R. Miguel Nelson Bechara";1
+"R. Miguel Mota";1
+"R. Miguel Mentem";1
+"R. José Vicente de Azevedo";1
+"R. Miguel Ferreira de Melo";1
+"R. José Viêira Martins";1
+"R. José Dias Santana";1
+"R. Martim Carrasco";1
+"R. Lucerna";1
+"R. Marselha";1
+"R. Leningrado";1
+"R. Lateral";1
+"R. Lauro de Freitas";1
+"R. Malaquias Ferreira Leal";1
+"R. Lauzane";1
+"R. Malamir";1
+"R. Leandro Dupret";1
+"R. Malacacheta";1
+"R. Leandro de Sevilha";1
+"R. Leite Penteado";1
+"R. Leite de Morais";1
+"R. Leme do Prado";1
+"R. Leoberto Leal";1
+"R. Laplace";1
+"R. Mal. Hermes";1
+"R. Mal. Deodoro";1
+"R. Major Emiliano da Fonseca";1
+"R. Major Baracca";1
+"R. Leonardo de Fassio";1
+"R. Maj. Sertório";1
+"R. Maj. Pinheiro Fróes";1
+"R. Leonel Azevedo";1
+"R. Maj. Júlio Valente";1
+"R. Leonel Ferreira";1
+"R. Leonel Martiniano";1
+"R. Laredo";1
+"R. Laiz Ribeiro dos Santos Bicudo";1
+"R. Maj. Alfredo Romão";1
+"R. Manoel de Jesus Fernandes";1
+"R. Manuel Araújo Aragão";1
+"R. Júlio Conceição";1
+"R. Manuel Alonso Esteves";1
+"R. Júlio César de Faria";1
+"R. Júlio Lourenço Pinto";1
+"R. Manoel de Sousa Azevedo";1
+"R. Manoel de Saldanha";1
+"R. Manoel de Matos";1
+"R. Manoel de Lima";1
+"R. Júlio Macedo";1
+"R. Júpiter";1
+"R. Manoel da Rocha Lins";1
+"R. Mangualde";1
+"R. Manoel Simões";1
+"R. Kansas";1
+"R. Manoel Rodrigues da Costa";1
+"R. Ken Sugaya";1
+"R. Koto Mitsutani";1
+"R. Manoel Grandini Casquel";1
+"R. Lagoa Dourada do Rancho";1
+"R. Lagoa Taí Grande";1
+"R. Manoel Antônio";1
+"R. Laiana";1
+"R. Manhumirim";1
+"R. Maj. Basílio";1
+"R. Leonor B Carvalho";1
+"R. Manuel Bento da Cruz";1
+"R. Lourenço Castanho";1
+"R. Luís Rosseti";1
+"R. Luís Osório";1
+"R. Luís Murat";1
+"R. Londres";1
+"R. Lopes Chaves";1
+"R. Lopes da Costa";1
+"R. Luís Gregnanin";1
+"R. Luís Dib Zogaib";1
+"R. Luís Correia de Melo";1
+"R. Luís Arananda";1
+"R. Los Angeles";1
+"R. Lourenço Siqueira Preto";1
+"R. Luís de França Júnior";1
+"R. Lutécia";1
+"R. Lourenço de Miranda";1
+"R. Lupércio de Souza Cortez";1
+"R. Luiz Vieira";1
+"R. Luiz Grassmann";1
+"R. Luiz Ayres Martins";1
+"R. Lugano";1
+"R. Lucília Péres";1
+"R. Lucinda Gomes Barreto";1
+"R. Luciano Carneiro";1
+"R. Lucas Lossius";1
+"R. Luís Seixas";1
+"R. Luíz Gonzaga D'Avilla";1
+"R. Leonor de Almeida";1
+"R. Maestro Bortolucci";1
+"R. Mairinque";1
+"R. Leopoldino José de Camargo";1
+"R. Magé";1
+"R. Leopoldo Figueiredo";1
+"R. Mafalda Rocha";1
+"R. Maestro Otto Wey";1
+"R. Maestro Jordão Bernardino de Sene";1
+"R. Maestro Ernesto Lahos";1
+"R. Letícia Cini";1
+"R. Maestro Eduardo de Guarnieri";1
+"R. Liberato Luís Taváres";1
+"R. Madagascar";1
+"R. Líbero de Miranda";1
+"R. Libra";1
+"R. Macedônio Fernandes";1
+"R. Limbani";1
+"R. Limoeiro do Ajuru";1
+"R. Lincoln Junqueira";1
+"R. Macedônia";1
+"R. Lino Coutinho";1
+"R. Lótus";1
+"R. Lívio de Castro";1
+"R. Líra dos Verdes Anos";1
+"R. Lício de Miranda";1
+"R. Júlia Santos Paiva Rio";1
+"R. Manuel Bicudo";1
+"R. Marquês de Paranaguá";1
+"R. Maria Leocadia";1
+"R. Mariana da Baviera";1
+"R. Mariana Borges";1
+"R. João Millam";1
+"R. João Moura";1
+"R. Maria Zélia";1
+"R. Maria Teresa Assunção";1
+"R. Maria Pedrosa";1
+"R. João Oliveira Salgado";1
+"R. Maria Pais de Barros";1
+"R. João Paulo Barreto";1
+"R. Maria Lopes";1
+"R. Maria José de Souza";1
+"R. João Mario de Jesus";1
+"R. Maria José da Conceição";1
+"R. João Perboyre e Silva";1
+"R. Maria José Pomar";1
+"R. Maria Joaquina";1
+"R. Maria Francisca do Nascimento";1
+"R. João Ricardo";1
+"R. João Taváres";1
+"R. João Teizen Sobrinho";1
+"R. Maria Emilia";1
+"R. João Teodoro";1
+"R. João Velho do Rego";1
+"R. Mariano Procópio";1
+"R. Marinheiro";1
+"R. João da Silva Águiar";1
+"R. João Elías";1
+"R. João Daudt Filho";1
+"R. Marquês de Lages";1
+"R. João Dias Cerqueira";1
+"R. Marquês de Itu";1
+"R. Marmorata";1
+"R. Marjorie Prado";1
+"R. Marjorie";1
+"R. João Dias da Silva";1
+"R. João Dias de Vergara";1
+"R. João Diomedes Leônidas";1
+"R. Marivaldo Fernandes";1
+"R. João Fernandes Camisa Nova Júnior";1
+"R. João Maria Carmona";1
+"R. Mariucha";1
+"R. Mario dos Anjos";1
+"R. Mario Linhares";1
+"R. Mario Furtado";1
+"R. Mario Capuano";1
+"R. João José dos Santos";1
+"R. João Kaufman";1
+"R. João Lafinur";1
+"R. João Leite";1
+"R. João Luís Mateus";1
+"R. João Maffei";1
+"R. João Xavier de Matos";1
+"R. João de Laet";1
+"R. Jácomo Passarelli";1
+"R. Manuel Viêira da Luz";1
+"R. Marambaia";1
+"R. Maracatú";1
+"R. Maracanã";1
+"R. Mar Del Plata";1
+"R. Maquerobi";1
+"R. Manuel de Santa Maria";1
+"R. Manuel de Azevedo";1
+"R. Manuel de Almeida";1
+"R. Juvenal Lira";1
+"R. Manuel de Agreda";1
+"R. Juvenal Parada";1
+"R. Manuel Vanique";1
+"R. Jurupari";1
+"R. Manuel Sequeira e Sá";1
+"R. Manuel Sarmento";1
+"R. Manuel Pinheiro de Albuquerque";1
+"R. Manuel Onha";1
+"R. Juventus";1
+"R. Manuel Morais Pte.s";1
+"R. Juvêncio de Araújo Figueiredo";1
+"R. Manuel José Rodrigues";1
+"R. Manuel Jacinto";1
+"R. Juá Mirim";1
+"R. Juíz de Fora";1
+"R. Marcelina";1
+"R. Marcelino Nogueira Júnior";1
+"R. Maria Cândida";1
+"R. Jucupema";1
+"R. João de Paula Franco";1
+"R. João de Sousa Dias";1
+"R. Maria Curupaiti";1
+"R. João de Souto Maior";1
+"R. Maria Clara da Silva Sant'Anna";1
+"R. Maria Carlota";1
+"R. Maria Balades Corrêa";1
+"R. Maria Aparecida Pedrosa";1
+"R. João Álvares Soares";1
+"R. Juan Gonzales Vila";1
+"R. Maria Adelaíde L. Quelhas";1
+"R. Jucurucu";1
+"R. Juruna";1
+"R. Marcílio de Sá";1
+"R. Judite Anderson";1
+"R. Marcos Portugal";1
+"R. Judith Zumkeller";1
+"R. Marco Aurélio";1
+"R. Marcionílo Lessa";1
+"R. Julio Nunes de Rêgo";1
+"R. Juno";1
+"R. Marcelino de Brito";1
+"R. Juquiá";1
+"R. Juraci Artacho";1
+"R. João Ramalho";1
+"R. República do Iraque";1
+"R. Nelson Fernandes";1
+"R. Tomás Teixeira";1
+"R. Tilapia";1
+"R. Tilápia";1
+"R. Tiradentes";1
+"R. Tokuchika Miki";1
+"R. Tolstoi";1
+"R. Tom Jobim";1
+"R. Tomasina";1
+"R. Tordesilhas";1
+"R. Tibério Frontini";1
+"R. Torquarto Joaquim Rodrigues";1
+"R. Traipú";1
+"R. Traviata";1
+"R. Trevo de Santa Maria";1
+"R. Trieste";1
+"R. Trinta e Dois";1
+"R. Três Corações";1
+"R. Tijuco Preto";1
+"R. Tiapira";1
+"R. Taques Alvim";1
+"R. Tenente Joecyl Camargo da Mota";1
+"R. Tasselli Ugo";1
+"R. Tatuí";1
+"R. Teixeira da Silva";1
+"R. Ten. Azevedo";1
+"R. Ten. Félix Bitencourt";1
+"R. Ten. Mario Barbedo";1
+"R. Ten. Ângelo Zampero";1
+"R. Tenente Olindo de Carvalho";1
+"R. Thomé de Souza";1
+"R. Tenório Cavalcanti";1
+"R. Teodoro Lorencini";1
+"R. Terceiro Srg. João Lopes Filho";1
+"R. Tereza Ackel";1
+"R. Texas";1
+"R. Thereza Maia Pinto";1
+"R. Thomaz de Araújo";1
+"R. Três de Maio";1
+"R. Tucumã";1
+"R. Tuneiras do Oeste";1
+"R. Vicente Pinheiro";1
+"R. Verbo Divino";1
+"R. Veríssimo Glória";1
+"R. Veríssimo da Silva";1
+"R. Vicente Carducho";1
+"R. Vicente Fioravante";1
+"R. Vicente Leporace";1
+"R. Vicente Pereira de Assunção";1
+"R. Vicente Strichalsky";1
+"R. Tácito de Almeida";1
+"R. Vichy";1
+"R. Vidal de Negreiros";1
+"R. Vieira de Morais";1
+"R. Vieira de Moura";1
+"R. Vila Boa de Goiás";1
+"R. Vila Boa de Quires";1
+"R. Vila Velha";1
+"R. Ver. Antônio Teixeira";1
+"R. Venceslau Brás";1
+"R. Valêncio Natal";1
+"R. Valê do Ipojuca";1
+"R. Tânia Maria";1
+"R. Uacumã";1
+"R. Ubai";1
+"R. Uberabinha";1
+"R. Uhland";1
+"R. Ulisses Cruz";1
+"R. Unapitinga";1
+"R. Uru";1
+"R. Uva Natal";1
+"R. Val de Palmas";1
+"R. Valdemar Blakauskas";1
+"R. Valdomiro Pedroso";1
+"R. Valdomiro dos Santos Pereira";1
+"R. Valmíqui";1
+"R. Valê de Amoreira";1
+"R. Tartaranhão";1
+"R. Taquari";1
+"R. Virgínia Maria da Conceição";1
+"R. Sorano";1
+"R. Sofía Castelane";1
+"R. Sol";1
+"R. Sol da América";1
+"R. Solar";1
+"R. Soldado Amarilho Gonçalves de Queiroz";1
+"R. Solimões";1
+"R. Solon";1
+"R. Soriano de Albuquerque";1
+"R. Sinfônia Fantástica";1
+"R. Srg. Basílio Manuel de Santana";1
+"R. Srg. Noel de Camargo";1
+"R. Stefano Franceschini";1
+"R. Sul";1
+"R. Susana";1
+"R. Suzano";1
+"R. São Benedito";1
+"R. Soares de Barros";1
+"R. Sinanduva";1
+"R. Taquarandi";1
+"R. Silva Pinto";1
+"R. Serrana";1
+"R. Sertões de Cratéus";1
+"R. Sete de Abril";1
+"R. Severa";1
+"R. Sil Chung Ming";1
+"R. Silva Bueno";1
+"R. Silva Jardim";1
+"R. Silva Teles";1
+"R. Simão Viêira Lindo";1
+"R. Silveira Campos";1
+"R. Silvianópolis";1
+"R. Silvilino Mantovanini";1
+"R. Silvio Portugal";1
+"R. Simão Borges";1
+"R. Simão Lopes";1
+"R. Simão Pereira";1
+"R. São Cristovão";1
+"R. São Daniel";1
+"R. São Domingos";1
+"R. Tajal";1
+"R. Tabacarana";1
+"R. Tabajaras";1
+"R. Tabapuã";1
+"R. Tabarai";1
+"R. Tacacàzeiro";1
+"R. Tachizeiro";1
+"R. Tagipuru";1
+"R. Tamoios";1
+"R. São Felipe";1
+"R. Tamon";1
+"R. Tamotsu Iwasse";1
+"R. Tangará";1
+"R. Tanque Velho";1
+"R. Tapes";1
+"R. Tapirapuã";1
+"R. Tapiraí";1
+"R. Sílvio Rodini";1
+"R. Sílvio Geraldo Gomes Cardim";1
+"R. Sérgio de Azevedo Valente";1
+"R. São Vicente de Paulo";1
+"R. São Gall";1
+"R. São Geraldo";1
+"R. São Gilberto";1
+"R. São João Clímaco";1
+"R. São João Dassio";1
+"R. São João da Serra";1
+"R. São Judas Tadeu";1
+"R. São Leopoldo";1
+"R. São Lázaro";1
+"R. São Maurício";1
+"R. São Patrício";1
+"R. São Paulo";1
+"R. São Pedro do Jequitinhonha";1
+"R. São Quirino";1
+"R. São Roque do Paraguaçu";1
+"R. Violantino dos Santos";1
+"R. Virgínia de Miranda";1
+"R. Serra do Norte";1
+"R. Álvaro Neto";1
+"R. dos Têxteis";1
+"R. dos Álamos";1
+"R. Águas Virtuosas";1
+"R. Álvares Correia";1
+"R. Álvares Fagundes";1
+"R. Álvaro Adorno";1
+"R. Álvaro Luís Roberto de Assunção";1
+"R. Álvaro de Carvalho";1
+"R. dos Timbiras";1
+"R. Álvaro de Mendonça";1
+"R. Árvore da Judea";1
+"R. Áurea Taváres";1
+"R. Áureliano Coutinho";1
+"R. Ângelo Perin";1
+"R. Ângelo Prado";1
+"R. Éden";1
+"R. dos Tropeiros";1
+"R. dos Tamanás";1
+"R. dos Bororós";1
+"R. dos Ingleses";1
+"R. dos Cedros";1
+"R. dos Cântaros";1
+"R. dos Democratas";1
+"R. dos Filhos da Terra";1
+"R. dos Gusmões";1
+"R. dos Horticultores";1
+"R. dos Igarapés";1
+"R. dos Jequitibás";1
+"R. dos Romanós";1
+"R. dos Limantos";1
+"R. dos Louros";1
+"R. dos Militares";1
+"R. dos Otonis";1
+"R. dos Patis";1
+"R. dos Piracás";1
+"R. dos Ralídeos";1
+"R. Édison";1
+"R. Édson de Carvalho Guimarães";1
+"Rod. Anchieta";1
+"Via Expressa Mauri S.Barufi";1
+"Tv. Somos Todos Iguais";1
+"Tv. Teresa Diamante Sisto";1
+"Tv. das Ondinas";1
+"Tv. Édna";1
+"Túnel José Roberto Fanganiello Melhem";1
+"Túnel Paulo Autran";1
+"Túnel Sebastião Camargo";1
+"Viaduto Alcântara Machado";1
+"Rod. Régis Bittencourt";1
+"Viaduto Beneficência Portuguesa";1
+"Viaduto Gov. Abreu Sodré";1
+"Viaduto República Árabe Síria";1
+"Viaduto Saioá";1
+"Viaduto São Carlos";1
+"Viela Pium";1
+"r";1
+"Tv. Sol do Meio Dia";1
+"Tv. Serra da Raiz";1
+"Tv. Seringais";1
+"Tv. Sede dos Marujos";1
+"Rodoanel Mário Covas";1
+"Santo Amaro";1
+"Tv. Alexis Carrel";1
+"Tv. Augusto José de Jesus";1
+"Tv. Dr. Mariano de Siqueira Filho";1
+"Tv. Francisco Segala";1
+"Tv. Jambalaya";1
+"Tv. João Batista Cramer";1
+"Tv. Júlio Tupy";1
+"Tv. La Violeteira";1
+"Tv. Maurício Ledeli";1
+"Tv. Pres. Isaías Medina";1
+"Tv. Renê Sabag";1
+"Tv. Roland Berigan";1
+"Tv. Sabor de Mim";1
+"R. dos Canários";1
+"R. dos Bandeirantes";1
+"R. Visc.  D'Asseca";1
+"R. da Assembléia";1
+"R. Xiró";1
+"R. Ylídio Figueiredo";1
+"R. Yonne Josepha Schaeberle";1
+"R. Zaira";1
+"R. Zeferino Borges Barreto";1
+"R. Zélia Frias Street";1
+"R. Zéquinha de Abreu";1
+"R. da Aviação";1
+"R. Xavier de Almeida";1
+"R. da Calenda";1
+"R. da Educação";1
+"R. da Estação";1
+"R. da Praia de Miramar";1
+"R. da Represa";1
+"R. da Safra";1
+"R. da União";1
+"R. Xavier dos Pássaros";1
+"R. Xambioá";1
+"R. dos Andrade";1
+"R. Válter Airosa Flaquer";1
+"R. Visc.  de Porto Seguro";1
+"R. Visc. Geraz do Lima";1
+"R. Visc. de Aljezur";1
+"R. Visc. de Araruama";1
+"R. Visc. de Guaratiba";1
+"R. Visc. de Taunay";1
+"R. Votupoca";1
+"R. Wadih Hatti";1
+"R. Wisard";1
+"R. Waldemar Roberto";1
+"R. Walter Sgarbi";1
+"R. Wenceslau Bras";1
+"R. William Speers";1
+"R. Willis Roberto Banks";1
+"R. Wilsom Batista";1
+"R. Wilsom Duarte";1
+"R. das Açucenas";1
+"R. das Confrarias";1
+"R. das Corruíras";1
+"R. do Pífano";1
+"R. do Chá";1
+"R. do Expressionismo";1
+"R. do Grito";1
+"R. do Imperador";1
+"R. do Maná";1
+"R. do Modernismo";1
+"R. do Outono";1
+"R. do Rocio";1
+"R. das Flôres";1
+"R. do Sol";1
+"R. do Sossego";1
+"R. do Símbolo";1
+"R. dos Alpes";1
+"R. dos Americanos";1
+"R. dos Andes";1
+"R. dos Andradas";1
+"R. do Bosque";1
+"R. do Boqueirão";1
+"R. do Balão";1
+"R. do Acarapuxi";1
+"R. das Fontainhas";1
+"R. das Graviolas";1
+"R. das Grumixamas";1
+"R. das Ipoméias";1
+"R. das Juritis Paulista";1
+"R. das Mangabeiras";1
+"R. das Margaridas Amarelas";1
+"R. das Olarias";1
+"R. das Orquídeas";1
+"R. das Palmas";1
+"R. das Paralas";1
+"R. das Seringueiras";1
+"R. das Taquaras";1
+"R. das Vertentes";1
+"R. das Águias Reais";1
+"R. Serra do Pilar";1
+"R. Serra do Evangelista";1
+"R. Nelson Ferreira da Costa";1
+"R. Pedro Piassi";1
+"R. Pedro Felíciano";1
+"R. Pedro Gonçalves Varejão";1
+"R. Pedro Inácio de Araújo";1
+"R. Pedro José de Lima";1
+"R. Pedro Ladislau de Almeida";1
+"R. Pedro Morcilla Filho";1
+"R. Pedro Nolasco da Cunha";1
+"R. Pedro Ramazzani";1
+"R. Pedro Doll";1
+"R. Pedro Voss";1
+"R. Pedro da Costa Faleiro";1
+"R. Pedro de Campos Tourinho";1
+"R. Pedro de Sousa Campos Filho";1
+"R. Pedroso";1
+"R. Pedroso Horta";1
+"R. Peixe Vivo";1
+"R. Pedro Escobar";1
+"R. Pedro Barbosa";1
+"R. Pascoal Pais";1
+"R. Paulo Monteiro Duarte";1
+"R. Pastor Rubens Lopes";1
+"R. Patápio Silva";1
+"R. Paulicéia";1
+"R. Paulo Franco";1
+"R. Paulo III";1
+"R. Paulo IV";1
+"R. Paulo Lorenzani";1
+"R. Paulo Osório Flôres";1
+"R. Pedro Andrade Lemos";1
+"R. Paulo Pte.s";1
+"R. Paulo Roberto Trivelli";1
+"R. Paulo de Miranda";1
+"R. Paulo de Proença";1
+"R. Pedra Azul";1
+"R. Pedra Lavrada";1
+"R. Pedralva";1
+"R. Peixoto Gomide";1
+"R. Peixoto Werneck";1
+"R. Peixoto de Melo Filho";1
+"R. Prebixim";1
+"R. Plínio Ayrosa";1
+"R. Plínio Figueiredo";1
+"R. Plínio Salgado";1
+"R. Pomba do Cabo";1
+"R. Praia do Castelo";1
+"R. Praia dos Estaleiros";1
+"R. Prates";1
+"R. Pref. Antenor Bue";1
+"R. Pelegrino Bernardo";1
+"R. Pres. Antônio Cândido";1
+"R. Pres. Bernardes";1
+"R. Pres. Costa Pinto";1
+"R. Presidente Dutra";1
+"R. Princesa Isabel";1
+"R. Princesa Leopoldina";1
+"R. Prof.  Augusto Mondin";1
+"R. Plácido Vieira";1
+"R. Plácido Leão";1
+"R. Planeta";1
+"R. Pium";1
+"R. Pensilvânia";1
+"R. Pero Correia";1
+"R. Pero Peres";1
+"R. Pero de Campos";1
+"R. Perpétua";1
+"R. Peró Vaz de Caminha";1
+"R. Philonilia Goncalves dos Santos";1
+"R. Phobus";1
+"R. Piatá";1
+"R. Pietro Casella";1
+"R. Pilade Pistelli";1
+"R. Piloto";1
+"R. Pirambóia";1
+"R. Pirandello";1
+"R. Piratini";1
+"R. Passo da Pátria";1
+"R. Pascoal Moreira";1
+"R. Prof.  Demóstenes Batista Figueira Marques";1
+"R. Orfanato";1
+"R. Olho Dágua do Borges";1
+"R. Oliveira Alves";1
+"R. Olímpia Lemes da Silva";1
+"R. Olímpio Catão";1
+"R. Olívia Guedes Penteado";1
+"R. Onze de Fevereiro";1
+"R. Onófre Jorge Velho";1
+"R. Oscár Pedroso Horta";1
+"R. Olavo Faggin";1
+"R. Osman Fonseca";1
+"R. Osvaldo Vallejo";1
+"R. Osório Duque Estrada";1
+"R. Otacílio Negrão";1
+"R. Otávio Roque";1
+"R. Oxford";1
+"R. Ozieri";1
+"R. Olga Moretti Ferrari";1
+"R. Oduvaldo Viana";1
+"R. Pascoal Melantonio";1
+"R. Nicolau Machado";1
+"R. Nelson Raineri";1
+"R. Neno Vasco";1
+"R. Nestor de Holanda";1
+"R. Neves Paulista";1
+"R. Nhengaibas";1
+"R. Nibe Perobelli";1
+"R. Nicolau Gagliardi";1
+"R. Ninete";1
+"R. Odemis";1
+"R. Norberto Martins Ribeiro";1
+"R. Norte A";1
+"R. Nova York";1
+"R. Nova dos Godóis";1
+"R. Novo Oriente do Piauí";1
+"R. Numênio";1
+"R. Octávio Teixeira Mendes Sobrinho";1
+"R. P. Francis";1
+"R. Pacheco de Miranda";1
+"R. Padre Alarico Zacarias";1
+"R. Pangauá";1
+"R. Paina";1
+"R. Pajaú";1
+"R. Palanque";1
+"R. Palmas de São Moisés";1
+"R. Palmeira";1
+"R. Palmeira Real";1
+"R. Palmeira do Mar";1
+"R. Pantanais do Mato Grosso";1
+"R. Padre Andrade Duquet";1
+"R. Paolo Porpora";1
+"R. Papa Gregório Magno";1
+"R. Papanduva";1
+"R. Paranaense";1
+"R. Paratiba";1
+"R. Parque da Fonte";1
+"R. Particular S";1
+"R. Paiaguás";1
+"R. Padre Serrão";1
+"R. Padre Sabóia de Medeiros";1
+"R. Padre Rodrigues";1
+"R. Padre Bento Dias Pachêco";1
+"R. Padre Correia de Almeida";1
+"R. Padre Cristóvão Cordeiro";1
+"R. Padre Domingos Gava";1
+"R. Padre Domingos Gomes Albernaz";1
+"R. Padre Francisco Carneiro";1
+"R. Padre Jerônimo Machado";1
+"R. Padre Josino";1
+"R. Padre José Garzotti";1
+"R. Padre José de Anchieta";1
+"R. Padre João de Sáles";1
+"R. Padre Luís Alves de Siqueira";1
+"R. Padre Luís de Siqueira";1
+"R. Padre Nogueira Lopes";1
+"R. Padre Raimundo da Silva";1
+"R. Prof.  Campos de Oliveira";1
+"R. Prof.  Giorgio Levi";1
+"R. Serra do Café";1
+"R. Salvador Leite Ferraz";1
+"R. Saldanha Marinho";1
+"R. Saldanha da Gama";1
+"R. Salto";1
+"R. Salvador Corrêa";1
+"R. Salvador Dali";1
+"R. Salvador Eduardo de Sousa";1
+"R. Salvador Fontoura";1
+"R. Samuel Bovy";1
+"R. Rêgo Barros";1
+"R. Samuel Morse";1
+"R. Sandra Regina Alves Barbosa";1
+"R. Santa Aurélia";1
+"R. Santa Efigênia";1
+"R. Santa Francisca";1
+"R. Santa Ifigênia";1
+"R. Santa Irene";1
+"R. Sabaúna";1
+"R. Rui Barbosa";1
+"R. Rio de Janeiro";1
+"R. Rocha";1
+"R. Rita Matilde Costa";1
+"R. Robert Bosch";1
+"R. Roberto Campos Rodrigues";1
+"R. Roberto Koch";1
+"R. Robertson";1
+"R. Robespièrre de Melo";1
+"R. Robélia";1
+"R. Rocha do Canto";1
+"R. Rubéns de Souza Araújo";1
+"R. Rodrigues da Guerra";1
+"R. Rodriguez Seixas";1
+"R. Rogerio de Paula Brito";1
+"R. Roma";1
+"R. Ronaldo Bizaco";1
+"R. Roque VÍctor Vasto";1
+"R. Rosa Kasinski";1
+"R. Santa Luz";1
+"R. Santa Luzia da Boa Visão";1
+"R. Santa Madalena";1
+"R. Sen. Otávio Mangabeira";1
+"R. Sebastião Sisson";1
+"R. Sebastião de Freitas";1
+"R. Sebastião de Pina";1
+"R. Sebatião Moreira";1
+"R. Seis";1
+"R. Sempre";1
+"R. Sen. Feijó";1
+"R. Sen. Vergueiro";1
+"R. Santa Maria de Itabira";1
+"R. Seresta do Amor";1
+"R. Seringal do Rio Verde";1
+"R. Serra da Prata";1
+"R. Serra das Divisões";1
+"R. Serra das Estrelas";1
+"R. Serra de Botucatu";1
+"R. Serra de Luís Gomes";1
+"R. Sebastião Sarmento Mena";1
+"R. Sebastião Picão";1
+"R. Sebastião Medeiros da Silva";1
+"R. Sebastião Ivo";1
+"R. Santa Rita D'Oeste";1
+"R. Santa Rosa";1
+"R. Santa Rosa da Serra";1
+"R. Santa Verônica";1
+"R. Santana do Araguaia";1
+"R. Santo Américo";1
+"R. Santo Anselmo";1
+"R. Santo António da Glória";1
+"R. Santo Irineu";1
+"R. Sargento Manuel Barbosa da Silva";1
+"R. Sarita Cyrillo";1
+"R. Satulnino de Oliveira";1
+"R. Sava";1
+"R. Sd. Brasílio Pinto de Almeida";1
+"R. Sebastião Domingues";1
+"R. Rio do Sono";1
+"R. Rio da Aldeia";1
+"R. Prof.  Guilherme Belfort Sabino";1
+"R. Profa. Maria Hosni Cury";1
+"R. Prof. Roldão de Barros";1
+"R. Prof. a Eunice B. de Oliveira";1
+"R. Prof. a Nina Stocco";1
+"R. Prof. a Sebastiana Silva Minhoto";1
+"R. Profa. Abigail Alves Píres";1
+"R. Profa. Aparecida Donizete de Paula";1
+"R. Profa. Lucinda Bastos";1
+"R. Projetada";1
+"R. Prof. Oscar Campiglia";1
+"R. Pte. Rasa";1
+"R. Puraquê";1
+"R. Puruba";1
+"R. Puruá";1
+"R. Péres Júnior";1
+"R. Pérsia";1
+"R. Pérsio Pachêco e Silva";1
+"R. Prof. Pedreira de Freitas";1
+"R. Prof. Milton Rodrigues";1
+"R. Rio São Nicolau";1
+"R. Prof. Arnaldo João Semeraro";1
+"R. Prof.  Manoelito de Ornellas";1
+"R. Prof.  Miguel Maurício da Rocha";1
+"R. Prof.  Nagib Elchmer";1
+"R. Prof.  Nicolau de Morais Barros";1
+"R. Prof.  Theotônio Pavão";1
+"R. Prof. Antônio Castelar de Franceschi";1
+"R. Prof. Aprígio Gonzaga";1
+"R. Prof. Artur Ramos";1
+"R. Prof. Melo Paiva";1
+"R. Prof. Castro Pereira";1
+"R. Prof. Cosme Deodato Tadeu";1
+"R. Prof. José de Barros Pinto";1
+"R. Prof. João Cavaleiro Salém";1
+"R. Prof. Lúcio Martins Rodrigues";1
+"R. Prof. Macedo Soares";1
+"R. Prof. Machado Tolosa";1
+"R. Píres Pímentel";1
+"R. Pôrto Lucena";1
+"R. Pôrto Sabaúna";1
+"R. Ribeiro do Vale";1
+"R. Resedá";1
+"R. Riachuelo";1
+"R. Ribeira do Amparo";1
+"R. Ribeiro Lacerda";1
+"R. Ribeiro de Lima";1
+"R. Ribeiro de Vasconcelos";1
+"R. Ribeiro do Amaral";1
+"R. Ribeiro dos Santos";1
+"R. Pôrto Seguro";1
+"R. Ribeirão das Furnas";1
+"R. Ribeirão do Salto";1
+"R. Ricardina Campello Fonseca Rodrigues";1
+"R. Ricardo Viléla";1
+"R. Rio Acima";1
+"R. Rio Negro";1
+"R. Rio Paraitinga";1
+"R. José Amâncio Cunha";1
+"R. Renascença";1
+"R. Relva Velha";1
+"R. Regente León Kaniefsky";1
+"R. Rabêlo da Cruz";1
+"R. Rafael Anunciato";1
+"R. Rafael de Oliveira";1
+"R. Rafi Miguel Ackel";1
+"R. Raimundo Corrêa";1
+"R. Raimundo Nina Rodrigues";1
+"R. Rainha";1
+"R. Ramal dos Menezes";1
+"R. Ramona Barroso Fernandes";1
+"R. Ramón Platearo";1
+"R. Raphael de Marco";1
+"R. Raulino Galdino da Silva";1
+"R. Real Horto";1
+"R. Recife";1
+"R. Redução de Caaguaçu";1
+"R. José André Pattini";1
+"R. Floriano Peixoto Santos";1
+"R. Josef Labor";1
+"R. Antero de Quental";1
+"R. Antonio Ayrosa";1
+"R. Antonio de Jesus Manoel";1
+"R. Antunes Maciel";1
+"R. Antônino de Matos";1
+"R. Antônio Afonso";1
+"R. Antônio Augusto Filho";1
+"R. Antônio Baracho dos Santos";1
+"R. Antônio Benedito Machado Florence";1
+"R. Antônio Bernardes de Oliveira";1
+"R. Antônio Borges Machado de Oliveira";1
+"R. Antônio Bruni";1
+"R. Antônio Burlini";1
+"R. Antônio Camacho";1
+"R. Antônio Carlos Pereira";1
+"R. Antônio Carlos de Alvarenga Júnior";1
+"R. Antônio Carlos dos Santos";1
+"R. Antônio Cavazzam";1
+"R. Antoninho Marmo";1
+"R. Antero Barbosa";1
+"R. Ananaí";1
+"R. Antares";1
+"R. Anatólia";1
+"R. Andradas";1
+"R. Andrade Neves";1
+"R. Andrade e Silva";1
+"R. Andreas Raselius";1
+"R. André Beauneveu";1
+"R. André Maia";1
+"R. André Peixoto";1
+"R. André Pereira Temudo";1
+"R. André Vidal";1
+"R. Andréa Del Sarto";1
+"R. Angaturama";1
+"R. Angelino Guerino";1
+"R. Anhumas";1
+"R. Anhupoca";1
+"R. Anita Garibaldi";1
+"R. Anita Malfatti";1
+"R. Antônio Felipe Filho";1
+"R. Antônio Flaquer";1
+"R. Antônio Fonseca";1
+"R. Antônio Frederico";1
+"R. Anápolis";1
+"R. Apiacás";1
+"R. Apiaí";1
+"R. Apinajés";1
+"R. Apuá";1
+"R. Aquarius";1
+"R. Aquino Fonseca";1
+"R. Aquinos";1
+"R. Aracanguira";1
+"R. Araci";1
+"R. Araguaia Viêira Ribeiro";1
+"R. Aramaca";1
+"R. Arandu";1
+"R. Arataiacu";1
+"R. Aratimbó";1
+"R. Archote do Peru";1
+"R. Arcipreste Andrade";1
+"R. Antônio Álvares";1
+"R. Antônio de Belém";1
+"R. Antônio de Almeida Viana";1
+"R. Antônio Mariani";1
+"R. Antônio Gagliazzo";1
+"R. Antônio Gebara";1
+"R. Antônio João de Medeiros";1
+"R. Antônio Júlio dos Santos";1
+"R. Antônio Le Voci";1
+"R. Antônio Luís Saião";1
+"R. Antônio Maria Bessa";1
+"R. Antônio Pte.s";1
+"R. Antônio das Chagas";1
+"R. Antônio Ramos Rosa";1
+"R. Antônio Ribeiro de Morais";1
+"R. Antônio Rodrigues de Medeiros";1
+"R. Antônio Simplício";1
+"R. Antônio Tadeu de Queiroz";1
+"R. Antônio da Costa Lima";1
+"R. Antônio da Silva Pôrto";1
+"R. Anastácio de Souza Pinto";1
+"R. Anabiju";1
+"R. Ariabu";1
+"R. Adevaldo de Morães";1
+"R. Adriano Álvares";1
+"R. Affonso Simão";1
+"R. Afonso Arinos";1
+"R. Afonso Celso";1
+"R. Afonso Rui";1
+"R. Afonso Sanches";1
+"R. Afonso Vidal";1
+"R. Agenor Alves Meira";1
+"R. Agnaldo Saturnino Rocha";1
+"R. Agostinho Soares";1
+"R. Agripiano Barros";1
+"R. Agrário de Sousa";1
+"R. Aiamá";1
+"R. Aimberê";1
+"R. Alba Valdez";1
+"R. Albertina Medeiros";1
+"R. Albertina Viêira da Silva Gordo";1
+"R. Adolfo Celi";1
+"R. Adelina Plunket";1
+"R. Ana de Barros";1
+"R. Acámbaro";1
+"Pça.  Petrolândia";1
+"Pça.  Quatorze Bis";1
+"Pça.  Santa Clara de Assis";1
+"Pça.  Sen. Lineu Prestes";1
+"Pça.  Tarsila do Amaral";1
+"Pça.  Vicente Rodrigues";1
+"Pça.  Virgílio Lúcio";1
+"Pça.  da Amizade";1
+"Pça.  do Forró";1
+"Pça.  dos Cartógrafos";1
+"Pça.  Álvaro Cardoso de Moura";1
+"R. 14 de Fevereiro";1
+"R. Abatixi";1
+"R. Abaúna";1
+"R. Achaira";1
+"R. Acotéia";1
+"R. Acre";1
+"R. Albertina de Souza";1
+"R. Alberto Andaló";1
+"R. Alberto Popovici";1
+"R. Alberto da Silva";1
+"R. Alpheu Luiz Gasparini";1
+"R. Alpiste";1
+"R. Alto Alegre";1
+"R. Alto Sucuriú";1
+"R. Alto Taquari";1
+"R. Alto da Conceição";1
+"R. Alves de Almeida";1
+"R. Aléssio de Paolis";1
+"R. Amaro Cavalheiro";1
+"R. Amália Vaz de Carvalho";1
+"R. Amélia Barsotti Simi";1
+"R. Amélia Marquês de Oliveira";1
+"R. Américo Alves Pereira Filho";1
+"R. Américo Brasiliense";1
+"R. Américo Vazone";1
+"R. Ana Barros de Oliveira";1
+"R. Ana Popovici";1
+"R. Alpercata";1
+"R. Alopatas";1
+"R. Alonso Péres";1
+"R. Alexandre Martins Rodrigues";1
+"R. Albina Barbosa";1
+"R. Alceu Antônio da Luz";1
+"R. Alcídes Lourenço da Rocha";1
+"R. Alessandro Allori";1
+"R. Alessandro Capece";1
+"R. Alessandro Giulio Dell'Aringa";1
+"R. Alexandre";1
+"R. Alexandre de Gusmão";1
+"R. Almirante Filipe Rodrigues Chaves";1
+"R. Alfa";1
+"R. Alfredo Mendes da Silva";1
+"R. Alfredo da Cunha Martins";1
+"R. Alm. Lobo";1
+"R. Alm. de Inhaúma";1
+"R. Almeida Durão";1
+"R. Almeida Tôrres";1
+"R. Argonautas";1
+"R. Aribugu";1
+"R. Jorge de Lima";1
+"R. Bonifácio de Montférrat";1
+"R. Borebi";1
+"R. Borges Ladário";1
+"R. Borges de Figueiredo";1
+"R. Borges dos Santos";1
+"R. Botui";1
+"R. Bragança Paulista";1
+"R. Brasília";1
+"R. Braz da Costa";1
+"R. Brazelisa Alves de Carvalho";1
+"R. Bresser";1
+"R. Brg. Amilcar Veloso Pederneiras";1
+"R. Brg. Armando Trompowsky";1
+"R. Brg. Jordão";1
+"R. Brg. Machado";1
+"R. Brook Taylor";1
+"R. Brás de Faria";1
+"R. Bugio Vermelho";1
+"R. Boraquira";1
+"R. Bonifácio Cubas";1
 "R. Berlioz";1
-"R. Barão de Itapetininga";1
-"R. Augusto Severo ";1
-"R. Antônio de Oliveira ";1
-"R. Anita Garibaldi ";1
-"R. Andrade e Silva ";1
-"conjunto 87 ";1
+"R. Bolívia";1
+"R. Bernardino D'Áuria";1
+"R. Bernardino Fanganiello";1
+"R. Bernardino de Campos";1
+"R. Bernardino de Queiróz Guimarães";1
+"R. Bernardo Antunes Rolim";1
+"R. Bernardo Buontalenti";1
+"R. Bernardo José Sampaio";1
+"R. Bernardo de Chaves Cabral";1
+"R. Bernardo de Claraval";1
+"R. Bernardo dos Santos";1
+"R. Bertioga";1
+"R. Biazzo Savino";1
+"R. Bicudo de Brito";1
+"R. Biri";1
+"R. Blumenau";1
+"R. Bocaína";1
+"R. Bolchevik";1
+"R. Buriti Alegre";1
+"R. Bárbara Heliodora";1
+"R. C";1
+"R. Cabo José da Silva";1
+"R. Canto da Serra";1
+"R. Canuto Borelli";1
+"R. Canuto Luiz do Nascimento";1
+"R. Canário";1
+"R. Cap.  Frederico Pradel";1
+"R. Cap.  Mor Gonçalo Monteiro";1
+"R. Cap.  Pucci";1
+"R. Cap.  Zacarias Bernardino Mota";1
+"R. Cap. John Cordeiro e Silva";1
+"R. Cap. José Machado";1
+"R. Cap. João Rosa da Cruz";1
+"R. Cap. Macedo";1
+"R. Cap. Oliveira Carvalho";1
+"R. Cap. Otávio Machado";1
+"R. Capivari Mirim";1
+"R. Capão Redondo";1
+"R. Caquito";1
+"R. Cantarricos";1
+"R. Candal";1
+"R. Cancioneiro de Évora";1
+"R. Camacam";1
+"R. Cachoeira do Arari";1
+"R. Caetano José Batista";1
+"R. Caetano Pinto";1
+"R. Caetes";1
+"R. Caimoambo";1
+"R. Caio Graco";1
+"R. Caio Prado";1
+"R. Camandocaia";1
+"R. Campos do Jordão";1
+"R. Camapuânia";1
+"R. Camargo";1
+"R. Camefis";1
+"R. Camilo Angleria";1
+"R. Camocim de São Félix";1
+"R. Campinas do Piauí";1
+"R. Campo da Vinha";1
+"R. Bermudas";1
+"R. Bergamota";1
+"R. Arinos";1
+"R. Augusto Kindermann";1
+"R. Aurantina";1
+"R. Aurora Livida";1
+"R. Aurora das Dores";1
+"R. Aurora do Norte";1
+"R. Autílio de Oliveira";1
+"R. Avaré";1
+"R. Aída";1
+"R. Bacanga";1
+"R. Bactória";1
+"R. Bacurizeiros";1
+"R. Bagé";1
+"R. Bahia";1
+"R. Bairi";1
+"R. Balneário São José";1
+"R. Baltazar Álvares";1
+"R. Bandeira Paulista";1
+"R. Barbatimão";1
+"R. Augusto Severo";1
+"R. Augusto Correa Leite";1
+"R. Beraldo Marcondes";1
+"R. Augusto Cecchini";1
+"R. Aristídes Belini";1
+"R. Aristídes Viana";1
+"R. Aristídes da Silveira Lôbo";1
+"R. Arlindo Béttio";1
+"R. Arraial de São Bartolomeu";1
+"R. Artur Alvim";1
+"R. Artur Sabóia";1
+"R. Artur Sievers";1
+"R. Artur de Morães";1
+"R. Arutaua";1
+"R. Aspicuelta";1
+"R. Assunção";1
+"R. Astorga";1
+"R. Asuero Roque";1
+"R. Ataliba Viêira";1
+"R. Ateraris";1
+"R. Augusta Reimberg";1
+"R. Baronesa de Porto Carreiro";1
+"R. Barqueiro de Vela";1
+"R. Barra Negra";1
+"R. Barra da Onça";1
+"R. Baumann";1
+"R. Baía de Santa Clara";1
+"R. Baía dos Pássaros";1
+"R. Beatriz Dias";1
+"R. Beira Rio";1
+"R. Belmiro de Almeida";1
+"R. Belo Jardim";1
+"R. Benedito Felizardo";1
+"R. Benedito Jacinto Mendes";1
+"R. Benedito da Fonseca Rondon";1
+"R. Benjamin Capusso";1
+"R. Benjamin Carr";1
+"R. Benjamin Constant";1
+"R. Benjamin Jafet";1
+"R. Bento Branco de Andrade Filho";1
+"R. Bento de Alvarenga";1
+"R. Benvenuto di Giovani";1
+"R. Batista Caetano";1
+"R. Batista Brevi";1
+"R. Basílio Basily";1
+"R. Bartolomeu de Gusmão";1
+"R. Barra de Santa Rosa";1
+"R. Barra do Jacaré";1
+"R. Barra do Peixe";1
+"R. Barros Penteado";1
+"R. Barros Sobrinho";1
+"R. Bartolomeu Esteves";1
+"R. Bartolomeu Feio";1
+"R. Barão Jaceguai";1
+"R. Basílio Alves Morango";1
+"R. Barão de Cotegipe";1
+"R. Barão de Ijuí";1
+"R. Barão de Ladário";1
+"R. Barão de Resende";1
+"R. Barão de Tatuí";1
+"R. Barão do Sabará";1
+"R. Bastos Pereira";1
+"Pça.  Pastor Rubens Lopes";1
+"Pça.  Padre Aleixo Monteiro Mafra";1
+"Pça.  Ouvidor Pacheco e Silva";1
+"Av. Francisco Ferreira Lopes";1
+"Av. Fuad Assef Maluf";1
+"Av. Fulfaro";1
+"Av. Gen.  Cavalcanti de Albuquerque";1
+"Av. Gen. Lamartine";1
+"Av. Gregório Bezerra";1
+"Av. Gualtar";1
+"Av. Guilherme Giorgi";1
+"Av. Guilherme Gonçalves do Rosário";1
+"Av. Henrique Franco";1
+"Av. Humberto de Alencar Castelo Branco";1
+"Av. Ibijaú";1
+"Av. Inconfidência Mineira";1
+"Av. Inocêncio Seráfico";1
+"Av. Intercontinental";1
+"Av. Irmã Dulce";1
+"Av. Italo Adami";1
+"Av. Itamarati";1
+"Av. Francisco Rodrigues";1
+"Av. Francisco De Paula Q Ribeiro";1
+"Av. Dr. Francisco Xavier";1
+"Av. Felipe Pedrell";1
+"Av. Dr. José Fornari";1
+"Av. Dr. José Maciel";1
+"Av. Dr. Luís Rocha Miranda";1
+"Av. Dr. Martin Luther King";1
+"Av. Dr. Pereira Vergueiro";1
+"Av. Dr. Rudge Ramos";1
+"Av. Dr. Timóteo Penteado";1
+"Av. Dracena";1
+"Av. Duquesa de Goiás";1
+"Av. Eduardo Pereira Ramos";1
+"Av. Educador Paulo Freire";1
+"Av. Eng.  Luís Gomes Cardim Sangirardi";1
+"Av. Eng.  Queiros Teles";1
+"Av. Eng. Eusébio Stevaux";1
+"Av. Eng. Saraíva de Oliveira";1
+"Av. Estação";1
+"Av. Fagundes Filho";1
+"Av. Jaci";1
+"Av. Jacinto Júlio";1
+"Av. Jacutinga";1
+"Av. Jamaris";1
+"Av. João de Andrade";1
+"Av. Junta Mizumoto";1
+"Av. Jurucê";1
+"Av. Lara Campos";1
+"Av. Laranja da China";1
+"Av. Lions";1
+"Av. Lopes de Azevedo";1
+"Av. Lourenço de Souza Franco";1
+"Av. Luís Romero Sanson";1
+"Av. Maj. Roberto dos Santos";1
+"Av. Manoel Bolívar";1
+"Av. Manuel Pímentel";1
+"Av. Marcos Paulo Gonçalves";1
+"Av. Marginal";1
+"Av. Marginal Direita do Tietê";1
+"Av. Marginal Projetada";1
+"Av. Maria Antônia Martins";1
+"Av. João Ventura dos Santos";1
+"Av. João Peixoto Viegas";1
+"Av. João Paulo da Silva";1
+"Av. José Carlos Pace";1
+"Av. Jesuíno Nicomédio dos Santos";1
+"Av. Joaquim Napoleão Machado";1
+"Av. Joaquim de Santana";1
+"Av. Joaquina Ramalho";1
+"Av. Jornalista Paulo Zingg";1
+"Av. José Antônio de Almeida Amazonas";1
+"Av. José Barbosa de Siqueira";1
+"Av. José Estima Filho";1
+"Av. João Paulo Ablas";1
+"Av. José Higino Neves";1
+"Av. José Maria Fernandes";1
+"Av. José Martins Lisboa";1
+"Av. José Ricardo Nalle";1
+"Av. João Carlos da Silva Borges";1
+"Av. João Dória";1
+"Av. João Firmino";1
+"Av. Dr. José Artur Nova";1
+"Av. Dr. Enéas de Carvalho Aguiar & Av. Rebouças";1
+"Pça.  Oswaldo Luiz da Silveira";1
+"Av. Aldeia Manuel Antônio";1
+"Av. Almirante Delamare";1
+"Av. Almyr Dehar";1
+"Av. Anacé";1
+"Av. Andorinha dos Beirais";1
+"Av. Andrea Pisano";1
+"Av. André Araújo";1
+"Av. Antonio de Salles Penteado";1
+"Av. Antônia Rosa Fioravante";1
+"Av. Antônio Bernardo Silvestre";1
+"Av. Antônio Piranga";1
+"Av. Aratãs";1
+"Av. Armando Ferrentini";1
+"Av. Arquiteto Roberto Aflalo";1
+"Av. Arraias do Araguaia";1
+"Av. Assembléia";1
+"Av. Augusto Antunes";1
+"Av. Aurélia Lopes Takano";1
+"Av. Alfred Jurzykowski";1
+"Av. Alcindo Ferreira";1
+"Av. Dr. Dante Pazzanese";1
+"Av. Alcides Sangirardi";1
+"Alameda 2 Sargento Andiras Nogueira de Abreu";1
+"Alameda Barros";1
+"Alameda Dr. Sílvio de Campos";1
+"Alameda Eduardo Prado";1
+"Alameda dos Guatás";1
+"Alameda dos Ubiatans";1
+"Amadeu Amaral Square";1
+"Av. 11 de Junho";1
+"Av. Adolfo Coelho";1
+"Av. Adélia Chohfi";1
+"Av. Afonso Moreno";1
+"Av. Agostinho Rubin";1
+"Av. Albert Einstein";1
+"Av. Alberto Augusto Alves";1
+"Av. Alberto Byington";1
+"Av. Alberto Ramos";1
+"Av. Alberto Soares Sampaio";1
+"Av. Azevedo";1
+"Av. Barão do Melgaço";1
+"Av. Benjamim Mansur";1
+"Av. Bento da Silva Bueno";1
+"Av. Comendador Wolthers";1
+"Av. Conselheiro Rodrigues Alves";1
+"Av. Cumbica";1
+"Av. Cândido José Xavier";1
+"Av. Dedo de Deus";1
+"Av. Dep.  Dr. José Aristodemo Pinotti";1
+"Av. Dep. Dr. José A. Pinotti";1
+"Av. Diederichsen";1
+"Av. Diretriz";1
+"Av. Dolores Lupiano Moioli";1
+"Av. Domingos de Souza Marques";1
+"Av. Dona Emilia de Castro Martins";1
+"Av. Dr. Abrahão Ribeiro";1
+"Av. Dr. Alberto Penteado";1
+"Av. Dr. Altino Arantes";1
+"Av. Dr. Antonio João Abdalla";1
+"Av. Dr. Bernardino Brito Fonseca de Carvalho";1
+"Av. Comendador Martinelli";1
+"Av. Comendador Adibo Ares";1
+"Av. Cocà";1
+"Av. Brás de Abreu";1
+"Av. Benígno Carrera";1
+"Av. Bernardino de Campos";1
+"Av. Bom Pastor";1
+"Av. Bpo. César Dacorso Filho";1
+"Av. Brasilina Viêira Simões";1
+"Av. Brg.  Faria Lima";1
+"Av. Brás da Rocha Cardoso";1
+"Av. Cantos do Amanhecer";1
+"Av. Clóvis Assaf";1
+"Av. Carioca";1
+"Av. Carlos Carneiro de Souza";1
+"Av. Carneiro Ribeiro";1
+"Av. Cidade Jardim";1
+"Av. Cidade Judaidet Marjayoun";1
+"Av. Cipriano Rodrigues";1
+"Av. Clavásio Alves da Silva";1
+"Av. Maria Cursi";1
+"Av. Maria Rosa";1
+"Av. Maria Servidei Demarchi";1
+"Av. dos Imarés";1
+"Av. Águiar da Beira";1
+"Av. Álvaro Ramos";1
+"Brás";1
+"Castelo Branco";1
+"Centro";1
+"Condomínio Edifício Morada do Sol";1
+"Cruzeiro do Sul Bridge";1
+"Esquina do Espeto";1
+"Estr. Cel. José Gladiador";1
+"Estr. Ecoturística de Parelheiros";1
+"Estr. de Itapecerica";1
+"Estr. do Campo Baixo";1
+"Estrada da Servidão";1
+"Expresso Mercúrio";1
+"Jardim Europa";1
+"Largo Coração de Jesus";1
+"Largo do Cambuci";1
+"Av. dos Três Poderes";1
+"Av. dos Expedicionários";1
+"Av. Mariana de Sousa Guerra";1
+"Av. dos Eucaliptos";1
+"Av. Torres de Oliveira";1
+"Av. Valentim Magalhães";1
+"Av. Valter Boveri";1
+"Av. Vautier";1
+"Av. Vinte e Seis de Março";1
+"Av. Visc. do Rio Grande";1
+"Av. Viêira de Carvalho";1
+"Av. Waldemar Carlos Pereira";1
+"Av. Zelina";1
+"Av. da Barreira Grande";1
+"Av. da Liberdade";1
+"Av. da Represa";1
+"Av. das Cerejeiras";1
+"Av. das Saudades";1
+"Av. do Café";1
+"Av. do Taboão";1
+"Av. dos Brasileiros";1
+"Largo do Rosário";1
+"Marginal Tietê Pista Central";1
+"Parque Sao Luis";1
+"Pte. Estaiada";1
+"Pça.  Ibrahim Nobre";1
+"Pça.  Inácio Dias";1
+"Pça.  Irmãos Karmam";1
+"Pça.  Isai Leiner";1
+"Pça.  Jacob Dubena";1
+"Pça.  José Boemer Roschel";1
+"Pça.  Libertador Simon Bolívar";1
+"Pça.  Lourenço de Bellis";1
+"Pça.  Luiz Vaz de Camões";1
+"Pça.  Mal. Deodoro";1
+"Pça.  Marcelino Zonta Filho";1
+"Pça.  Miguel Dell'Erba";1
+"Pça.  Monsenhor Galvão de Souza";1
+"Pça.  Novo Mundo";1
+"Pça.  Ocapegua";1
+"Pça.  Orlando Silva";1
+"Pça.  Oswaldo Cruz";1
+"Pça.  Goiania";1
+"Pça.  Gen. Costa Barreto";1
+"Pça.  Fortunato da Silveira";1
+"Pça.  Almirante Álvaro Azambuja";1
+"Pte. Estaiada Gov. Orestes Quércia";1
+"Pte. Piqueri";1
+"Pte. da Casa Verde";1
+"Pte. da Freguesia do Ó";1
+"Pte. do Morumbi";1
+"Pte. dos Remédios";1
+"Pça.  Alexandre Issa Maluf";1
+"Pça.  Amadeu Amaral";1
+"Pça.  Dr. Mario Margarido";1
+"Pça.  Armando Salles de Oliveira";1
+"Pça.  Carlos Koseritz";1
+"Pça.  Comendador Adélino Ribeiro";1
+"Pça.  Coração de Maria";1
+"Pça.  Darcy Penteado";1
+"Pça.  Dom Orione";1
+"Pça.  Dona Amália G. Solitari";1
+"Av. Tonico Lenci";1
+"Av. Tomé Dias Laço";1
+"Av. Tomás Campanella";1
+"Av. Paulo Lincoln do Valle Pontin";1
+"Av. Nossa Senhora de Fátima";1
+"Av. Nossa Sra. dos Navegantes";1
+"Av. Nova Independência";1
+"Av. Octalles Marcondes Ferreira";1
+"Av. Olavo Egídio de Souza Aranha";1
+"Av. Oliveira Freire";1
+"Av. Orfeo Paravente";1
+"Av. Orvalho do Sol";1
+"Av. Padre Sena Freitas";1
+"Av. Padre Vicente Melillo";1
+"Av. Palmares";1
+"Av. Papa João Paulo I";1
+"Av. Papa João XXIII";1
+"Av. Paschoal Thomeu";1
+"Av. Pascoal da Rocha Falcão";1
+"Av. Patente";1
+"Av. Paulo Ayres";1
+"Av. Nossa Senhora da Concórdia";1
+"Av. Nelsom Palma Travassos";1
+"Av. Neide Carvalho de Arruda";1
+"Av. Mercúrio";1
+"Av. Martim Francisco";1
+"Av. Mateus de Albuquerque";1
+"Av. Mazzaropi";1
+"Av. Mazzei";1
+"Av. Mboi Guaçu";1
+"Av. Melchert";1
+"Av. Mercedes";1
+"Av. Miguel Achiole da Fonseca";1
+"Av. Nazaré";1
+"Av. Mimo de Vênus";1
+"Av. Miná";1
+"Av. Moacir Dantas Itapicuru";1
+"Av. Monsenhor Manfredo Leite";1
+"Av. Morais Costa";1
+"Av. Nagib Farah Maluf";1
+"Av. Naylor de Oliveira";1
+"Av. Paulo Faccini";1
+"Av. Pedroso da Silveira";1
+"Av. Timbó";1
+"Av. Pereira Barreto";1
+"Av. Roland Garros";1
+"Av. Rui Barbosa";1
+"Av. Régis";1
+"Av. Sabiá";1
+"Av. Santa Marina";1
+"Av. Santana do Mundaú";1
+"Av. Santo Afonso";1
+"Av. Sebastião Eugênio de Camargo";1
+"Av. Sen.  Casemiro da Rocha";1
+"Av. Sen. Adolf Schindling";1
+"Av. Serafim Gonçalves Pereira";1
+"Av. Suplicy";1
+"Av. São Gabriel";1
+"Av. São Lucas";1
+"Av. São Valério";1
+"Av. Ten. Amaro Felicíssimo da Silveira";1
+"Av. Teresa Cristina";1
+"Av. Rodrigues Montemor";1
+"Av. Rodolfo Pirani";1
+"Av. Roberto Pires Maciel";1
+"Av. Prof. Castro Júnior";1
+"Av. Pirajussara";1
+"Av. Piraporinha";1
+"Av. Primavera de Caiena";1
+"Av. Prof.  Eng.  Ardevan Machado";1
+"Av. Prof.  José Maria Alkmin";1
+"Av. Prof.  Rubens Gomes de Souza";1
+"Av. Prof. Alípio de Barros";1
+"Av. Prof. Gióia Martins";1
+"Av. Ricardo Medina Filho";1
+"Av. Prof. José Barreto";1
+"Av. Prof. Lineu Prestes";1
+"Av. Prof. Lourenço Filho";1
+"Av. Prof. Miguel Franchini Neto";1
+"Av. Profa. Marta Maria Bernardes";1
+"Av. Príncipe de Monteverde";1
+"Av. Queiroz Filho";1
+"R. Carambola Natal";1
+"R. Carangola";1
+"R. Carapuruí";1
+"R. Frei Bonifácio Dux";1
+"R. Frei Fidelis Mota";1
+"R. Frei Gaspar de São Bernardim";1
+"R. Frei Germano";1
+"R. Frei Machado";1
+"R. Friedrich Von Voith";1
+"R. Frutal";1
+"R. Frutuoso Coelho";1
+"R. Félix Fagundes";1
+"R. Félix Mendelssohn";1
+"R. Físico Lawrence";1
+"R. Gabriel Fauré";1
+"R. Gabriel de Carvalho";1
+"R. Gabriele D'Annunzio";1
+"R. Galileu Gaia";1
+"R. Gandavo";1
+"R. Gardênia ";1
+"R. Gasparino Bernardo";1
+"R. Frei Claude Albeville";1
+"R. Frei Antônio da Piedade";1
+"R. Francisco Albani";1
+"R. Freguesia da Cachoeira";1
+"R. Francisco Costabile Paluri";1
+"R. Francisco Danieli";1
+"R. Francisco Escobar";1
+"R. Francisco Fanganiello";1
+"R. Francisco Godinho";1
+"R. Francisco Jorge da Silva";1
+"R. Francisco Leitão";1
+"R. Francisco Marinho de Gusmão";1
+"R. Francisco Melchiori";1
+"R. Francisco Miguel Souto Viêira";1
+"R. Francisco Pedroso de Tolêdo";1
+"R. Francisco de Medeiros Jordão";1
+"R. Francisco de Sousa Queiroz";1
+"R. França Pinto";1
+"R. François Bunel";1
+"R. Frederico Marcicano";1
+"R. Frederico René de Jaegher";1
+"R. Gastão Lopes Leal";1
+"R. Gecel Buchman";1
+"R. Gen.  Bagnuolo";1
+"R. Gen.  Gaudie Ley";1
+"R. Gesumina Basani";1
+"R. Getúlio Vargas Filho";1
+"R. Gil César Baptista Marques";1
+"R. Gingadinho";1
+"R. Giovani Pattoli";1
+"R. Giovanni Romanelli";1
+"R. Gironda";1
+"R. Glauco Velásquez";1
+"R. Glycério Almeida Maciel";1
+"R. Go Sugaya";1
+"R. Godói Bueno";1
+"R. Gonçalo da Cunha";1
+"R. Gonçalves Lêdo";1
+"R. Gov. Archer";1
+"R. Grajaú";1
+"R. Gramadinho";1
+"R. Graça Aranha";1
+"R. Gerhardt Holtz";1
+"R. Geremia Lunardelli";1
+"R. Geraldo Martins dos Santos";1
+"R. Gen. Lecor";1
+"R. Gen.  Góis Monteiro";1
+"R. Gen.  Syzeno Sarmento";1
+"R. Gen.  Ulhoa Cintra";1
+"R. Gen. Couto de Magalhães";1
+"R. Gen. Eugênio de Melo";1
+"R. Gen. Hastinfilo de Moura";1
+"R. Gen. Jerônimo Furtado";1
+"R. Gen. Osório";1
+"R. Geraldo Fraga de Oliveira";1
+"R. Gen. Pantaleão Teles";1
+"R. Gen. Porfírio da Paz";1
+"R. Gen. Taváres da Silva";1
+"R. Gen. de Divisão Pedro Rodrigues da Silva";1
+"R. Geneve";1
+"R. Geolandia";1
+"R. Georges Bernanos";1
+"R. Francisco Chiarelli";1
+"R. Francisco Alarico Bérgamo";1
+"R. Emílio Kemp";1
+"R. Ernâni Pinto";1
+"R. Escobar Ortiz";1
+"R. Escócia";1
+"R. Esmeraldino Cavalcanti Torres";1
+"R. Esposende";1
+"R. Espírito Santo";1
+"R. Estado de Pernambuco";1
+"R. Estaleirador";1
+"R. Estanislau de Miranda";1
+"R. Estela";1
+"R. Estevão Pôrto";1
+"R. Esther Lang";1
+"R. Estilo Barroco";1
+"R. Estêvão Baião";1
+"R. Euclídes de Andrade";1
+"R. Eugênio de Freitas";1
+"R. Eusébio Câmara";1
+"R. Evans";1
+"R. Erva de Santa Luzia";1
+"R. Ernesto Pasqualucci";1
+"R. Francisca de Paula";1
+"R. Ernesto Nazaré";1
+"R. Eng.  Luiz Antônio Tambasco";1
+"R. Eng.  Villares da Silva";1
+"R. Eng. Agenor Machado";1
+"R. Eng. Andrade Júnior";1
+"R. Eng. Augusto Durante";1
+"R. Eng. Franco Zampari";1
+"R. Eng. Hugo Takahashi";1
+"R. Eng. Jorge Oliva";1
+"R. Eng. Mac Lean";1
+"R. Eng. Ricardo Medina";1
+"R. Eng. Sá Freire";1
+"R. Enjolras Vampré";1
+"R. Entre";1
+"R. Enéas de Barros";1
+"R. Equador";1
+"R. Ernest Renan";1
+"R. Ernesto Evans";1
+"R. Evaristo Roque";1
+"R. Faizao";1
+"R. Fanfa";1
+"R. Faustino Ribeiro Leite";1
+"R. Flordalice Spada";1
+"R. Flórida";1
+"R. Flôr da Redenção";1
+"R. Flôr de Caboclo";1
+"R. Flôr de Ouro";1
+"R. Fontoura Xavier";1
+"R. Formosa";1
+"R. Fortaleza";1
+"R. Forte de Santo Antônio";1
+"R. Fortuna de Minas";1
+"R. Fradique Coutinho";1
+"R. Fraiburgo";1
+"R. Franca do Imperador";1
+"R. Francesco Calegari";1
+"R. Francesco Mancini";1
+"R. Francesco Solimena";1
+"R. Francisca Biriba";1
+"R. Flor da Esperança";1
+"R. Fioravante Lopes Garcia";1
+"R. Filomena Fiúsa de Oliveira";1
+"R. Fernandes Moreira";1
+"R. Fausto Delduque";1
+"R. Faveira do Mato";1
+"R. Faveleiro";1
+"R. Felipe Gadelha";1
+"R. Felíciano Malabia";1
+"R. Felíciano Pereira";1
+"R. Felício Ciaccio";1
+"R. Fernando Caldas";1
+"R. Filippo Juvara";1
+"R. Fernando da Cruz";1
+"R. Fernando de Albuquerque";1
+"R. Fernando de Trejo";1
+"R. Ferreira de Araújo";1
+"R. Ferrúcio Beneduzzi";1
+"R. Figueira da Barbária";1
+"R. Figueira da Polinésia";1
+"R. Gregório de Souza";1
+"R. Gregório de Torres";1
+"R. Guabiroba de Minas";1
+"R. Itaparantim";1
+"R. Itaretama";1
+"R. Itupú";1
+"R. Itálico Silingardi";1
+"R. Iuru";1
+"R. Ivanete Silva Rocha";1
+"R. Ivo Cavalcanti";1
+"R. Jaboticabal";1
+"R. Jacarandá Preto";1
+"R. Jacarandá do Campo";1
+"R. Jacques Le Mercier";1
+"R. Jacucaim";1
+"R. Jaime Cortezão";1
+"R. Jaime Freitas Moniz";1
+"R. Jaime Paiva";1
+"R. Jairo Góis";1
+"R. Jamanari";1
+"R. Jamile Abrahão Kalil";1
+"R. Itapiraçaba";1
+"R. Itanhaém";1
+"R. Guacaris";1
+"R. Itambé";1
+"R. Irene Pedroso Cataldo";1
+"R. Irmã Filomena";1
+"R. Irmã Maria Lourença";1
+"R. Isabel Schmidt";1
+"R. Isabela Gonzaga";1
+"R. Isaura Christiano de Souza";1
+"R. Isidoro de Laet";1
+"R. Isolina Monclar";1
+"R. Itaca";1
+"R. Itagimirim";1
+"R. Itaguaçaba";1
+"R. Itagyba Santiago";1
+"R. Itajará";1
+"R. Itamar Franco";1
+"R. Itamarajú";1
+"R. Itamarati";1
+"R. Itamataí";1
+"R. Janaúba";1
+"R. Jandiatuba";1
+"R. Jandyra Nogueira Martins";1
+"R. Japaraiquara";1
+"R. Joaquim Alves Tôrres";1
+"R. Joaquim Galvão";1
+"R. Joaquim Guimarães";1
+"R. Joaquim José do Amaral";1
+"R. Joaquim Morais";1
+"R. Joaquim Nabuco";1
+"R. Joaquim Nunes Cabral";1
+"R. Joaquim Nunes Lopes";1
+"R. Joaquim Piza";1
+"R. Joaquim de Almeida";1
+"R. Job Lane";1
+"R. Jocelyn Bennaton";1
+"R. John Baird";1
+"R. John Speers";1
+"R. Jordão Camargo de Oliveira";1
+"R. Jorge Guerra";1
+"R. Jorge Rubéns Neiva de Camargo";1
+"R. Joana Pedroso dos Santos";1
+"R. Jiparaná";1
+"R. Jesuíno Arruda";1
+"R. Jaricunas";1
+"R. Japoré";1
+"R. Japurá";1
+"R. Jaques Blanchard";1
+"R. Jaques Félix";1
+"R. Jaracatiá";1
+"R. Jardim da Colina";1
+"R. Jardimirim";1
+"R. Jasmim";1
+"R. Jerônimo Coelho";1
+"R. Jasmim da Espanha";1
+"R. Jaçanã";1
+"R. Jean Baptiste D'Alembert";1
+"R. Jean Gabriel Villin";1
+"R. Jequitaí";1
+"R. Jericó";1
+"R. Jeroaquara";1
+"R. Iratinga";1
+"R. Iporá";1
+"R. Ipiranga";1
+"R. Hermínio dos Santos";1
+"R. Guiratinga";1
+"R. Gurupá";1
+"R. Gustavo da Silveira";1
+"R. Gáspar Dias de Ataíde";1
+"R. Gáspar de Lemos";1
+"R. Gérson Marques da Silva";1
+"R. Hamamélis";1
+"R. Helena Maria da Silva";1
+"R. Helena Ricceli Luchetti";1
+"R. Helicônia";1
+"R. Heliodora";1
+"R. Henrique Guilherme Nicolini";1
+"R. Henrique Muzzio";1
+"R. Henrique de Faria";1
+"R. Henry Fuseli";1
+"R. Heriberto Simões do Valle";1
+"R. Hermano da Silva";1
+"R. Guirapá";1
+"R. Guilherme Schmidt";1
+"R. Guilherme Rudge";1
+"R. Guaperuvu";1
+"R. Guacuris";1
+"R. Guaianases";1
+"R. Guaicuri";1
+"R. Guaicurus";1
+"R. Guaicuí";1
+"R. Gualachos";1
+"R. Guaones";1
+"R. Guarapa";1
+"R. Guichi Yoshioka";1
+"R. Guaricanga";1
+"R. Guariúba";1
+"R. Guarujá";1
+"R. Guaruvá";1
+"R. Guatapará";1
+"R. Guerino Raso";1
+"R. Guerreiro";1
+"R. Hermes de Moura Borges";1
+"R. Herval";1
+"R. Ipanema";1
+"R. Herwis";1
+"R. Iepê";1
+"R. Iguatemi";1
+"R. Ilha da Juventude";1
+"R. Ilimani";1
+"R. Imaculado Coração de Maria";1
+"R. Imbaçal";1
+"R. Inglesa";1
+"R. Inglês de Sousa";1
+"R. Inhatium";1
+"R. Integrada";1
+"R. Inácio Borba";1
+"R. Inácio Pereira da Rocha";1
+"R. Inácio Pinto Lima";1
+"R. Inácio Xavier";1
+"R. Inês Monteiro";1
+"R. Ioneji Matsubayashi";1
+"R. Iososuke Okave";1
+"R. Iemanjà";1
+"R. Icanhema";1
+"R. Ibituruna";1
+"R. Humberto I";1
+"R. Hildebrando Siqueira";1
+"R. Hipólito da Silva";1
+"R. Hiran Leite de Abreu";1
+"R. Hollywood";1
+"R. Honorinda Joséfa da Silva";1
+"R. Horni";1
+"R. Horácio Bandieri";1
+"R. Hungria";1
+"R. Ibiraporã";1
+"R. Hónorato Faustino";1
+"R. Iaiá";1
+"R. Iapó";1
+"R. Iberis";1
+"R. Ibiara";1
+"R. Ibiracatu";1
+"R. Ibiraiaras";1
+"R. Emílio Rodrigues";1
+"R. Emílio Goeldi";1
+"R. Cardeal Leme";1
+"R. Conde de São Joaquim";1
+"R. Congonhas";1
+"R. Conselheiro Ribas";1
+"R. Conselheiro Saraiva";1
+"R. Conselheiro Zacarias";1
+"R. Constantino Fontes";1
+"R. Constantino de Sousa";1
+"R. Constelação do Eridano";1
+"R. Contos Amazônicos";1
+"R. Coração de Maçã";1
+"R. Cordilheiras";1
+"R. Cordão de São Francisco";1
+"R. Corgie Assad Abdalla";1
+"R. Cornélio Schimidt";1
+"R. Cornélio de Arzão";1
+"R. Corrego Bonito";1
+"R. Corta Vento";1
+"R. Cosme de Azevedo";1
+"R. Condessa Amália Matarazzo";1
+"R. Conde Luiz Zunta";1
+"R. Clodomiro Furquim de Almeida";1
+"R. Concretex";1
+"R. Cláudio Aparecido Oliveira";1
+"R. Cláudio José Nunes";1
+"R. Cláudio Monteverde";1
+"R. Clóvis Morais Barros";1
+"R. Cmte. Líra";1
+"R. Coentral";1
+"R. Comandante Taylor";1
+"R. Combate da Lagoa Branca";1
+"R. Comendador Afonso Kherlakian";1
+"R. Comendador Eduardo Saccab";1
+"R. Comendador Feiz Zarzur";1
+"R. Comendador Gil Pinheiro";1
+"R. Comendador Miguel Maluhy";1
+"R. Comendador Quirino Teixeira";1
+"R. Comendador de Camillis";1
+"R. Comprida";1
+"R. Conceição Veloso";1
+"R. Cotoxó";1
+"R. Crasso";1
+"R. Cristais Paulista";1
+"R. Cristóvão Colombo Gonçalves";1
+"R. Célso Mantovani";1
+"R. César Diaz";1
+"R. César Penna Ramos";1
+"R. Cônego Eugênio Leite";1
+"R. Cônego Valadão";1
+"R. Cônego Vicente Miguel Marino";1
+"R. Damásio Mascarenhas";1
+"R. Daniel Atterbom";1
+"R. Daniel Jacinto";1
+"R. Daniel da Anunciação";1
+"R. Dante Batiston";1
+"R. Dança de Anitra";1
+"R. Dardanelos";1
+"R. David Eid";1
+"R. David Neto";1
+"R. Delmiro Gouvêia";1
+"R. Delta";1
+"R. Cândido das Neves";1
+"R. Cândido Vale";1
+"R. Cândido Portinari";1
+"R. Cumbica";1
+"R. Cristóvão de Burgos";1
+"R. Cristóvão de Gouvêia";1
+"R. Criúva";1
+"R. Croata";1
+"R. Cruz de Malta";1
+"R. Cruzeiro";1
+"R. Cumanaxos";1
+"R. Cuminapanema";1
+"R. Cândido Motta Filho";1
+"R. Cupira";1
+"R. Curumaú";1
+"R. Curuzu";1
+"R. Custóias";1
+"R. Cármem Escabia Motta Coelho";1
+"R. Cândida Medeiros da Silva";1
+"R. Cândido Godoi";1
+"R. Clotilde Gianoli";1
+"R. Clipperton";1
+"R. Emília Morgado Munhoz García";1
+"R. Carlos dos Santos";1
+"R. Carmine di Genio";1
+"R. Carminha";1
+"R. Carnot";1
+"R. Caro";1
+"R. Carolina Carletto Negri";1
+"R. Caropá";1
+"R. Casa do Ator";1
+"R. Casemiro de Abreu";1
+"R. Castelo do Piauí";1
+"R. Castilho";1
+"R. Castor";1
+"R. Castro Alves";1
+"R. Catarina Cubas";1
+"R. Catarina Lopes";1
+"R. Catarina Mauad";1
+"R. Catende";1
+"R. Caucásica";1
+"R. Carlota Mossetti";1
+"R. Carlos de Sousa Nazaré";1
+"R. Clevelândia do Norte";1
+"R. Carlos Weber";1
+"R. Cardon";1
+"R. Cardoso Moreira";1
+"R. Cardoso de Almeida";1
+"R. Carivaldina Barbosa Lima";1
+"R. Carlo Bibiena";1
+"R. Carlo Carra";1
+"R. Carlo Clausetti";1
+"R. Carlo Pallavicino";1
+"R. Carlos Alberto Vanzolini";1
+"R. Carlos Aprile";1
+"R. Carlos Escobar";1
+"R. Carlos Finlay";1
+"R. Carlos Gonçalves Ferreira";1
+"R. Carlos Jorge Schmidt";1
+"R. Carlos Mota Cordeiro";1
+"R. Carlos Silva";1
+"R. Carlos Taylor";1
+"R. Cauré";1
+"R. Cavalheiro Frontini";1
+"R. Caçaquera";1
+"R. Caí";1
+"R. Cel. Seabra";1
+"R. Celavisa";1
+"R. Celeste Sampaio Viana";1
+"R. Celso Daniel";1
+"R. Centenário do Sul";1
+"R. Cerro Corá";1
+"R. Cezar Zama";1
+"R. Chaime";1
+"R. Charles Darwin";1
+"R. Cid Vieira de Souza";1
+"R. Cinira Polônio";1
+"R. Cipó do Reino";1
+"R. Citeron";1
+"R. Clara Fernandes";1
+"R. Clarinia";1
+"R. Clarissa";1
+"R. Clementino Cunha";1
+"R. Cel. Rodovalho";1
+"R. Cel. Paulo Mariano";1
+"R. Cel. Palimércio de Rezende";1
+"R. Cel. Augusto Célso de Moura";1
+"R. Ceará";1
+"R. Cecilia Furtado";1
+"R. Cecília Calovini";1
+"R. Cel.  Albino Bairao";1
+"R. Cel.  Bento Bicudo";1
+"R. Cel.  Luís Schimidt";1
+"R. Cel.  Marques";1
+"R. Cel. Cabrita";1
+"R. Cel. Otaviano da Silveira";1
+"R. Cel. Higino Borges dos Santos";1
+"R. Cel. Homero da Silveira";1
+"R. Cel. Jordão";1
+"R. Cel. José Venâncio Dias";1
+"R. Cel. Manuel Machado";1
+"R. Cel. Marcílio Franco";1
+"R. Cel. Ortiz";1
+"R. Demóstenes";1
+"R. Denis Chaudet";1
+"R. Dep. Joaquim Libânio";1
+"R. Dr. Luís Arrobas Martins";1
+"R. Dr. Luís Lustosa da Silva";1
+"R. Dr. Manoel Carlos Ferraz de Almeida";1
+"R. Dr. Mariano Cursino de Moura";1
+"R. Dr. Mario Cardim";1
+"R. Dr. Mario Setzer";1
+"R. Dr. Martins de Oliveira";1
+"R. Dr. Miguel Guimarães";1
+"R. Dr. Miranda de Azevedo";1
+"R. Dr. Monteiro Tapajós";1
+"R. Dr. Nelson Ferreira de Souza";1
+"R. Dr. Nelson da Veiga";1
+"R. Dr. Nicolau de Sousa Queirós";1
+"R. Dr. Odon Carlos de Figueiredo Ferraz";1
+"R. Dr. Olavo Egídio";1
+"R. Dr. Olindo Chiaffarelli";1
+"R. Dr. Otávio Lôbo";1
+"R. Dr. Paulo Meloni";1
+"R. Dr. Luís Augusto de Queirós Aranha";1
+"R. Dr. Lund";1
+"R. Dep. João Sussumu Hirata";1
+"R. Dr. Louis Couty";1
+"R. Dr. Gabriel de Resende Filho";1
+"R. Dr. Ivo de Campos Marques";1
+"R. Dr. Jesuíno Maciel";1
+"R. Dr. Joaquim de Carvalho";1
+"R. Dr. José Augusto de Souza e Silva";1
+"R. Dr. José Gustavo Busch";1
+"R. Dr. José Gustavo Bush";1
+"R. Dr. José Nigro";1
+"R. Dr. José Pachêco e Silva";1
+"R. Dr. José Paulo";1
+"R. Dr. José Ricardo Ataíde Marcondes";1
+"R. Dr. José Rodrigues Alves Sobrinho";1
+"R. Dr. José Áureo Bustamante";1
+"R. Dr. João Carlos Azevedo";1
+"R. Dr. João César de Castro";1
+"R. Dr. João Otaviano Pereira";1
+"R. Dr. João Toniolo";1
+"R. Dr. Paulo Vieira";1
+"R. Dr. Rafael de Araújo Ribeiro";1
+"R. Dr. Ricardo Gonçalves";1
+"R. Dr. Rubens Gomes Bueno";1
+"R. Edith Junqueira de Azevedo Marques";1
+"R. Edmundo Arrabar";1
+"R. Eduardo Ramos";1
+"R. Eduardo de Sá";1
+"R. Edward Weston";1
+"R. Eli";1
+"R. Elisio Mendes Gaia";1
+"R. Elisiário";1
+"R. Eliziário Martins de Souza";1
+"R. Eloa do Vale Quadros";1
+"R. Elías Casseb";1
+"R. Elías de Almeida";1
+"R. Embaixador Samuel Gracie";1
+"R. Embaixadora Dora de Vasconcelos";1
+"R. Embiara";1
+"R. Emboabas";1
+"R. Embuaçu";1
+"R. Décio da Silva";1
+"R. Durval Vilalva";1
+"R. Durandé";1
+"R. Dr. Xavier de Oliveira";1
+"R. Dr. Sabóia de Medeiros";1
+"R. Dr. Sanareli";1
+"R. Dr. Scyllas Leite Sampaio";1
+"R. Dr. Sodré";1
+"R. Dr. Valentim Amaral";1
+"R. Dr. Virgílio Machado";1
+"R. Dr. Virgílio de Carvalho Pinto";1
+"R. Dr. Álvares Rubião";1
+"R. Duque de Caxias";1
+"R. Dr. Álvaro Alvim";1
+"R. Dragões da Independência";1
+"R. Dráusio";1
+"R. Duarte de Azevedo";1
+"R. Duarte de Carvalho";1
+"R. Dunkerque";1
+"R. Duplo Céu";1
+"R. Dr. Francisco Tomás de Carvalho";1
+"R. Dr. Francisco Figueiredo Barreto";1
+"R. Dr. Ferreira Lopes";1
+"R. Domingos Olímpio";1
+"R. Dom Andrés Lamas";1
+"R. Dom Bernardo Nogueira";1
+"R. Dom Joaquim de Melo";1
+"R. Dom João Batista Neri";1
+"R. Dom João Maria Ogno";1
+"R. Dom João V";1
+"R. Dom Lucas Obes";1
+"R. Dom Luís Lasanha";1
+"R. Dom Rodo";1
+"R. Dom Vilares";1
+"R. Domiciano Ribeiro";1
+"R. Domingas Galleteri Blotta";1
+"R. Domingos Afonso Sertão";1
+"R. Domingos Baião";1
+"R. Domingos Barbieri";1
+"R. Domingos Fasolari";1
+"R. Domingos Fernandes Nobre";1
+"R. Dom Amaral Mousinho";1
+"R. Dois de Julho";1
+"R. Diógenes de Lima";1
+"R. Dina";1
+"R. Dep. Martinho Rodrigues";1
+"R. Des. Paulo Passaláqua";1
+"R. Des. Veloso de Oliveira";1
+"R. Desembargador Bandeira de Mello";1
+"R. Diana de Liz";1
+"R. Dias de Almeida";1
+"R. Diaulas Parreiras";1
+"R. Dinah Silveira de Queiroz";1
+"R. Divino Ferreira de Souza";1
+"R. Dinamarca";1
+"R. Diogo Ortiz";1
+"R. Diogo Píres";1
+"R. Diogo da Costa Tavares";1
+"R. Diogo de Castro";1
+"R. Dionísio Murcovic";1
+"R. Divino Alves de Abreu";1
+"R. Domingos José Sapienza";1
+"R. Domingos Ribeiro";1
+"R. Dr. Fabrício Vampré";1
+"R. Domingos Tarroso";1
+"R. Dorinha Tapajós";1
+"R. Doutor Otacílio Câmara Silveira";1
+"R. Doze";1
+"R. Dr. Abelardo Vergueiro Cesar";1
+"R. Dr. Alceu de Campos Rodrigues";1
+"R. Dr. Alfredo Ellis";1
+"R. Dr. Amaral Carvalho";1
+"R. Dr. Antônio Mazzilli Filho";1
+"R. Dr. Augusto Galvão Vaz Cerquinho";1
+"R. Dr. Bitencourt Rodrigues";1
+"R. Dr. Castro Ramos";1
+"R. Dr. César Castiglioni Júnior";1
+"R. Dr. Dalmo de Godói";1
+"R. Dr. Dari Barcellos";1
+"R. Dr. Elísio de Castro";1
+"R. Dr. Ernâni da Gama Corrêa";1
+"R. Dr. Estevão Montebelo";1
+"R. Doná Augusta Rodrigues Fernandes";1
+"R. Donato Cossoni";1
+"R. Dona Virgínia";1
+"R. Dona Ana Néri";1
+"R. Domingos da Costa Mata";1
+"R. Domingos da Rocha Meira";1
+"R. Domingos de Braga";1
+"R. Domingos de Sousa Silva";1
+"R. Domênico Baleti";1
+"R. Domênico Perotti";1
+"R. Dona Alcide Rios de Castro";1
+"R. Dona Antônia de Queirós";1
+"R. Dona Santa Veloso";1
+"R. Dona Carolina";1
+"R. Dona Elfrida";1
+"R. Dona Elisa de Moraes Mendes";1
+"R. Dona Eloá do Valle Quadros";1
+"R. Dona Herminda Borba Attuy";1
+"R. Dona Júlia";1
+"R. Dona Matilde";1
+"​R. Almeida Leme";1
