@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.neural_network import MLPClassifier
 
 from notebooks import tweets_processing_config
 from notebooks.geolocation_config import google_geolocation_key
@@ -17,7 +18,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
 
-from sklearn import tree, svm
+from sklearn import tree, svm, neighbors
 from sklearn.naive_bayes import MultinomialNB, GaussianNB
 
 import nltk
@@ -347,57 +348,97 @@ y_predicted_random_forest_clf = random_forest_clf.predict(X_test_tfidf_counts)
 logging.info("Random Forest: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
     get_metrics(y_test, y_predicted_random_forest_clf)))
 
+"""# k-nn"""
+
+knn_clf = neighbors.KNeighborsClassifier()
+knn_clf.fit(X_train_tfidf_counts, y_train)
+y_predicted_knn_clf = knn_clf.predict(X_test_tfidf_counts)
+
+logging.info("Nearest Neighbors: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
+    get_metrics(y_test, y_predicted_knn_clf)))
+
+"""# MLP"""
+
+mlp_clf = clf = MLPClassifier()
+mlp_clf.fit(X_train_tfidf_counts, y_train)
+y_predicted_mlp_clf = mlp_clf.predict(X_test_tfidf_counts)
+
+logging.info("Multi-layer Perceptron: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
+    get_metrics(y_test, y_predicted_mlp_clf)))
 
 """# Validation"""
 
 
-def plot_confusion_matrix(cm, classes, normalize=False, title='', cmap=plt.cm.winter):
+def plot_confusion_matrix(cm, classes,
+                          normalize=False,
+                          title='Confusion matrix',
+                          cmap=plt.cm.Blues):
+    """
+    This function prints and plots the confusion matrix.
+    Normalization can be applied by setting `normalize=True`.
+    """
     if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+        print("Normalized confusion matrix")
+    else:
+        print('Confusion matrix, without normalization')
+
+    print(cm)
+
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title, fontsize=30)
-    plt.colorbar()
+    plt.colorbar().ax.tick_params(labelsize=20)
+
     tick_marks = np.arange(len(classes))
-    plt.xticks(tick_marks, classes, fontsize=20)
+    plt.xticks(tick_marks, classes, rotation=45, fontsize=20)
     plt.yticks(tick_marks, classes, fontsize=20)
 
     fmt = '.2f' if normalize else 'd'
     thresh = cm.max() / 2.
-
     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-        plt.text(j, i, format(cm[i, j], fmt), horizontalalignment="center",
-                 color="white" if cm[i, j] < thresh else "black", fontsize=40)
+        plt.text(j, i, format(cm[i, j], fmt),
+                 horizontalalignment="center",
+                 color="white" if cm[i, j] > thresh else "black", fontsize=20)
 
     plt.tick_params(labelsize=18)
     plt.ylabel('True label', fontsize=30)
     plt.xlabel('Predicted label', fontsize=30)
+    plt.tight_layout()
 
     return plt
 
 
 cm_logistic_regression = confusion_matrix(y_test, y_predicted_logistic_regression_clf)
 plt.figure(figsize=(13, 13))
-plot_confusion_matrix(cm_logistic_regression, classes=model_classes, normalize=False).show()
+plot_confusion_matrix(cm_logistic_regression, classes=model_classes, normalize=True, title='').show()
 
 cm_decision_tree = confusion_matrix(y_test, y_predicted_decision_tree_clf)
 plt.figure(figsize=(13, 13))
-plot_confusion_matrix(cm_decision_tree, classes=model_classes, normalize=False).show()
+plot_confusion_matrix(cm_decision_tree, classes=model_classes, normalize=True, title='').show()
 
 cm_mnb = confusion_matrix(y_test, y_predicted_mnb)
 plt.figure(figsize=(13, 13))
-plot_confusion_matrix(cm_mnb, classes=model_classes, normalize=False).show()
+plot_confusion_matrix(cm_mnb, classes=model_classes, normalize=True, title='').show()
 
 cm_gnb = confusion_matrix(y_test, y_predicted_gnb)
 plt.figure(figsize=(13, 13))
-plot_confusion_matrix(cm_gnb, classes=model_classes, normalize=False).show()
+plot_confusion_matrix(cm_gnb, classes=model_classes, normalize=True, title='').show()
 
 cm_svm = confusion_matrix(y_test, y_predicted_svm_clf)
 plt.figure(figsize=(13, 13))
-plot_confusion_matrix(cm_svm, classes=model_classes, normalize=False).show()
+plot_confusion_matrix(cm_svm, classes=model_classes, normalize=True, title='').show()
 
 cm_rf = confusion_matrix(y_test, y_predicted_random_forest_clf)
 plt.figure(figsize=(13, 13))
-plot_confusion_matrix(cm_rf, classes=model_classes, normalize=False).show()
+plot_confusion_matrix(cm_rf, classes=model_classes, normalize=True, title='').show()
+
+cm_knn = confusion_matrix(y_test, y_predicted_knn_clf)
+plt.figure(figsize=(13, 13))
+plot_confusion_matrix(cm_knn, classes=model_classes, normalize=True, title='').show()
+
+cm_mlp = confusion_matrix(y_test, y_predicted_mlp_clf)
+plt.figure(figsize=(13, 13))
+plot_confusion_matrix(cm_mlp, classes=model_classes, normalize=True, title='').show()
 
 """# Features"""
 
