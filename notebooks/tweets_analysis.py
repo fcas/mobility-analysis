@@ -221,8 +221,7 @@ if not os.path.isfile("processed_tweets.csv"):
     tokenized_tweets = tokenize_tweets(df_raw_tweets)
     tokenized_tweets["text"] = tokenized_tweets["tokens"].apply(tokens_to_text)
     tokenized_tweets['dateTime'] = pd.to_datetime(tokenized_tweets.dateTime)
-    tokenized_tweets.to_csv("processed_tweets.csv", sep=",", index=False, quoting=csv.QUOTE_NONNUMERIC, header=True,
-                            float_format='%.0f')
+    tokenized_tweets.to_csv("processed_tweets.csv", sep=",", index=False, quoting=csv.QUOTE_NONNUMERIC, header=True)
 
 tokenized_tweets = pd.read_csv('processed_tweets.csv', sep=',')
 # cleaned tweets can be empty
