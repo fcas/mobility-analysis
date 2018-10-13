@@ -189,13 +189,13 @@ def tokenize_tweets(tweets):
 if not os.path.isfile("classified_tweets.csv"):
     load_tweets()
 
-df_raw_tweets = pd.read_csv('classified_tweets.csv', sep=',')
+df_raw_tweets = pd.read_csv('classified_tweets.csv', sep=',', dtype={'_id': str})
 df_raw_tweets.columns = input_headers
 df_raw_tweets["text"].fillna("", inplace=True)
 
+
 if not os.path.isfile("processed_tweets.csv"):
     df_raw_tweets["raw_tweet"] = df_raw_tweets["text"].apply(save_raw_tweet)
-
     map_address = {}
     address_tokens = set()
     df_raw_tweets["location_type"] = ""
@@ -220,7 +220,9 @@ if not os.path.isfile("processed_tweets.csv"):
 
     tokenized_tweets = tokenize_tweets(df_raw_tweets)
     tokenized_tweets["text"] = tokenized_tweets["tokens"].apply(tokens_to_text)
-    tokenized_tweets.to_csv("processed_tweets.csv", sep=",", index=True, quoting=csv.QUOTE_NONNUMERIC, header=True)
+    tokenized_tweets['dateTime'] = pd.to_datetime(tokenized_tweets.dateTime)
+    tokenized_tweets.to_csv("processed_tweets.csv", sep=",", index=False, quoting=csv.QUOTE_NONNUMERIC, header=True,
+                            float_format='%.0f')
 
 tokenized_tweets = pd.read_csv('processed_tweets.csv', sep=',')
 # cleaned tweets can be empty
