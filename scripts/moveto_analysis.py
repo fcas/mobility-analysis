@@ -55,7 +55,7 @@ def process_movto_files(paths, event_id, event_date_time, event_affected_code_li
 
             global events_lng_lat
             events_lng_lat.clear()
-            events_lng_lat.add((event_lng, event_lat))
+            events_lng_lat.add((float(event_lng), float(event_lat)))
 
             df_affected_lines = df.loc[(df['cd_linha'].isin(event_affected_code_lines))]
             if not df_affected_lines.empty:
@@ -75,13 +75,13 @@ def process_movto_files(paths, event_id, event_date_time, event_affected_code_li
     if len(stats_frames) > 0:
         all_df = pd.concat(stats_frames)
         all_df.to_csv(path.join(path.dirname(path.realpath(__file__)),
-                                "..", "datasets", "stats_{}.csv".format(event_id)), sep=";", index=True,
+                                "..", "datasets", "stats_{}.csv".format(event_id)), sep=",", index=True,
                       quoting=csv.QUOTE_NONNUMERIC, header=True)
 
 
 def process_events(event):
     event_affected_code_lines = ast.literal_eval(event['affected_code_lines'])
-    if str(event["_id"]) not in processed and event_affected_code_lines:
+    if str(event["_id"]) not in processed and event_affected_code_lines and event['dateTime'].year == 2017:
         event_year = event['dateTime'].year
         event_month = event['dateTime'].month
         event_hour = event['dateTime'].hour
@@ -123,7 +123,8 @@ def is_close_to_event(lng_bus_position, lat_bus_position):
 
 if __name__ == '__main__':
     df_events = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
-                                      "processed_tweets_CETSP_affected_code_lines_100.csv"), encoding='utf-8', sep=';')
+                                      "processed_tweets_affected_code_lines_1000.csv"), encoding='utf-8', sep=',',
+                            dtype={'lat': str, 'lng': str})
 
     df_events["dateTime"] = pd.to_datetime(df_events.dateTime)
 
