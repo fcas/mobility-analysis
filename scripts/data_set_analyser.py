@@ -1,5 +1,6 @@
 import os
 import calendar
+import zipfile
 
 from mov_to_generator import get_file_paths
 
@@ -7,6 +8,11 @@ months_map = {1: 'Janeiro', 2: 'Fevereiro', 3: 'Março', 4: 'Abril', 5: 'Maio', 
               9: 'Setembro', 10: 'Outubro', 11: 'Novembro', 12: 'Dezembro'}
 base_path = "/".join(['/Volumes', 'felipe'])
 year = 2017
+
+
+def get_size(file_path):
+    zp = zipfile.ZipFile(file_path)
+    return sum([zinfo.file_size for zinfo in  zp.filelist])
 
 
 def get_data_set_description(paths):
@@ -20,7 +26,7 @@ def get_data_set_description(paths):
         if result:
             data_set_description[path[6:12]] = (data_set_description.get(path[6:12], (0, 0))[0] + 1,
                                                 data_set_description.get(path[6:12], (0, 0))[1] +
-                                                os.path.getsize(file_path))
+                                                get_size(file_path))
     return data_set_description
 
 
