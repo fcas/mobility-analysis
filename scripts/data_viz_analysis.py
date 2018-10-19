@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from os import path
 import csv
+import glob
 
 
 def remove_last_digits(address):
@@ -86,7 +87,7 @@ def plot_affected_addresses():
 
 def plot_stats():
     df_stats = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
-                                     "stats_894696768767762432.csv"), encoding='utf-8', sep=';')
+                                     "stats_867839850661072896.csv"), encoding='utf-8', sep=',')
     df_stats['day'] = df_stats.apply(lambda x: int(x['filename'].split("_")[0][6:8]), axis=1)
     event_datetime = datetime.datetime.strptime(df_stats['dateTime'].values[0], '%Y-%m-%d %H:%M:%S')
     code_lines = list(set(df_stats['cd_linha'].tolist()))
@@ -141,6 +142,50 @@ def plot_stats():
         plt.show()
 
 
+def describe():
+    csv_file = open("velocity_analysis.csv", "w")
+    writer = csv.writer(csv_file, delimiter=',')
+
+    for file_path in glob.glob(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "stats_*")):
+        file_name = file_path.split("datasets/")[1]
+        event_id = file_name.split("stats_")[1].split(".csv")[0]
+
+        try:
+            df_stats = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
+                                             file_name), encoding='utf-8', sep=',')
+            if not df_stats.empty:
+                df_stats['day'] = df_stats.apply(lambda x: int(x['filename'].split("_")[0][6:8]), axis=1)
+                event_datetime = datetime.datetime.strptime(df_stats['dateTime'].values[0], '%Y-%m-%d %H:%M:%S')
+                code_lines = list(set(df_stats['cd_linha'].tolist()))
+                for code_line in code_lines:
+                    df_event_day = df_stats.loc[(df_stats['cd_linha'] == code_line) & (df_stats['day'] ==
+                                                                                       event_datetime.day)]
+                    if len(list(df_event_day['mean'])) == 0:
+                        writer.writerow([event_id, code_line, str(event_datetime), -1])
+                    else:
+                        df_normal_days = df_stats.loc[(df_stats['cd_linha'] == code_line) & (df_stats['day'] !=
+                                                                                             event_datetime.day)]
+                        less_count = len(df_normal_days.loc[(df_normal_days['mean'] > list(df_event_day['mean'])[0])])
+                        total_lines = len(df_stats.loc[(df_stats['cd_linha'] == code_line)])
+                        writer.writerow([event_id, code_line, str(event_datetime), "{0:.2f}".format(less_count / (
+                            total_lines - 1 if total_lines > 1 else total_lines) * 100)])
+            else:
+                writer.writerow([event_id, -1, "", -1])
+        except Exception as e:
+            print(event_id, e)
+            writer.writerow([event_id, -1, "", -1])
+            pass
+
+    csv_file.close()
+
+    velocities = pd.read_csv('velocity_analysis.csv', encoding='utf-8', sep=',', header=None)
+    velocities.columns = ['event_id', 'code_line', 'dateTime', 'less_count']
+    velocities['less_count'] = velocities['less_count'].astype(float)
+
+    less = len(velocities.loc[(velocities['less_count'] >= 50)])
+    more = len(velocities.loc[(velocities['less_count'] < 50) & (velocities['less_count'] >= 0)])
+    print((less / (less + more)) * 100)
+
 # df = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
 #                            "processed_tweets_CETSP_affected_code_lines_100.csv"), encoding='utf-8', sep=';')
 # df["dateTime"] = pd.to_datetime(df.dateTime)
@@ -150,4 +195,9 @@ def plot_stats():
 #                     "2_processed_tweets_CETSP_affected_code_lines_100.csv"), sep=",", index=False,
 #           quoting=csv.QUOTE_NONNUMERIC, header=True)
 
-plot_affected_addresses()
+# plot_affected_addresses()
+# plot_stats()
+
+
+describe()
+

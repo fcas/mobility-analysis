@@ -1,4 +1,6 @@
 import io
+from threading import Thread
+from queue import Queue
 import zipfile
 
 import pandas as pd
@@ -24,10 +26,13 @@ events_lng_lat = set()
 cores = cpu_count()
 partitions = cores
 processed = []
-for file in glob.glob(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "stats*")):
+for file in glob.glob(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "stats_*")):
     processed.append(file.split("_")[1].split(".csv")[0])
 
 processed = list(set(processed))
+
+num_fetch_threads = 1
+enclosure_queue = Queue()
 
 
 def process_movto_files(paths, event_id, event_date_time, event_affected_code_lines, event_lng, event_lat):
@@ -74,22 +79,29 @@ def process_movto_files(paths, event_id, event_date_time, event_affected_code_li
 
     if len(stats_frames) > 0:
         all_df = pd.concat(stats_frames)
-        all_df.to_csv(path.join(path.dirname(path.realpath(__file__)),
+        all_df.to_csv(path.join(path.dirname(path.realpath('__file__')),
                                 "..", "datasets", "stats_{}.csv".format(event_id)), sep=",", index=True,
                       quoting=csv.QUOTE_NONNUMERIC, header=True)
+    else:
+        empty_file = open(path.join(path.dirname(path.realpath('__file__')), "..", "datasets",
+                                    "stats_{}.csv".format(event_id)), "w")
+        empty_file.close()
 
 
-def process_events(event):
-    event_affected_code_lines = ast.literal_eval(event['affected_code_lines'])
-    if str(event["_id"]) not in processed and event_affected_code_lines and event['dateTime'].year == 2017:
-        event_year = event['dateTime'].year
-        event_month = event['dateTime'].month
-        event_hour = event['dateTime'].hour
+def process_events(q):
+    while True:
+        event = q.get()
+        event_affected_code_lines = ast.literal_eval(event['affected_code_lines'])
+        if str(event["_id"]) not in processed and event_affected_code_lines and event['dateTime'].year == 2017:
+            event_year = event['dateTime'].year
+            event_month = event['dateTime'].month
+            event_hour = event['dateTime'].hour
 
-        paths = get_file_paths(event_year, [event_month], [event_hour])
-        print("Affected code lines: {}".format(event['affected_code_lines']))
-        process_movto_files(paths, event['_id'], event['dateTime'], event_affected_code_lines,
-                            event['lng'], event['lat'])
+            paths = get_file_paths(event_year, [event_month], [event_hour])
+            print("Affected code lines: {}".format(event['affected_code_lines']))
+            process_movto_files(paths, event['_id'], event['dateTime'], event_affected_code_lines,
+                                event['lng'], event['lat'])
+        q.task_done()
 
 
 def parallelize(data, ref_function):
@@ -128,10 +140,28 @@ if __name__ == '__main__':
 
     df_events["dateTime"] = pd.to_datetime(df_events.dateTime)
 
+    df_events.index = df_events['dateTime']
+    df_events = df_events.loc['2017-08']
+
     # df_exception_events_with_address = df_events.loc[(df_events['_id'] != 891724397370904576)]
 
     df_exception_events_with_address = df_events.loc[(df_events['label'] != "Irrelevant") &
                                                      (df_events['address'].notnull()) &
                                                      (df_events['lat'].notnull()) & (df_events['lng'].notnull())]
 
-    df_exception_events_with_address.apply(lambda x: process_events(x), axis=1)
+    # df_exception_events_with_address.to_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
+    #                                                   "processed_tweets_affected_code_lines_100_august.csv"),
+    #                                         sep=",", index=True, quoting=csv.QUOTE_NONNUMERIC, header=True)
+
+    for i in range(num_fetch_threads):
+        worker = Thread(target=process_events, args=(enclosure_queue,))
+        worker.setDaemon(True)
+        worker.start()
+
+    for index, row in df_exception_events_with_address.iterrows():
+        enclosure_queue.put(row)
+
+    enclosure_queue.join()
+
+    # df_exception_events_with_address.apply(lambda x: threads.append(MyThread(x).start()), axis=1)
+
