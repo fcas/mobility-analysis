@@ -6,6 +6,9 @@ from os import path
 import csv
 import glob
 
+from numpy import average, mean
+from pandas.errors import EmptyDataError
+
 
 def remove_last_digits(address):
     last_string = address.split(" ")[-1]
@@ -146,9 +149,13 @@ def describe():
     csv_file = open("velocity_analysis.csv", "w")
     writer = csv.writer(csv_file, delimiter=',')
 
-    for file_path in glob.glob(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "stats_*")):
+    for file_path in glob.glob(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
+                                         "stats100aug_event_days", "stats_*_natural_disaster.csv")):
+    # for file_path in glob.glob(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
+    #                                      "stats_*_social_event.csv")):
+
         file_name = file_path.split("datasets/")[1]
-        event_id = file_name.split("stats_")[1].split(".csv")[0]
+        event_id = file_name.split("stats_")[1].split("_")[0]
 
         try:
             df_stats = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
@@ -161,30 +168,46 @@ def describe():
                     df_event_day = df_stats.loc[(df_stats['cd_linha'] == code_line) & (df_stats['day'] ==
                                                                                        event_datetime.day)]
                     if len(list(df_event_day['mean'])) == 0:
-                        writer.writerow([event_id, code_line, str(event_datetime), -1])
+                        # writer.writerow([event_id, code_line, str(event_datetime), -1])
+                        pass
                     else:
-                        df_normal_days = df_stats.loc[(df_stats['cd_linha'] == code_line) & (df_stats['day'] !=
-                                                                                             event_datetime.day)]
-                        less_count = len(df_normal_days.loc[(df_normal_days['mean'] > list(df_event_day['mean'])[0])])
-                        total_lines = len(df_stats.loc[(df_stats['cd_linha'] == code_line)])
-                        writer.writerow([event_id, code_line, str(event_datetime), "{0:.2f}".format(less_count / (
-                            total_lines - 1 if total_lines > 1 else total_lines) * 100)])
+                        # df_normal_days = df_stats.loc[(df_stats['cd_linha'] == code_line) & (df_stats['day'] !=
+                        #                                                                      event_datetime.day)]
+                        velocity_mean = np.median(df_stats['median'].tolist())
+                        # less_count = len(df_normal_days.loc[(df_normal_days['mean'] > list(df_event_day['mean'])[0])])
+                        # total_lines = len(df_stats.loc[(df_stats['cd_linha'] == code_line)])
+                        # writer.writerow([event_id, code_line, str(event_datetime), "{0:.2f}".format(less_count / (
+                        #     total_lines - 1 if total_lines > 1 else total_lines) * 100)])
+                        writer.writerow([event_id, code_line, str(event_datetime), 1 if float(df_event_day['median']) <=
+                                         velocity_mean else 0])
             else:
-                writer.writerow([event_id, -1, "", -1])
-        except Exception as e:
-            print(event_id, e)
-            writer.writerow([event_id, -1, "", -1])
+                pass
+                # writer.writerow([event_id, -1, "", -1])
+        except EmptyDataError:
+            # writer.writerow([event_id, -1, "", -1])
             pass
 
     csv_file.close()
 
     velocities = pd.read_csv('velocity_analysis.csv', encoding='utf-8', sep=',', header=None)
     velocities.columns = ['event_id', 'code_line', 'dateTime', 'less_count']
-    velocities['less_count'] = velocities['less_count'].astype(float)
 
-    less = len(velocities.loc[(velocities['less_count'] >= 50)])
-    more = len(velocities.loc[(velocities['less_count'] < 50) & (velocities['less_count'] >= 0)])
-    print((less / (less + more)) * 100)
+    grouped_ids = velocities.groupby(['event_id'])
+
+    up = 0
+    down = 0
+    for name, group in grouped_ids:
+        less = len(group.loc[(group['less_count'] == 1)])
+        more = len(group.loc[(group['less_count'] == 0)])
+        if less / (more + less) >= 0.5:
+            down = down + 1
+        else:
+            up = up + 1
+
+    if down + up > 0:
+        print((down / (down + up)) * 100)
+    else:
+        print(0)
 
 # df = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
 #                            "processed_tweets_CETSP_affected_code_lines_100.csv"), encoding='utf-8', sep=';')
