@@ -19,7 +19,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
 
 from sklearn import tree, svm, neighbors
-from sklearn.naive_bayes import MultinomialNB, GaussianNB
+from sklearn.naive_bayes import MultinomialNB, ComplementNB
 
 import nltk
 import matplotlib.pyplot as plt
@@ -322,13 +322,29 @@ y_predicted_mnb = mnb_clf.predict(X_test_tfidf_counts.toarray())
 logging.info("Multinomial Naive Bayes: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
     get_metrics(y_test, y_predicted_mnb)))
 
-gnb_clf = GaussianNB()
-gnb_clf.fit(X_train_tfidf_counts.toarray(), y_train)
+# gnb_clf = GaussianNB()
+# gnb_clf.fit(X_train_tfidf_counts.toarray(), y_train)
+#
+# y_predicted_gnb = gnb_clf.predict(X_test_tfidf_counts.toarray())
+#
+# logging.info("Gaussian Naive Bayes: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
+#     get_metrics(y_test, y_predicted_gnb)))
 
-y_predicted_gnb = gnb_clf.predict(X_test_tfidf_counts.toarray())
+"""
+ComplementNB implements the complement naive Bayes (CNB) algorithm. CNB is an adaptation of the standard multinomial 
+naive Bayes (MNB) algorithm that is particularly suited for imbalanced data sets. Specifically, CNB uses statistics 
+from the complement of each class to compute the model’s weights. The inventors of CNB show empirically that the 
+parameter estimates for CNB are more stable than those for MNB. Further, CNB regularly outperforms MNB (often by a 
+considerable margin) on text classification tasks.
+"""
 
-logging.info("Gaussian Naive Bayes: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
-    get_metrics(y_test, y_predicted_gnb)))
+cnb_clf = ComplementNB()
+cnb_clf.fit(X_train_tfidf_counts.toarray(), y_train)
+
+y_predicted_cnb = cnb_clf.predict(X_test_tfidf_counts.toarray())
+
+logging.info("Complement Naive Bayes: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
+    get_metrics(y_test, y_predicted_cnb)))
 
 """# SVM"""
 
@@ -421,9 +437,9 @@ cm_mnb = confusion_matrix(y_test, y_predicted_mnb)
 plt.figure(figsize=(13, 13))
 plot_confusion_matrix(cm_mnb, classes=model_classes, normalize=True, title='').show()
 
-cm_gnb = confusion_matrix(y_test, y_predicted_gnb)
+cm_cnb = confusion_matrix(y_test, y_predicted_cnb)
 plt.figure(figsize=(13, 13))
-plot_confusion_matrix(cm_gnb, classes=model_classes, normalize=True, title='').show()
+plot_confusion_matrix(cm_cnb, classes=model_classes, normalize=True, title='').show()
 
 cm_svm = confusion_matrix(y_test, y_predicted_svm_clf)
 plt.figure(figsize=(13, 13))

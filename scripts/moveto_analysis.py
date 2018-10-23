@@ -26,8 +26,10 @@ events_lng_lat = set()
 cores = cpu_count()
 partitions = cores
 processed = []
-for file in glob.glob(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "stats_*")):
+for file in glob.glob(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
+                                "stats_*")):
     processed.append(file.split("_")[1].split(".csv")[0])
+    # processed.append(file.split("stats_")[1].split("_")[0])
 
 processed = list(set(processed))
 
@@ -35,7 +37,7 @@ num_fetch_threads = 1
 enclosure_queue = Queue()
 
 
-def process_movto_files(paths, event_id, event_date_time, event_affected_code_lines, event_lng, event_lat):
+def process_movto_files(paths, event_id, event_date_time, event_affected_code_lines, event_lng, event_lat, event_label):
     stats_frames = []
     print("Processing event id: {} ".format(event_id))
     print("Paths: {} ".format(paths))
@@ -80,11 +82,11 @@ def process_movto_files(paths, event_id, event_date_time, event_affected_code_li
     if len(stats_frames) > 0:
         all_df = pd.concat(stats_frames)
         all_df.to_csv(path.join(path.dirname(path.realpath('__file__')),
-                                "..", "datasets", "stats_{}.csv".format(event_id)), sep=",", index=True,
+                                "..", "datasets", "stats_{}_{}.csv".format(event_id, event_label)), sep=",", index=True,
                       quoting=csv.QUOTE_NONNUMERIC, header=True)
     else:
         empty_file = open(path.join(path.dirname(path.realpath('__file__')), "..", "datasets",
-                                    "stats_{}.csv".format(event_id)), "w")
+                                    "stats_{}_{}.csv".format(event_id, event_label)), "w")
         empty_file.close()
 
 
@@ -92,15 +94,24 @@ def process_events(q):
     while True:
         event = q.get()
         event_affected_code_lines = ast.literal_eval(event['affected_code_lines'])
-        if str(event["_id"]) not in processed and event_affected_code_lines and event['dateTime'].year == 2017:
+        if event["_id"] not in processed and event_affected_code_lines and event['dateTime'].year == 2017:
             event_year = event['dateTime'].year
             event_month = event['dateTime'].month
             event_hour = event['dateTime'].hour
+            event_weekday_name = event['dateTime'].weekday_name
 
             paths = get_file_paths(event_year, [event_month], [event_hour])
+            paths = pd.DataFrame.from_records(paths)
+            paths["dateTime"] = pd.to_datetime(paths.dateTime)
+            paths.index = paths['dateTime']
+            paths = paths.loc[paths.dateTime.dt.weekday_name == event_weekday_name]
+            paths = paths.path.tolist()
+
             print("Affected code lines: {}".format(event['affected_code_lines']))
             process_movto_files(paths, event['_id'], event['dateTime'], event_affected_code_lines,
-                                event['lng'], event['lat'])
+                                event['lng'], event['lat'], str(event['label']).lower().replace(" ", "_"))
+        elif not event_affected_code_lines:
+            print("No affected lines related to {} id".format(event["_id"]))
         q.task_done()
 
 
@@ -136,7 +147,7 @@ def is_close_to_event(lng_bus_position, lat_bus_position):
 if __name__ == '__main__':
     df_events = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
                                       "processed_tweets_affected_code_lines_1000.csv"), encoding='utf-8', sep=',',
-                            dtype={'lat': str, 'lng': str})
+                            dtype={'lat': str, 'lng': str, '_id': str})
 
     df_events["dateTime"] = pd.to_datetime(df_events.dateTime)
 

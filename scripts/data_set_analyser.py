@@ -46,7 +46,7 @@ def print_partial_latex_table(data_set_description):
 
 
 if __name__ == '__main__':
-    files = get_file_paths(year, None, None)
+    files = get_file_paths(year, None, None).path.tolist()
     description = get_data_set_description(files)
     print_partial_latex_table(description)
 

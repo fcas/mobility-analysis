@@ -19,7 +19,7 @@ db = connection.gtfs_sptrans
 all_code_lines_affected = list()
 events_lng_lat = set()
 
-max_distance_from_stop = 1000
+max_distance_from_stop = 100
 min_distance_from_stop = 0
 
 
@@ -64,7 +64,7 @@ def find_affected_lines(latitude, longitude):
         results = db.stops.find({"location": {"$near": {"$geometry": {"type": "Point", "coordinates": [longitude,
                                                                                                        latitude]},
                                                         "$minDistance": min_distance_from_stop,
-                                                        "$maxDistance": max_distance_from_stop}}})
+                                                        "$maxDistance": max_distance_from_stop.fdiv(111.12)}}})
         for result in results:
             line_info = find_trip_id_by_stop_id(result["stop_id"])["trip_id"]
             line_details = line_info.split("-")

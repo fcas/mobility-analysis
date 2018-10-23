@@ -27,5 +27,6 @@ def get_file_paths(year, months, hours):
 
                 else:
                     to_hour = "{}{:02d}{:02d}{:02d}00".format(year, month, day, event_hour + 1)
-                file_paths.append("_".join([from_hour, to_hour]))
+                file_paths.append({"dateTime": "{}-{:02d}-{:02d}".format(year, month, day),
+                                   "path": "_".join([from_hour, to_hour])})
     return file_paths
