@@ -41,15 +41,6 @@ def normalize_velocities(df_movto):
                 number = number if not math.isnan(number) else 0
                 nr_velocities.append(number)
             velocity_median = np.average(nr_velocities)
-        # if velocity_median == 0:
-        #     category = "stopped_{}".format(name.minute)
-        # elif velocity_median < 20:
-        #     category = "slow_{}".format(name.minute)
-        # elif 20 <= velocity_median < 30:
-        #     category = "normal_{}".format(name.minute)
-        # else:
-        #     category = "fast_{}".format(name.minute)
-        # group_velocity.append(category)
         group_velocity.append(int(round(velocity_median)))
     return group_velocity
 
@@ -93,15 +84,6 @@ def process_velocities(month):
 
                 velocities.append(normalize_velocities(df))
 
-                # grouped_ids = df.groupby(['cd_linha'])
-
-                # for name, group in grouped_ids:
-                #     velocities = dict_velocities.get(int(name), [])
-                #     velocities.append(group["nr_velocidade"].tolist())
-                #     dict_velocities[int(name)] = velocities
-
-        # for line in dict_velocities.keys():
-        #     line_velocities_day = dict_velocities[line]
     with open(path.join(path.dirname(path.realpath('__file__')), "..", "datasets",
                         "velocities_{}.csv".format(month)), 'w') as velocities_file:
         velocities_writer = csv.writer(velocities_file, delimiter=',', quoting=csv.QUOTE_NONE)
@@ -115,8 +97,8 @@ if __name__ == '__main__':
     for m in months:
         try:
             v = process_velocities(m)
-            csv_file = open(path.join(path.dirname(path.realpath('__file__')), "..", "datasets", "apriori_velocities_{}.csv"
-                                      .format(m)), 'w')
+            csv_file = open(path.join(path.dirname(path.realpath('__file__')), "..", "datasets",
+                                      "apriori_velocities_{}.csv".format(m)), 'w')
             apriori_writer = csv.writer(csv_file, delimiter=',', quoting=csv.QUOTE_NONE)
             apriori_writer.writerow(["rule", "support", "confidence", "lift"])
             association_rules = apriori(v, min_length=2)
