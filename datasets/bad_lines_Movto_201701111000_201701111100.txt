@@ -1,1 +1,0 @@
-b'Skipping line 60025: expected 19 fields, saw 35\n'
