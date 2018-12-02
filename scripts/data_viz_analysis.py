@@ -6,7 +6,6 @@ from os import path
 import csv
 import glob
 
-from numpy import average, mean
 from pandas.errors import EmptyDataError
 
 
@@ -145,14 +144,14 @@ def plot_stats():
         plt.show()
 
 
-def describe():
-    csv_file = open("velocity_analysis.csv", "w")
+def describe(month, event_type):
+    distance = 1000
+    csv_file = open("velocity_analysis_{}_{}m_{}.csv".format(month, distance, event_type), "w")
     writer = csv.writer(csv_file, delimiter=',')
 
-    for file_path in glob.glob(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
-                                         "stats100aug_event_days", "stats_*_natural_disaster.csv")):
-    # for file_path in glob.glob(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
-    #                                      "stats_*_social_event.csv")):
+    for file_path in glob.glob(path.join(
+            path.dirname(path.realpath(__file__)), "..", "datasets",
+            "data_2017_{:02}_exception_events_{}m", "stats_*_{}.csv").format(month, distance, event_type)):
 
         file_name = file_path.split("datasets/")[1]
         event_id = file_name.split("stats_")[1].split("_")[0]
@@ -162,52 +161,53 @@ def describe():
                                              file_name), encoding='utf-8', sep=',')
             if not df_stats.empty:
                 df_stats['day'] = df_stats.apply(lambda x: int(x['filename'].split("_")[0][6:8]), axis=1)
-                event_datetime = datetime.datetime.strptime(df_stats['dateTime'].values[0], '%Y-%m-%d %H:%M:%S')
+                try:
+                    event_datetime = datetime.datetime.strptime(df_stats['dateTime'].values[0], '%Y-%m-%d %H:%M:%S')
+                except Exception as e:
+                    event_datetime = datetime.datetime.strptime(df_stats['dateTime'].values[0], '%Y-%m-%d')
+                    print(e)
+                    pass
                 code_lines = list(set(df_stats['cd_linha'].tolist()))
+                velocity_mean = np.mean(df_stats['median'].tolist())
                 for code_line in code_lines:
                     df_event_day = df_stats.loc[(df_stats['cd_linha'] == code_line) & (df_stats['day'] ==
                                                                                        event_datetime.day)]
                     if len(list(df_event_day['mean'])) == 0:
-                        # writer.writerow([event_id, code_line, str(event_datetime), -1])
                         pass
                     else:
-                        # df_normal_days = df_stats.loc[(df_stats['cd_linha'] == code_line) & (df_stats['day'] !=
-                        #                                                                      event_datetime.day)]
-                        velocity_mean = np.median(df_stats['median'].tolist())
-                        # less_count = len(df_normal_days.loc[(df_normal_days['mean'] > list(df_event_day['mean'])[0])])
-                        # total_lines = len(df_stats.loc[(df_stats['cd_linha'] == code_line)])
-                        # writer.writerow([event_id, code_line, str(event_datetime), "{0:.2f}".format(less_count / (
-                        #     total_lines - 1 if total_lines > 1 else total_lines) * 100)])
-                        writer.writerow([event_id, code_line, str(event_datetime), 1 if float(df_event_day['median']) <=
-                                         velocity_mean else 0])
+                        writer.writerow([event_id, code_line, str(event_datetime),
+                                         1 if float(df_event_day['median']) <= velocity_mean else 0])
             else:
                 pass
-                # writer.writerow([event_id, -1, "", -1])
         except EmptyDataError:
-            # writer.writerow([event_id, -1, "", -1])
             pass
 
     csv_file.close()
 
-    velocities = pd.read_csv('velocity_analysis.csv', encoding='utf-8', sep=',', header=None)
-    velocities.columns = ['event_id', 'code_line', 'dateTime', 'less_count']
+    try:
+        velocities = pd.read_csv('velocity_analysis_{}_{}m_{}.csv'.format(month, distance, event_type),
+                                 encoding='utf-8', sep=',', header=None)
+        velocities.columns = ['event_id', 'code_line', 'dateTime', 'less_count']
 
-    grouped_ids = velocities.groupby(['event_id'])
+        grouped_ids = velocities.groupby(['event_id'])
 
-    up = 0
-    down = 0
-    for name, group in grouped_ids:
-        less = len(group.loc[(group['less_count'] == 1)])
-        more = len(group.loc[(group['less_count'] == 0)])
-        if less / (more + less) >= 0.5:
-            down = down + 1
+        up = 0
+        down = 0
+        for name, group in grouped_ids:
+            less = len(group.loc[(group['less_count'] == 1)])
+            more = len(group.loc[(group['less_count'] == 0)])
+            if less / (more + less) > 0.5:
+                down = down + 1
+            else:
+                up = up + 1
+
+        if down + up > 0:
+            print("{}:{}".format(event_type, (down / (down + up)) * 100))
         else:
-            up = up + 1
-
-    if down + up > 0:
-        print((down / (down + up)) * 100)
-    else:
-        print(0)
+            print("{}:{}".format(event_type, 0))
+    except Exception as e:
+        print(e)
+        pass
 
 # df = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
 #                            "processed_tweets_CETSP_affected_code_lines_100.csv"), encoding='utf-8', sep=';')
@@ -222,5 +222,12 @@ def describe():
 # plot_stats()
 
 
-describe()
+if __name__ == '__main__':
+    months = {"january": 1, "february": 2, "march": 3, "april": 4, "may": 5, "june": 6, "july": 7, "august": 8,
+              "september": 9, "october": 10, "november": 11, "december": 12}
+    events = ["accident", "natural_disaster", "social_event", "urban_event"]
 
+    for key in months.keys():
+        print(key)
+        for event in events:
+            describe(months[key], event)
