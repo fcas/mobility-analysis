@@ -3,7 +3,7 @@ import itertools
 import numpy as np
 import matplotlib.pyplot as plt
 
-from notebooks.tweets_processing_config import model_classes
+from tweets_processing_config import model_classes
 
 
 def plot_confusion_matrix(cm, classes,

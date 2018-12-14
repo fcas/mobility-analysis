@@ -12,35 +12,67 @@ from multiprocessing import Pool, cpu_count
 import numpy as np
 import csv
 import ast
+from apyori import apriori
 
 # Set up projections
 # WGS 84 (World Geodetic System) (aka WGS 1984, EPSG:4326)
+from apriori_analysis import normalize_velocities
 from mov_to_generator import get_file_paths
+
 
 crs_wgs = proj.Proj(init='epsg:4326')
 # Use a locally appropriate projected CRS (Coordinate Reference System)
 crs_bng = proj.Proj(init='epsg:29101')
-bus_position_to_event_distance = 1000
+bus_position_to_event_distance = 100
 events_lng_lat = set()
 
 cores = cpu_count()
 partitions = cores
 processed = []
-for file in glob.glob(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
-                                "stats_*")):
-    processed.append(file.split("_")[1].split(".csv")[0])
-    # processed.append(file.split("stats_")[1].split("_")[0])
+
+months = [8]
+for m in months:
+    data_path = path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
+                          "data_2017_{:02}_exception_events_{}m".format(m, bus_position_to_event_distance))
+    if path.exists(data_path):
+        for file in glob.glob(path.join(data_path, "apriori_*")):
+            processed.append(file.split("velocities")[1].split("_")[1])
 
 processed = list(set(processed))
 
 num_fetch_threads = 1
 enclosure_queue = Queue()
+velocities = []
+
+
+def velocity_status(df_affected_lines, event_id, event_date_time, event_affected_code_lines, event_lng, event_lat,
+                    event_label, p):
+    stats_frames = []
+
+    df_stats = df_affected_lines.groupby('cd_linha')['nr_velocidade'].agg(['min', 'max', 'mean', 'median',
+                                                                           'var', 'std', 'count',
+                                                                           pd.np.count_nonzero])
+    df_stats["nonzero_percentage"] = (1 - df_stats['count_nonzero'] / df_stats['count']) * 100
+    df_stats["filename"] = p.split("Movto_")[1]
+    df_stats['dateTime'] = event_date_time
+    stats_frames.append(df_stats)
+
+    if len(stats_frames) > 0:
+        all_df = pd.concat(stats_frames)
+        all_df.to_csv(path.join(path.dirname(path.realpath('__file__')),
+                                "..", "datasets", "stats_{}_{}.csv".format(event_id, event_label)), sep=",", index=True,
+                      quoting=csv.QUOTE_NONNUMERIC, header=True)
+    else:
+        empty_file = open(path.join(path.dirname(path.realpath('__file__')), "..", "datasets",
+                                    "stats_{}_{}.csv".format(event_id, event_label)), "w")
+        empty_file.close()
 
 
 def process_movto_files(paths, event_id, event_date_time, event_affected_code_lines, event_lng, event_lat, event_label):
-    stats_frames = []
     print("Processing event id: {} ".format(event_id))
     print("Paths: {} ".format(paths))
+    global velocities
+    velocities = []
     for p in paths:
         print("Processing {} file".format(p))
         archive = None
@@ -52,7 +84,7 @@ def process_movto_files(paths, event_id, event_date_time, event_affected_code_li
 
         if archive is not None:
             data = archive.read('{}.txt'.format(p))
-            df = pd.read_csv(io.BytesIO(data), sep=';')
+            df = pd.read_csv(io.BytesIO(data), sep=';', error_bad_lines=False)
             df.columns = [
                 "cd_evento_avl_movto", "cd_linha", "dt_movto", "nr_identificador", "nr_evento_linha", "nr_ponto",
                 "nr_velocidade", "nr_voltagem", "nr_temperatura_interna", "nr_evento_terminal_dado", "nr_evento_es_1",
@@ -68,26 +100,39 @@ def process_movto_files(paths, event_id, event_date_time, event_affected_code_li
             if not df_affected_lines.empty:
                 df_affected_lines = parallelize(df_affected_lines, process_data)
                 df_affected_lines = df_affected_lines.loc[df_affected_lines["affected"]]
+                if not df_affected_lines.empty:
+                    velocity_status(df_affected_lines, event_id, event_date_time, event_affected_code_lines, event_lng,
+                                    event_lat, event_label, p)
+                    df_affected_lines["dt_movto"] = pd.to_datetime(df_affected_lines.dt_movto)
+                    df_affected_lines.index = df_affected_lines['dt_movto']
 
-                df_stats = df_affected_lines.groupby('cd_linha')['nr_velocidade'].agg(['min', 'max', 'mean', 'median',
-                                                                                       'var', 'std', 'count',
-                                                                                       pd.np.count_nonzero])
-                df_stats["nonzero_percentage"] = (1 - df_stats['count_nonzero'] / df_stats['count']) * 100
-                df_stats["filename"] = p.split("Movto_")[1]
-                df_stats['dateTime'] = event_date_time
-                stats_frames.append(df_stats)
+                    velocities.append(normalize_velocities(df_affected_lines))
             else:
                 print("No records related to affected lines in {} file".format(p))
 
-    if len(stats_frames) > 0:
-        all_df = pd.concat(stats_frames)
-        all_df.to_csv(path.join(path.dirname(path.realpath('__file__')),
-                                "..", "datasets", "stats_{}_{}.csv".format(event_id, event_label)), sep=",", index=True,
-                      quoting=csv.QUOTE_NONNUMERIC, header=True)
-    else:
-        empty_file = open(path.join(path.dirname(path.realpath('__file__')), "..", "datasets",
-                                    "stats_{}_{}.csv".format(event_id, event_label)), "w")
-        empty_file.close()
+    with open(path.join(path.dirname(path.realpath('__file__')), "..", "datasets",
+                        "velocities_{}_{}.csv".format(event_id, event_label)), 'w') as velocities_file:
+        velocities_writer = csv.writer(velocities_file, delimiter=',', quoting=csv.QUOTE_NONE)
+        for velocity_array in velocities:
+            velocities_writer.writerow(velocity_array)
+
+    csv_file = open(path.join(path.dirname(path.realpath('__file__')), "..", "datasets",
+                              "apriori_velocities_{}_{}.csv".format(event_id, event_label)), 'w')
+    apriori_writer = csv.writer(csv_file, delimiter=',')
+    apriori_writer.writerow(["rule", "support", "confidence", "lift"])
+
+    association_rules = apriori(velocities)
+    association_results = list(association_rules)
+
+    for item in association_results:
+        # first index of the inner list
+        # Contains base item and add item
+        pair = item[0]
+        items = [x for x in pair]
+        apriori_writer.writerow(["{}, {}, {}, {}".format(" ".join(str(x) for x in items), str(item[1]),
+                                                         str(item[2][0][2]), str(item[2][0][3]))])
+
+    csv_file.close()
 
 
 def process_events(q):
@@ -146,7 +191,8 @@ def is_close_to_event(lng_bus_position, lat_bus_position):
 
 if __name__ == '__main__':
     df_events = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets",
-                                      "processed_tweets_affected_code_lines_1000.csv"), encoding='utf-8', sep=',',
+                                      "processed_tweets_affected_code_lines_{}.csv"
+                                      .format(bus_position_to_event_distance)), encoding='utf-8', sep=',',
                             dtype={'lat': str, 'lng': str, '_id': str})
 
     df_events["dateTime"] = pd.to_datetime(df_events.dateTime)
