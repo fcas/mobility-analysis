@@ -2,9 +2,9 @@
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neural_network import MLPClassifier
 
-from notebooks import tweets_processing_config
-from notebooks.geolocation_config import google_geolocation_key
-from notebooks.tweets_processing_config import location_pattern, location_pattern_exception, address_pre_patterns, \
+import tweets_processing_config
+from geolocation_config import google_geolocation_key
+from tweets_processing_config import location_pattern, location_pattern_exception, address_pre_patterns, \
     address_padding, google_geolocation_bounds, google_geolocation_region, google_geolocation_url, \
     input_headers, address_anti_patterns, patterns_to_be_removed_pre_address, \
     patterns_to_be_removed_pos_address, address_pos_patterns, model_classes, google_geolocation_location_type
@@ -27,6 +27,7 @@ import matplotlib.pyplot as plt
 
 import numpy as np
 import itertools
+import ast
 
 import gspread
 import csv
@@ -37,8 +38,11 @@ import re
 import requests
 import unidecode
 
+from os import path
+
 import logging
-logging.basicConfig(filename='tweets_analysis.log', level=logging.DEBUG)
+logging.basicConfig(filename=path.join(path.dirname(path.realpath(__file__)), "..",
+                                       "datasets", "tweets", 'tweets_analysis.log'), level=logging.DEBUG)
 
 
 r = redis.StrictRedis(host='localhost', port=6379, db=5)
@@ -61,7 +65,8 @@ def load_tweets():
             rows.extend(worksheet.get_all_values())
         except Exception as exception:
             logging.ERROR("Error processing {}".format(account_id), exception)
-    csv_file = open('classified_tweets.csv', 'w')
+    csv_file = open(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "tweets",
+                              'classified_tweets.csv'), 'w')
     wr = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
     wr.writerows(rows)
     csv_file.close()
@@ -186,15 +191,18 @@ def tokenize_tweets(tweets):
     return tweets
 
 
-if not os.path.isfile("classified_tweets.csv"):
+if not os.path.isfile(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "tweets",
+                                "classified_tweets.csv")):
     load_tweets()
 
-df_raw_tweets = pd.read_csv('classified_tweets.csv', sep=',', dtype={'_id': str})
+df_raw_tweets = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "tweets",
+                                      'classified_tweets.csv'), sep=',', dtype={'_id': str})
 df_raw_tweets.columns = input_headers
 df_raw_tweets["text"].fillna("", inplace=True)
 
 
-if not os.path.isfile("processed_tweets.csv"):
+if not os.path.isfile(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "tweets",
+                                "processed_tweets.csv")):
     df_raw_tweets["raw_tweet"] = df_raw_tweets["text"].apply(save_raw_tweet)
     map_address = {}
     address_tokens = set()
@@ -221,9 +229,12 @@ if not os.path.isfile("processed_tweets.csv"):
     tokenized_tweets = tokenize_tweets(df_raw_tweets)
     tokenized_tweets["text"] = tokenized_tweets["tokens"].apply(tokens_to_text)
     tokenized_tweets['dateTime'] = pd.to_datetime(tokenized_tweets.dateTime)
-    tokenized_tweets.to_csv("processed_tweets.csv", sep=",", index=False, quoting=csv.QUOTE_NONNUMERIC, header=True)
+    tokenized_tweets.to_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "tweets",
+                                      "processed_tweets.csv"), sep=",", index=False, quoting=csv.QUOTE_NONNUMERIC,
+                            header=True)
 
-tokenized_tweets = pd.read_csv('processed_tweets.csv', sep=',')
+tokenized_tweets = pd.read_csv(path.join(path.dirname(path.realpath(__file__)), "..", "datasets", "tweets",
+                                         'processed_tweets.csv'), sep=',')
 # cleaned tweets can be empty
 tokenized_tweets["text"].fillna("", inplace=True)
 tokenized_tweets = tokenized_tweets.loc[tokenized_tweets["text"] != ""]
@@ -237,8 +248,14 @@ tokenized_tweets = tokenized_tweets.loc[tokenized_tweets["text"] != ""]
 
 
 def corpus_metrics(df):
-    all_words = [word for tokens in df["tokens"] for word in tokens]
-    sentence_lengths = [len(tokens) for tokens in df["tokens"]]
+    all_words = []
+    sentence_lengths = []
+    for tokens in df["tokens"].tolist():
+        tokens = ast.literal_eval(tokens)
+        if tokens:
+            sentence_lengths.append(len(tokens))
+            for token in tokens:
+                all_words.append(token)
     global vocabulary
     vocabulary = sorted(list(set(all_words)))
     logging.info("%s words total, with a vocabulary size of %s" % (len(all_words), len(vocabulary)))
