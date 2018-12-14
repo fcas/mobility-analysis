@@ -41,8 +41,7 @@ import unidecode
 from os import path
 
 import logging
-logging.basicConfig(filename=path.join(path.dirname(path.realpath(__file__)), "..",
-                                       "datasets", "tweets", 'tweets_analysis.log'), level=logging.DEBUG)
+logging.basicConfig(filename='tweets_analysis.log', level=logging.DEBUG)
 
 
 r = redis.StrictRedis(host='localhost', port=6379, db=5)
