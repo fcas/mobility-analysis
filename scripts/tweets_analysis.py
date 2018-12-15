@@ -49,7 +49,7 @@ seed = 42
 
 
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
-    pd.set_option('display.height', 1000)
+    pd.set_option('display.expand_frame_repr', False)
     pd.set_option('display.max_columns', 500)
     pd.set_option('display.width', 1000)
 
