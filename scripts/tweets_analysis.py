@@ -16,9 +16,9 @@ from sklearn.linear_model import LogisticRegression
 
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, confusion_matrix, make_scorer
 
-from sklearn import tree, svm, neighbors
+from sklearn import tree, svm, neighbors, model_selection
 from sklearn.naive_bayes import MultinomialNB, ComplementNB
 
 import nltk
@@ -45,6 +45,8 @@ logging.basicConfig(filename='tweets_analysis.log', level=logging.DEBUG)
 
 
 r = redis.StrictRedis(host='localhost', port=6379, db=5)
+seed = 42
+
 
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
     pd.set_option('display.height', 1000)
@@ -265,7 +267,8 @@ def corpus_metrics(df):
     plt.xlabel('Sentence length', fontsize=20)
     plt.ylabel('Number of sentences', fontsize=20)
     plt.hist(sentence_lengths)
-    plt.show()
+    plt.savefig(path.join(path.dirname(path.realpath(__file__)), "..", "..", "dissertacao", "images",
+                          "corpus_metrics.png"))
 
 
 corpus_metrics(tokenized_tweets)
@@ -282,7 +285,8 @@ def count_tokens_tfidf(data):
 list_corpus = tokenized_tweets["text"].tolist()
 list_labels = tokenized_tweets["class_label"].tolist()
 
-X_train, X_test, y_train, y_test = train_test_split(list_corpus, list_labels, test_size=0.4, train_size=0.6)
+X_train, X_test, y_train, y_test = train_test_split(list_corpus, list_labels, random_state=seed,
+                                                    test_size=0.4, train_size=0.6)
 
 # Applying TFIDF
 X_train_tfidf_counts, tfidf_vec = count_tokens_tfidf(X_train)
@@ -304,119 +308,13 @@ def get_metrics(y_test, y_predicted):
     return accuracy, precision, recall, f1
 
 
-clf_logistic_regression = LogisticRegression()
-clf_logistic_regression.fit(X_train_tfidf_counts, y_train)
-
-y_predicted_logistic_regression_clf = clf_logistic_regression.predict(X_test_tfidf_counts)
-logging.info("Logistic Regression: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
-    get_metrics(y_test, y_predicted_logistic_regression_clf)))
-
-"""# Decision Tree Classifier"""
-
-decision_tree_clf = tree.DecisionTreeClassifier()
-decision_tree_clf.fit(X_train_tfidf_counts, y_train)
-
-y_predicted_decision_tree_clf = decision_tree_clf.predict(X_test_tfidf_counts)
-
-logging.info("Decision Tree: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
-    get_metrics(y_test, y_predicted_decision_tree_clf)))
-
-"""# Naive Bayes
-
-Specifically, we will be using the multinomial Naive Bayes implementation. This particular classifier is suitable for 
-classification with discrete features (such as in our case, word counts for text classification). It takes in integer 
-word counts as its input. On the other hand Gaussian Naive Bayes is better suited for continuous data as it assumes 
-that the input data has a Gaussian(normal) distribution.
-
-"""
-
-mnb_clf = MultinomialNB()
-mnb_clf.fit(X_train_tfidf_counts.toarray(), y_train)
-
-y_predicted_mnb = mnb_clf.predict(X_test_tfidf_counts.toarray())
-
-logging.info("Multinomial Naive Bayes: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
-    get_metrics(y_test, y_predicted_mnb)))
-
-# gnb_clf = GaussianNB()
-# gnb_clf.fit(X_train_tfidf_counts.toarray(), y_train)
-#
-# y_predicted_gnb = gnb_clf.predict(X_test_tfidf_counts.toarray())
-#
-# logging.info("Gaussian Naive Bayes: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
-#     get_metrics(y_test, y_predicted_gnb)))
-
-"""
-ComplementNB implements the complement naive Bayes (CNB) algorithm. CNB is an adaptation of the standard multinomial 
-naive Bayes (MNB) algorithm that is particularly suited for imbalanced data sets. Specifically, CNB uses statistics 
-from the complement of each class to compute the model’s weights. The inventors of CNB show empirically that the 
-parameter estimates for CNB are more stable than those for MNB. Further, CNB regularly outperforms MNB (often by a 
-considerable margin) on text classification tasks.
-"""
-
-cnb_clf = ComplementNB()
-cnb_clf.fit(X_train_tfidf_counts.toarray(), y_train)
-
-y_predicted_cnb = cnb_clf.predict(X_test_tfidf_counts.toarray())
-
-logging.info("Complement Naive Bayes: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
-    get_metrics(y_test, y_predicted_cnb)))
-
-"""# SVM"""
-
-svm_clf = svm.SVC()
-svm_clf.fit(X_train_tfidf_counts, y_train)
-
-y_predicted_svm_clf = svm_clf.predict(X_test_tfidf_counts)
-
-logging.info("SVM: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
-    get_metrics(y_test, y_predicted_svm_clf)))
-
-"""# Random Forest"""
-
-random_forest_clf = RandomForestClassifier()
-random_forest_clf.fit(X_train_tfidf_counts, y_train)
-y_predicted_random_forest_clf = random_forest_clf.predict(X_test_tfidf_counts)
-
-logging.info("Random Forest: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
-    get_metrics(y_test, y_predicted_random_forest_clf)))
-
-"""# k-nn"""
-
-knn_clf = neighbors.KNeighborsClassifier()
-knn_clf.fit(X_train_tfidf_counts, y_train)
-y_predicted_knn_clf = knn_clf.predict(X_test_tfidf_counts)
-
-logging.info("Nearest Neighbors: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
-    get_metrics(y_test, y_predicted_knn_clf)))
-
-"""# MLP"""
-
-mlp_clf = clf = MLPClassifier()
-mlp_clf.fit(X_train_tfidf_counts, y_train)
-y_predicted_mlp_clf = mlp_clf.predict(X_test_tfidf_counts)
-
-logging.info("Multi-layer Perceptron: accuracy = %.3f, precision = %.3f, recall = %.3f, f1 = %.3f" % (
-    get_metrics(y_test, y_predicted_mlp_clf)))
-
-"""# Validation"""
-
-
-def plot_confusion_matrix(cm, classes,
-                          normalize=False,
-                          title='Confusion matrix',
-                          cmap=plt.cm.Blues):
+def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix', cmap=plt.cm.Blues):
     """
     This function prints and plots the confusion matrix.
     Normalization can be applied by setting `normalize=True`.
     """
     if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-        print("Normalized confusion matrix")
-    else:
-        print('Confusion matrix, without normalization')
-
-    print(cm)
 
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title, fontsize=30)
@@ -439,58 +337,6 @@ def plot_confusion_matrix(cm, classes,
     plt.tight_layout()
 
     return plt
-
-
-cm_logistic_regression = confusion_matrix(y_test, y_predicted_logistic_regression_clf)
-plt.figure(figsize=(13, 13))
-plot_confusion_matrix(cm_logistic_regression, classes=model_classes, normalize=True, title='').show()
-
-cm_decision_tree = confusion_matrix(y_test, y_predicted_decision_tree_clf)
-plt.figure(figsize=(13, 13))
-plot_confusion_matrix(cm_decision_tree, classes=model_classes, normalize=True, title='').show()
-
-cm_mnb = confusion_matrix(y_test, y_predicted_mnb)
-plt.figure(figsize=(13, 13))
-plot_confusion_matrix(cm_mnb, classes=model_classes, normalize=True, title='').show()
-
-cm_cnb = confusion_matrix(y_test, y_predicted_cnb)
-plt.figure(figsize=(13, 13))
-plot_confusion_matrix(cm_cnb, classes=model_classes, normalize=True, title='').show()
-
-cm_svm = confusion_matrix(y_test, y_predicted_svm_clf)
-plt.figure(figsize=(13, 13))
-plot_confusion_matrix(cm_svm, classes=model_classes, normalize=True, title='').show()
-
-cm_rf = confusion_matrix(y_test, y_predicted_random_forest_clf)
-plt.figure(figsize=(13, 13))
-plot_confusion_matrix(cm_rf, classes=model_classes, normalize=True, title='').show()
-
-cm_knn = confusion_matrix(y_test, y_predicted_knn_clf)
-plt.figure(figsize=(13, 13))
-plot_confusion_matrix(cm_knn, classes=model_classes, normalize=True, title='').show()
-
-cm_mlp = confusion_matrix(y_test, y_predicted_mlp_clf)
-plt.figure(figsize=(13, 13))
-plot_confusion_matrix(cm_mlp, classes=model_classes, normalize=True, title='').show()
-
-"""# Features"""
-
-
-def get_most_important_features(vectorizer, model, n=5):
-    index_to_word = {v: k for k, v in vectorizer.vocabulary_.items()}
-
-    # loop for each class
-    classes = {}
-    for class_index in range(model.coef_.shape[0]):
-        word_importance = [(el, index_to_word[i]) for i, el in enumerate(model.coef_[class_index])]
-        sorted_coefficient = sorted(word_importance, key=lambda x: x[0], reverse=True)
-        tops = sorted(sorted_coefficient[:n], key=lambda x: x[0])
-        bottom = sorted_coefficient[-n:]
-        classes[class_index] = {
-            'tops': tops,
-            'bottom': bottom
-        }
-    return classes
 
 
 def plot_important_words(t_scores, t_words, b_scores, b_words):
@@ -524,14 +370,108 @@ def plot_important_words(t_scores, t_words, b_scores, b_words):
     plt.xlabel('Importance', fontsize=20)
 
     plt.subplots_adjust(wspace=0.8)
-    plt.show()
+    return plt
 
 
-importance_tfidf = get_most_important_features(tfidf_vec, clf_logistic_regression, 10)
+def get_most_important_features(vectorizer, model, n=5):
+    index_to_word = {v: k for k, v in vectorizer.vocabulary_.items()}
 
-top_scores = [a[0] for a in importance_tfidf[1]['tops']]
-top_words = [a[1] for a in importance_tfidf[1]['tops']]
-bottom_scores = [a[0] for a in importance_tfidf[1]['bottom']]
-bottom_words = [a[1] for a in importance_tfidf[1]['bottom']]
+    # loop for each class
+    classes = {}
+    for class_index in range(model.coef_.shape[0]):
+        word_importance = [(el, index_to_word[i]) for i, el in enumerate(model.coef_[class_index])]
+        sorted_coefficient = sorted(word_importance, key=lambda x: x[0], reverse=True)
+        tops = sorted(sorted_coefficient[:n], key=lambda x: x[0])
+        bottom = sorted_coefficient[-n:]
+        classes[class_index] = {
+            'tops': tops,
+            'bottom': bottom
+        }
+    return classes
 
-plot_important_words(top_scores, top_words, bottom_scores, bottom_words)
+
+metrics = {}
+names = []
+scoring = {'accuracy': make_scorer(accuracy_score),
+           'precision': make_scorer(precision_score, pos_label=None, average='weighted'),
+           'recall': make_scorer(recall_score, pos_label=None, average='weighted'),
+           'f1_score': make_scorer(f1_score, pos_label=None, average='weighted')}
+
+np.random.seed(seed)
+
+models = []
+
+logistic_regression_clf = LogisticRegression()
+logistic_regression_clf.random_state = seed
+models.append(("lr", logistic_regression_clf))
+
+decision_tree_clf = tree.DecisionTreeClassifier()
+decision_tree_clf.random_state = seed
+models.append(("dt", decision_tree_clf))
+
+mnb_clf = MultinomialNB()
+mnb_clf.random_state = seed
+models.append(("mnb", mnb_clf))
+
+cnb_clf = ComplementNB()
+cnb_clf.random_state = seed
+models.append(("cnb", cnb_clf))
+
+svm_clf = svm.SVC()
+svm_clf.random_state = seed
+models.append(("svm", svm_clf))
+
+random_forest_clf = RandomForestClassifier()
+random_forest_clf.random_state = seed
+models.append(("rf", random_forest_clf))
+
+knn_clf = neighbors.KNeighborsClassifier()
+knn_clf.random_state = seed
+models.append(("knn", knn_clf))
+
+mlp_clf = MLPClassifier()
+mlp_clf.random_state = seed
+models.append(("mlp", mlp_clf))
+
+
+for name, model in models:
+    k_fold = model_selection.KFold(n_splits=10, random_state=seed)
+    cv_results = model_selection.cross_validate(model, X_train_tfidf_counts, y_train, cv=k_fold, scoring=scoring,
+                                                return_train_score=False, n_jobs=4)
+    y_pred = model_selection.cross_val_predict(model, X_train_tfidf_counts, y_train, cv=k_fold, n_jobs=4)
+
+    cm_decision_tree = confusion_matrix(y_train, y_pred)
+    plt.figure(figsize=(13, 13))
+    plt = plot_confusion_matrix(cm_decision_tree, classes=model_classes, normalize=True, title='')
+    plt.savefig(path.join(path.dirname(path.realpath(__file__)), "..", "..", "dissertacao", "images",
+                          "confusion_matrix_{}.png".format(name)))
+
+    importance_tfidf = get_most_important_features(tfidf_vec, model, 10)
+    top_scores = [a[0] for a in importance_tfidf[1]['tops']]
+    top_words = [a[1] for a in importance_tfidf[1]['tops']]
+    bottom_scores = [a[0] for a in importance_tfidf[1]['bottom']]
+    bottom_words = [a[1] for a in importance_tfidf[1]['bottom']]
+
+    plt = plot_important_words(top_scores, top_words, bottom_scores, bottom_words)
+    plt.savefig(path.join(path.dirname(path.realpath(__file__)), "..", "..", "dissertacao", "images",
+                          "important_words_{}.png".format(name)))
+
+    names.append(name)
+    for key_result in sort(list(cv_results.keys())):
+        if metrics.get(key_result, []):
+            results = metrics.get(key_result)
+            results.append(cv_results[key_result])
+        else:
+            metrics[key_result] = [cv_results[key_result]]
+
+        print("{} {} {} {}".format(name, key_result, np.mean(cv_results[key_result]), np.std(cv_results[key_result])))
+
+for metric_key in metrics.keys():
+    fig = plt.figure()
+    fig.suptitle('Algorithm Comparison')
+    ax = fig.add_subplot(111)
+    plt.boxplot(metrics[metric_key])
+    ax.set_xticklabels(names)
+    plt.savefig(path.join(path.dirname(path.realpath(__file__)), "..", "..", "dissertacao", "images",
+                          "box_plot_{}.png".format(metric_key)))
+
