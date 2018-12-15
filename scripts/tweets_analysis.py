@@ -437,7 +437,7 @@ models.append(("mlp", mlp_clf))
 for name, model in models:
     k_fold = model_selection.KFold(n_splits=10, random_state=seed)
     cv_results = model_selection.cross_validate(model, X_train_tfidf_counts, y_train, cv=k_fold, scoring=scoring,
-                                                return_train_score=False, n_jobs=4)
+                                                return_train_score=False, n_jobs=4, return_estimator=True)
     y_pred = model_selection.cross_val_predict(model, X_train_tfidf_counts, y_train, cv=k_fold, n_jobs=4)
 
     cm_decision_tree = confusion_matrix(y_train, y_pred)
@@ -446,25 +446,33 @@ for name, model in models:
     plt.savefig(path.join(path.dirname(path.realpath(__file__)), "..", "..", "dissertacao", "images",
                           "confusion_matrix_{}.png".format(name)))
 
-    importance_tfidf = get_most_important_features(tfidf_vec, model, 10)
-    top_scores = [a[0] for a in importance_tfidf[1]['tops']]
-    top_words = [a[1] for a in importance_tfidf[1]['tops']]
-    bottom_scores = [a[0] for a in importance_tfidf[1]['bottom']]
-    bottom_words = [a[1] for a in importance_tfidf[1]['bottom']]
+    count = 0
+    for estimator in cv_results["estimator"]:
+        if hasattr(estimator, 'coef_'):
+            importance_tfidf = get_most_important_features(tfidf_vec, estimator, 10)
+            top_scores = [a[0] for a in importance_tfidf[1]['tops']]
+            top_words = [a[1] for a in importance_tfidf[1]['tops']]
+            bottom_scores = [a[0] for a in importance_tfidf[1]['bottom']]
+            bottom_words = [a[1] for a in importance_tfidf[1]['bottom']]
 
-    plt = plot_important_words(top_scores, top_words, bottom_scores, bottom_words)
-    plt.savefig(path.join(path.dirname(path.realpath(__file__)), "..", "..", "dissertacao", "images",
-                          "important_words_{}.png".format(name)))
+            plt = plot_important_words(top_scores, top_words, bottom_scores, bottom_words)
+            count = count + 1
+            plt.savefig(path.join(path.dirname(path.realpath(__file__)), "..", "..", "dissertacao", "images",
+                                  "important_words_{}_{}.png".format(name, count)))
+        else:
+            print("without coef {}".format(name))
 
     names.append(name)
     for key_result in sort(list(cv_results.keys())):
-        if metrics.get(key_result, []):
-            results = metrics.get(key_result)
-            results.append(cv_results[key_result])
-        else:
-            metrics[key_result] = [cv_results[key_result]]
+        if key_result != "estimator":
+            if metrics.get(key_result, []):
+                results = metrics.get(key_result)
+                results.append(cv_results[key_result])
+            else:
+                metrics[key_result] = [cv_results[key_result]]
 
-        print("{} {} {} {}".format(name, key_result, np.mean(cv_results[key_result]), np.std(cv_results[key_result])))
+            print("{} {} {} {}".format(name, key_result, np.mean(cv_results[key_result]),
+                                       np.std(cv_results[key_result])))
 
 for metric_key in metrics.keys():
     fig = plt.figure()
@@ -474,4 +482,3 @@ for metric_key in metrics.keys():
     ax.set_xticklabels(names)
     plt.savefig(path.join(path.dirname(path.realpath(__file__)), "..", "..", "dissertacao", "images",
                           "box_plot_{}.png".format(metric_key)))
-

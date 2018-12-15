@@ -39,5 +39,4 @@ datasets/stats1000aug_all_days
 datasets/stats100aug_all_days
 datasets/stats1000
 datasets/apriori_2017_all_months_5min
-datasets/tweets
 datasets/apriori_exception_events
